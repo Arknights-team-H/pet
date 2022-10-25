@@ -25,7 +25,7 @@ header {
   border:none;
   border-radius:10px;
   box-shadow: none;
-  margin: 2em 0;
+  margin: 0.5em 0;
   background: #fff8e89a;
 }
 
@@ -88,19 +88,19 @@ footer {
   text-align : center;
   bottom: 0;
   position: absolute;
-  padding: 15px 0;
+  padding: 13px 0;
 }
 
 form {
   margin:0 auto;
-  font-size: 1.5em; /*文字のサイズ*/
+  font-size: 1.3em; /*文字のサイズ*/
   background: #DAEDD9;
-  padding: 2em 1em;
+  padding: 1em 1em;
   border-radius: 30px;
   text-align:center;
   width: 700px;
-  height:400px;
-  line-height:60px;
+  height:450px;
+  line-height:45px;
 }
 
 input {
@@ -177,3 +177,26 @@ a.btn--menu:hover {
   background: #24d668;
   border-bottom: 2px solid #98cf29;
 }
+
+.return-button, button{
+  display:inline-block;
+}
+
+
+.database{
+  position:relative; 
+  margin-bottom:20px;	
+}
+
+.Individualnumber{	
+  outline:0;	
+  height:50px;
+  padding:0 10px; 
+  position:absolute; 
+  left:0;
+  top:0; 
+  max-width:270px;
+  border-radius:2px;
+  background:#eee;
+}
+
