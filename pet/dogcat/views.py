@@ -1,9 +1,5 @@
 from django.shortcuts import render
-
+from django.views import generic
 # Create your views here.
-# inoue
-# kane
-# takasu
-# iwagami
-# sin
-# wow
+class IndexView(generic.TemplateView):
+    template_name = "home.html"
