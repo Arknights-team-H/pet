@@ -1,0 +1,83 @@
+@charset "UTF-8";
+
+h1 { 
+  font-size: 20px; /*文字のサイズ*/
+  padding: 3px 6px; /*上下左右の余白*/
+  color: #322a2a; /*文字色*/
+  background: transparent; /*背景を透明に変更*/
+  border-left: solid 5px #7de6a5; /*左に色指定で枠線追加*/
+}
+
+a {
+  font-size: 20px; /*文字のサイズ*/
+  color: #0b0b0b; /*文字色*/
+  padding: 6px; /*上下左右の余白*/
+  text-decoration: none; /*リンクの下線を消す*/
+  text-align: center;
+  margin: 0 0 0 auto;
+}
+
+a:hover{
+  color: #056c2c;
+}
+
+header {
+  display: flex;
+  border:none;
+  border-radius:10px;
+  box-shadow: none;
+  margin: 2em 0;
+  background: #fff8e89a;
+}
+
+p {
+  font-weight: 700;
+  font-size: 20px; /*文字のサイズ*/
+  color: #322a2a; /*文字色*/
+  display: flex;
+  justify-content: flex-end;
+  margin: 25px;
+}
+
+div.logo_center{
+  font-size: 3em; /*文字のサイズ*/
+  display: block;
+  margin: auto;
+	text-align:center;
+	line-height:0.95em;
+	font-weight:bold;
+	color: #4b5205;
+	text-shadow: 0.02em 0.02em 0.02em rgba(0,0,0,1);
+}
+
+body {
+  background-image: url("自然背景.png");
+}
+  
+.button-login {
+  display: inline-block;
+  padding: 0.4em 1.6em;
+  font-size: 0.8em;
+  color: rgb(145, 231, 194);
+  text-decoration: none;
+  user-select: none;
+  background: #028d37;
+  border: 1px #00b5ad solid;
+  border-radius: px;
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 2px 0 rgba(0, 0, 0, 0.12);
+  transition: 0.2s ease;
+  font-family:sans-serif;
+  display:block;
+  width:90px;
+  margin:0 auto;
+}
+
+footer {
+  width: 100%;
+  color : rgba(0, 0, 0, 0.308);
+  font-size:1.1em;
+  text-align : center;
+  bottom: 0;
+  position: absolute;
+  padding: 15px 0;
+}
