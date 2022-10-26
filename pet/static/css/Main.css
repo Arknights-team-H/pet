@@ -58,9 +58,8 @@ div.logo_center{
   width: 50%;
 }
 
-
 body {
-  background-image: url("自然背景.png");
+  background-image: url("/static/自然背景.png");
 }
   
 .button-login {
@@ -88,7 +87,7 @@ footer {
   text-align : center;
   bottom: 0;
   position: absolute;
-  padding: 13px 0;
+  padding: 14px 0;
 }
 
 form {

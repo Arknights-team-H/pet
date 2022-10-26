@@ -1,10 +1,64 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <title>ペット</title>
-</head>
-<body>
+{% load static %}
 
-</body>
+<html lang="ja">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/Main.css' %}" rel="stylesheet">
+
+    <!-- My style -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Main.css' %}">
+    {% block head %}{% endblock %}
+  </head>
+  <body style = "background-image: url('../../static/assets/img/bg-signup.jpg')">
+	<div id="wrapper">
+                <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="{% url 'pet:index' %}">Dog&Cat</a>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        {% if user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'account_logout' %}">ログアウト</a></li>
+                        {% else %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'account_signup' %}">新規登録</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'account_login' %}">ログイン</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        {% block header%}{% endblock %}
+        {% if messages %}
+          <div class="container">
+              <div class="row">
+                  <div class="my-div-style w-100">
+                      <ul class="messages" style="list-style: none;">
+                          {% for message in messages %}
+                          <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+                              {{ message }}
+                          </li>
+                          {% endfor %}
+                      </ul>
+                  </div>
+              </div>
+          </div>
+        {% endif %}
+        {% block contents%}{% endblock %}
+        <!-- Footer -->
+        <footer class="py-5 bg-black">
+          <div class="container">
+            <p class="m-0 text-center text-white small">Copyright &copy; Pet System 2022</p>
+          </div>
+          <!-- /.container -->
+        </footer>
+    </div>
+  </body>
 </html>

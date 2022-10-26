@@ -2,12 +2,14 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" type="text/css" href="Main.css" />
+<!--    <link rel="stylesheet" type="text/css" href="static/css/Main.css"/>-->
+    {% load static %}
+<link href="static/css/Main.css" rel="stylesheet" type="text/css" />
     <title>Dog&Cat｜Hチーム卒研</title>
   </head>
   <body>
     <header>
-      <h1><a href= "home.html" >~犬猫の予防接種証明書電子化アプリ~</a></h1>
+      <h1><a href= "index.html" >~犬猫の予防接種証明書電子化アプリ~</a></h1>
     </header>
     <form id="delete" method="post" action="#">
       <p1>本当に削除しますか？</p1>
