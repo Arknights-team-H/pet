@@ -5,7 +5,7 @@ from .forms import CreateForm
 from django.contrib import messages
 
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from .models import Pet
+from .models import Dogcat
 from django.shortcuts import get_object_or_404
 
 logger = logging.getLogger(__name__)
@@ -13,27 +13,27 @@ logger = logging.getLogger(__name__)
 class OnlyYouMixin(UserPassesTestMixin):
     raise_exception = True
     def test_func(self):
-        pet = get_object_or_404(Pet, pk = self.kwargs['pk'])
-        return self.request.user == pet.user
+        dogcat = get_object_or_404(Dogcat, pk = self.kwargs['pk'])
+        return self.request.user == dogcat.user
 
 
 class IndexView(generic.TemplateView):
     template_name = "index.html"
 
 class DetailView(LoginRequiredMixin, generic.DetailView):
-    model = Pet
+    model = Dogcat
     template_name = 'detail.html'
 
 class CreateView(LoginRequiredMixin, generic.CreateView):
-    model = Pet
+    model = Dogcat
     template_name = 'create.html'
     form_class = CreateForm
-    success_url = reverse_lazy('pet:home')
+    success_url = reverse_lazy('dogcat:index')
 
     def form_valid(self, form):
-        pet = form.save(commit=False)
-        pet.user = self.request.user
-        pet.save()
+        dogcat = form.save(commit=False)
+        dogcat.user = self.request.user
+        dogcat.save()
         messages.success(self.request, 'データベースを登録しました。')
         return super().form_valid(form)
 
@@ -43,11 +43,11 @@ class CreateView(LoginRequiredMixin, generic.CreateView):
 
 
 class UpdateView(LoginRequiredMixin, OnlyYouMixin, generic.UpdateView): # UpdateViewクラスを継承している
-    model = Pet
+    model = Dogcat
     template_name = 'update.html'
     form_class = CreateForm
     def get_success_url(self): # オーバーライド
-        return reverse_lazy('pet:detail', kwargs = {'pk': self.kwargs['pk']})
+        return reverse_lazy('dogcat:detail', kwargs = {'pk': self.kwargs['pk']})
 
     def form_valid(self, form): # 更新が成功した時の処理。formはユーザが入力したのが入っている。オーバーライド。
         messages.success(self.request, "データベースを更新しました。")
@@ -59,9 +59,9 @@ class UpdateView(LoginRequiredMixin, OnlyYouMixin, generic.UpdateView): # Update
 
 
 class DeleteView(LoginRequiredMixin, OnlyYouMixin, generic.DeleteView):
-    model = Pet
+    model = Dogcat
     template_name = 'delete.html'
-    success_url = reverse_lazy('pet:SearchResults')
+    success_url = reverse_lazy('dogcat:SearchResults')
 
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, "データを削除しました。")
