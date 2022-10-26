@@ -67,3 +67,25 @@ class DeleteView(LoginRequiredMixin, OnlyYouMixin, generic.DeleteView):
         messages.success(self.request, "データを削除しました。")
         return super().delete(request, *args, **kwargs)
 
+
+class VaccinationView(LoginRequiredMixin, OnlyYouMixin, generic.FormView):
+    model = Dogcat
+    template_name = 'vaccination.html'
+    success_url = reverse_lazy('dogcat:vaccination')
+
+
+class LoginView(LoginRequiredMixin, generic.FormView):
+    model = Dogcat
+    template_name = 'login.html'
+    success_url = reverse_lazy('dogcat:index')
+
+
+class SignupView(LoginRequiredMixin, generic.FormView):
+    model = Dogcat
+    template_name = 'signup.html'
+    success_url = reverse_lazy('dogcat:login')
+
+
+
+
+
