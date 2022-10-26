@@ -15,9 +15,9 @@
         <a href= "logout.html" >ログアウト</a>
       </ul>
     </header>
-    <a href="home.html" class="btn btn--menu btn--cubic">ホーム</a>
-    <a href="create.html" class="btn btn--menu btn--cubic">データベースの登録</a>
-    <a href="vaccination.html" class="btn btn--menu btn--cubic">予防接種情報</a>
+    <a href="{% 'dogcat:index' %}" class="btn btn--menu btn--cubic">ホーム</a>
+    <a href="{% 'dogcat:create' %}" class="btn btn--menu btn--cubic">データベースの登録</a>
+    <a href="{% 'dogcat:vaccination' %}" class="btn btn--menu btn--cubic">予防接種情報</a>
     <form id="database" method="post" action="#">
       <label for="databaseinput">変更画面</label>
       <br>
@@ -34,8 +34,8 @@
       <input class="hospitalidform" required name="database[hospitalid]" type="hospitalid"/>
       <br>
       <div class="return-button">
-        <button><a href="detail.html" class="button-home">戻る</a></button>
-        <button><a href="detail.html" class="button-home">確認</a></button>
+        <button><a href="detail.html" class="button-index">戻る</a></button>
+        <button><a href="detail.html" class="button-index">確認</a></button>
       </div>
     <footer>
       @ Pet System 2022.
