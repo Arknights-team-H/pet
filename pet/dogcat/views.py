@@ -5,7 +5,8 @@ from .forms import CreateForm
 from django.contrib import messages
 
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from .models import Dogcat
+from .models import Vaccination
+from .models import MasterVaccination
 from django.shortcuts import get_object_or_404
 
 logger = logging.getLogger(__name__)
@@ -21,11 +22,11 @@ class IndexView(generic.TemplateView):
     template_name = "index.html"
 
 class DetailView(LoginRequiredMixin, generic.DetailView):
-    model = Dogcat
+    model = Vaccination
     template_name = 'detail.html'
 
 class CreateView(generic.CreateView):
-    model = Dogcat
+    model = Vaccination
     template_name = 'create.html'
     form_class = CreateForm
     success_url = reverse_lazy('dogcat:index')
@@ -43,7 +44,7 @@ class CreateView(generic.CreateView):
 
 
 class UpdateView(LoginRequiredMixin, OnlyYouMixin, generic.UpdateView): # UpdateViewクラスを継承している
-    model = Dogcat
+    model = Vaccination
     template_name = 'update.html'
     form_class = CreateForm
     def get_success_url(self): # オーバーライド
@@ -59,7 +60,7 @@ class UpdateView(LoginRequiredMixin, OnlyYouMixin, generic.UpdateView): # Update
 
 
 class DeleteView(LoginRequiredMixin, OnlyYouMixin, generic.DeleteView):
-    model = Dogcat
+    model = Vaccination
     template_name = 'delete.html'
     success_url = reverse_lazy('dogcat:SearchResults')
 
@@ -69,19 +70,19 @@ class DeleteView(LoginRequiredMixin, OnlyYouMixin, generic.DeleteView):
 
 
 class VaccinationView(LoginRequiredMixin, OnlyYouMixin, generic.FormView):
-    model = Dogcat
+    model = Vaccination
     template_name = 'vaccination.html'
     success_url = reverse_lazy('dogcat:vaccination')
 
 
 class LoginView(LoginRequiredMixin, generic.FormView):
-    model = Dogcat
+    model = Vaccination
     template_name = 'login.html'
     success_url = reverse_lazy('dogcat:index')
 
 
 class SignupView(LoginRequiredMixin, generic.FormView):
-    model = Dogcat
+    model = Vaccination
     template_name = 'signup.html'
     success_url = reverse_lazy('dogcat:login')
 
