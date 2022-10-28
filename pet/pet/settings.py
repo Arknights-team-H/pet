@@ -27,8 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'dogcat.apps.DogcatConfig',
-    'accounts.apps.AccountsConfig',
+    'dogcat.apps.DogcatConfig'
 ]
 
 MIDDLEWARE = [
@@ -67,8 +66,8 @@ WSGI_APPLICATION = 'pet.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'dogcat',
         'USER': os.environ.get('DB_USER'),
         'PASSWORD': os.environ.get('DB_PASSWORD'),
         'HOST': '',
@@ -162,5 +161,3 @@ LOGGING = {
         },
     }
 }
-
-AUTH_USER_MODEL = 'accounts.CustomUser'
