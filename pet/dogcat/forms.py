@@ -4,6 +4,7 @@ from django.core.mail import EmailMessage
 from django.contrib.admin.widgets import AdminDateWidget
 from .models import Vaccination
 
+
 class CreateForm(forms.ModelForm):
     class Meta:
         model = Vaccination
