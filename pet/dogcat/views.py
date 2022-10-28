@@ -24,7 +24,7 @@ class DetailView(LoginRequiredMixin, generic.DetailView):
     model = Dogcat
     template_name = 'detail.html'
 
-class CreateView(LoginRequiredMixin, generic.CreateView):
+class CreateView(generic.CreateView):
     model = Dogcat
     template_name = 'create.html'
     form_class = CreateForm
