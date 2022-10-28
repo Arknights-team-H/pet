@@ -80,7 +80,7 @@ class LoginView(LoginRequiredMixin, generic.FormView):
     success_url = reverse_lazy('dogcat:index')
 
 
-class SignupView(LoginRequiredMixin, generic.FormView):
+class SignupView(generic.FormView):
     model = Dogcat
     template_name = 'signup.html'
     success_url = reverse_lazy('dogcat:login')
