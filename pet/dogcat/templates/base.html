@@ -2,64 +2,74 @@
 
 <html lang="ja">
 
-  <head>
-    <title>{% block title %}{% endblock %}</title>
+    <head>
+        <title>{% block title %}{% endblock %}</title>
 
-    <!-- Custom styles for this template -->
-    <link href="{% static 'css/Main.css' %}" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link href="{% static 'css/Main.css' %}" rel="stylesheet">
 
-    <!-- My style -->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/Main.css' %}">
-    {% block head %}{% endblock %}
-  </head>
+        <!-- My style -->
+        <link rel="stylesheet" type="text/css" href="{% static 'css/Main.css' %}">
+        {% block head %}{% endblock %}
+    </head>
 
-  <body>
-	<div id="wrapper">
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-          <div class="collapse navbar-collapse" id="navbarResponsive">
-              <ul>
-                {% if user.is_authenticated %}
-                    <li>
-                        <a href="{% url 'dogcat:logout' %}">ログアウト</a>
-                    </li>
-                {% else %}
-                  <ul>
-                    <a href= "{% url 'dogcat:signup' %}">新規登録</a>
-                    <a href= "{% url 'dogcat:login' %}" >ログイン</a>
-                  </ul>
-                {% endif %}
-              </ul>
-          </div>
-        </nav>
+    <header>
+        <h1><a href="{% url 'dogcat:index' %}" >~犬猫の予防接種証明書電子化アプリ~</a></h1>
+        <ul>
+            <a href >パスワード変更</a>
+            <a href >ログアウト</a>
+        </ul>
+    </header>
 
-        {% block header%}{% endblock %}
+    <body>
+        <div id="wrapper">
+            <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul>
+                        {% if user.is_authenticated %}
+                        <li>
+                            <a href="{% url 'dogcat:logout' %}">ログアウト</a>
+                        </li>
+                    {% else %}
+                        <ul>
+                            <a href="{% url 'dogcat:index' %}" class="btn btn--menu btn--cubic">ホーム</a>
+                            <a href="{% url 'dogcat:create' %}" class="btn btn--menu btn--cubic">データベースの登録</a>
+                            <a href="{% url 'dogcat:vaccination' %}" class="btn btn--menu btn--cubic">予防接種情報</a>
 
-        {% if messages %}
-          <div class="container">
-              <div class="row">
-                  <div class="my-div-style">
-                      <ul class="messages">
-                          {% for message in messages %}
-                          <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
-                              {{ message }}
-                          </li>
-                          {% endfor %}
-                      </ul>
-                  </div>
-              </div>
-          </div>
-        {% endif %}
+                        </ul>
+                    {% endif %}
+                    </ul>
+                </div>
+            </nav>
 
-        {% block contents%}{% endblock %}
+            {% block header%}{% endblock %}
 
-        <!-- Footer -->
-        <footer>
-          @ Pet System 2022.
-        </footer>
+            {% if messages %}
+            <div class="container">
+                <div class="row">
+                    <div class="my-div-style">
+                        <ul class="messages">
+                            {% for message in messages %}
+                            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+                                {{ message }}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
 
-        <!-- Bootstrap core JavaScript -->
-        <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
-        <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-    </div>
-  </body>
+            {% block contents%}{% endblock %}
+
+            <!-- Footer -->
+            <footer>
+                @ Pet System 2022.
+            </footer>
+
+            <!-- Bootstrap core JavaScript -->
+            <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+            <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+        </div>
+    </body>
 </html>
