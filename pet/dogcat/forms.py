@@ -3,6 +3,8 @@ from django import forms
 from django.core.mail import EmailMessage
 from django.contrib.admin.widgets import AdminDateWidget
 from .models import Vaccination
+from .models import Hospital
+from .models import Medicine
 
 
 class CreateForm(forms.ModelForm):
