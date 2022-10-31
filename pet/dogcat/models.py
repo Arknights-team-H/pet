@@ -14,3 +14,9 @@ class MasterVaccination(models.Model):
 
     class Meta:
         verbose_name_plural = 'MasterVaccination'
+
+class MasterVaccination(models.Model):
+    vaccination = models.CharField(max_length=255, verbose_name='接種ワクチン')
+
+    class Meta:
+        verbose_name_plural = 'MasterVaccination'
