@@ -16,10 +16,8 @@
   <body>
 	<div id="wrapper">
         <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-          <div class="collapse navbar-collapse" id="navbarResponsive">
-              <ul>
-                {% if user.is_authenticated %}
-                    <li>
+          <div class="collaps
+          0
                         <a href="{% url 'dogcat:logout' %}">ログアウト</a>
                     </li>
                 {% else %}
