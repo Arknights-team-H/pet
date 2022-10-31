@@ -1,25 +1,14 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<!--    <link rel="stylesheet" type="text/css" href="static/css/Main.css"/>-->
-    {% load static %}
-<link href="static/css/Main.css" rel="stylesheet" type="text/css" />
-    <title>Dog&Cat｜Hチーム卒研</title>
-  </head>
-  <body>
-    <header>
-      <h1><a href= "{% url 'dogcat:index' %}" >~犬猫の予防接種証明書電子化アプリ~</a></h1>
-    </header>
-    <form id="delete" method="post" action="#">
-      <p1>本当に削除しますか？</p1>
-      <br>
-      <button><a href="{% url 'dogcat:SearchResults' %}" class="button-logout">はい</a></button>
-      <br>
-      <button><a href="{% url 'dogcat:detail' %}" class="button-index">いいえ</a></button>
-    </form>
-      <footer>
-        @ Pet System 2022.
-      </footer>
-  </body>
-</html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Dogcat | チームH卒研{% endblock %}
+
+{% block contents %}
+<form id="delete" method="post" action="#">
+    <p1>本当に削除しますか？</p1>
+    <br>
+    <button><a href="{% url 'dogcat:SearchResults' %}" class="button-logout">はい</a></button>
+    <br>
+    <button><a href="{% url 'dogcat:detail' %}" class="button-index">いいえ</a></button>
+</form>
+{% endblock %}
