@@ -1,38 +1,28 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<!--    <link rel="stylesheet" type="text/css" href="static/css/Main.css"/>-->
-    {% load static %}
-<link href="static/css/Main.css" rel="stylesheet" type="text/css" />
-    <title>Dog&Cat｜Hチーム卒研</title>
-  </head>
-  <body>
-    <a href="{% url 'dogcat:index' %}" class="btn btn--menu btn--cubic">ホーム</a>
-    <a href="{% url 'dogcat:create' %}" class="btn btn--menu btn--cubic">データベースの登録</a>
-    <a href="{% url 'dogcat:vaccination' %}" class="btn btn--menu btn--cubic">予防接種情報</a>
-    <form id="database" method="post" action="#">
-      <label for="databaseinput">詳細表示</label>
-      <br>
-      <label for="number">　　個体番号：</label>
-      <input class="numberform" required name="database[number]" type="number"/>
-      <br>
-      <label for="data">　　　　日付：</label>
-      <input class="dataform" required name="database[data]" type="data"/>
-      <br>
-      <label for="vaccination">接種ワクチン：</label>
-      <input class="vaccinationform" required name="database[vaccination]" type="vaccination"/>
-      <br>
-      <label for="hospitalid">　　　病院ID：</label>
-      <input class="hospitalidform" required name="database[hospitalid]" type="hospitalid"/>
-      <br>
-      <div class="return-button">
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Dogcat | チームH卒研{% endblock %}
+
+{% block contents %}
+<form id="database" method="post" action="#">
+    <label for="databaseinput">詳細表示</label>
+    <br>
+    <label for="number">　　個体番号：</label>
+    <input class="numberform" required name="database[number]" type="number"/>
+    <br>
+    <label for="data">　　　　日付：</label>
+    <input class="dataform" required name="database[data]" type="data"/>
+    <br>
+    <label for="vaccination">接種ワクチン：</label>
+    <input class="vaccinationform" required name="database[vaccination]" type="vaccination"/>
+    <br>
+    <label for="hospitalid">　　　病院ID：</label>
+    <input class="hospitalidform" required name="database[hospitalid]" type="hospitalid"/>
+    <br>
+    <div class="return-button">
         <button><a href="SearchResults.html" class="button-index">戻る</a></button>
         <button><a href="update.html" class="button-index">変更</a></button>
         <button><a href="delete.html" class="button-index">削除</a></button>
-      </div>
-    <footer>
-      @ Pet System 2022.
-    </footer>
-  </body>
-</html>
+    </div>
+</form>
+{% endblock %}

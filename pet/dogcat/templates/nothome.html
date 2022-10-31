@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<!--    <link rel="stylesheet" type="text/css" href="static/css/Main.css"/>-->
-    {% load static %}
-<link href="static/css/Main.css" rel="stylesheet" type="text/css" />
-    <title>Dog&Cat｜Hチーム卒研</title>
-  </head>
-  <body>
-    <div class = "text">
-      <p>ペット対象：犬・猫</p>
-    </div>
-    <div class="logo_center">
-      <br>
-      <h2>Dog&Cat</h2>
-    </div>
-    <a href="login.html" class="button-login">Log In</a>
-      <footer>
-        @ Pet System 2022.
-      </footer>
-  </body>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!--    <link rel="stylesheet" type="text/css" href="static/css/Main.css"/>-->
+        {% load static %}
+        <link href="static/css/Main.css" rel="stylesheet" type="text/css" />
+        <title>Dog&Cat｜Hチーム卒研</title>
+    </head>
+    <body>
+        <div class = "text">
+            <p>ペット対象：犬・猫</p>
+        </div>
+        <div class="logo_center">
+            <br>
+            <h2>Dog&Cat</h2>
+        </div>
+
+        <a href="{% url 'dogcat:login' %}" class="button-login">Login</a>
+
+        <footer>
+            @ Pet System 2022.
+        </footer>
+    </body>
 </html>
