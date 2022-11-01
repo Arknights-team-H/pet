@@ -1,6 +1,6 @@
 from django.db import models
 
-class Vaccination(models.Model):
+class Vaccination(models.Model): # 病院側の予防接種情報登録テーブル
     mc_number = models.BigIntegerField(max_length=15, verbose_name='個体番号', blank=True, null=True)
     date = models.DateField('接種日付', blank=True, null=True)
     vaccination = models.CharField(max_length=40, verbose_name='接種ワクチン')
@@ -9,24 +9,26 @@ class Vaccination(models.Model):
     class Meta:
         verbose_name_plural = 'Vaccination'
 
-class MasterVaccination(models.Model):
+class MasterVaccination(models.Model): # 予防接種種類のマスタテーブル
     vaccination = models.CharField(max_length=40, verbose_name='ワクチン種類')
 
     class Meta:
         verbose_name_plural = 'MasterVaccination'
 
-class User(models.Model):
+class MasterUser(models.Model): # 一般ユーザ側アプリのユーザ情報テーブル
     user_id = models.CharField(max_length=10, verbose_name='ユーザID')
     mc_number = models.CharField(max_length=15, verbose_name='個体番号')
     user_password = models.CharField(max_length=16, verbose_name='パスワード')
     user_birthday = models.DateField('生年月日')
+    pet_id = models.CharField(max_length=11, verbose_name='ペットID')
+    pet_name = models.CharField(max_length=40, verbose_name='名前')
     createdate = models.DateField('作成日付', blank=True, null=True)
     updatedate = models.DateField('最終更新日', blank=True, null=True)
 
     class Meta:
-        verbose_name_plural = 'User'
+        verbose_name_plural = 'MasterUser'
 
-class MasterHospital(models.Model):
+class MasterHospital(models.Model): # 病院情報のマスタテーブル
     hospital_id = models.CharField(max_length=7, verbose_name='病院ID')
     hospital_name = models.CharField(max_length=40, verbose_name='病院名')
     address = models.CharField(max_length=120, verbose_name='住所')
@@ -37,7 +39,7 @@ class MasterHospital(models.Model):
     class Meta:
         verbose_name_plural = 'MasterHospital'
 
-class Hospital(models.Model):
+class Hospital(models.Model): # 病院側の病院情報テーブル
     hospital_id = models.CharField(max_length=7, verbose_name='病院ID')
     hospital_name = models.CharField(max_length=40, verbose_name='病院名')
     address = models.CharField(max_length=120, verbose_name='住所')
@@ -47,16 +49,13 @@ class Hospital(models.Model):
     class Meta:
         verbose_name_plural = 'Hospital'
 
-class MasterMedicine(models.Model):
-    pet_id = models.CharField(max_length=11, verbose_name='ペットID')
-    pet_name = models.CharField(max_length=40, verbose_name='名前')
-    user_birthday = models.DateField('生年月日')
+class MasterMedicine(models.Model): # 一般ユーザ側のお薬情報マスタテーブル
     type = models.CharField(max_length=40, verbose_name='お薬情報')
 
     class Meta:
         verbose_name_plural = 'MasterMedicine'
 
-class Medicine(models.Model):
+class Medicine(models.Model): # 一般ユーザ側のお薬情報テーブル
 
     pet_id = models.CharField(max_length=11, verbose_name='ペットID')
     taking_date = models.DateField('飲んだ日付け')
@@ -68,7 +67,7 @@ class Medicine(models.Model):
     class Meta:
         verbose_name_plural = 'Medicine'
 
-class LoginHistory(models.Model):
+class LoginHistory(models.Model): # ログイン判別テーブル
 
     login = models.DateField('ログイン日', blank=True, null=True)
     login_limit = models.DateField('ログインの有効期限', blank=True, null=True)
@@ -78,7 +77,7 @@ class LoginHistory(models.Model):
     class Meta:
         verbose_name_plural = 'LoginHistory'
 
-class AlarmHistory(models.Model):
+class AlarmHistory(models.Model): # 一般ユーザ側のアラートテーブル
 
     issue = models.DateField('発行日', blank=True, null=True)
     issue_limit = models.DateField('発行期限', blank=True, null=True)
@@ -87,7 +86,7 @@ class AlarmHistory(models.Model):
     class Meta:
         verbose_name_plural = 'AlarmHistory'
 
-class QRcodeHistory(models.Model):
+class QRcodeHistory(models.Model): # 一般ユーザ側のQRコード発行テーブル
 
     issue = models.DateField('発行日', blank=True, null=True)
     issue_limit = models.DateField('発行期限', blank=True, null=True)

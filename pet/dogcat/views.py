@@ -18,8 +18,12 @@ logger = logging.getLogger(__name__)
 #         return self.request.user == dogcat.user
 
 
-class IndexView(generic.TemplateView):
+class NotHomeView(generic.TemplateView):
     template_name = "nothome.html"
+
+class IndexView(generic.TemplateView):
+    template_name = "index.html"
+
 
 class DetailView(LoginRequiredMixin, generic.DetailView):
     model = Vaccination
