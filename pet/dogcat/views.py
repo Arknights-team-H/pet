@@ -4,7 +4,7 @@ from django.views import generic
 from .forms import CreateForm
 from django.contrib import messages
 
-# from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Vaccination
 from .models import MasterVaccination
 from django.shortcuts import get_object_or_404
