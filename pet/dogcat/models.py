@@ -15,7 +15,7 @@ class MasterVaccination(models.Model): # 予防接種種類のマスタテーブ
     class Meta:
         verbose_name_plural = 'MasterVaccination'
 
-class User(models.Model): # 一般ユーザ側アプリのユーザ情報テーブル
+class MasterUser(models.Model): # 一般ユーザ側アプリのユーザ情報テーブル
     user_id = models.CharField(max_length=10, verbose_name='ユーザID')
     mc_number = models.CharField(max_length=15, verbose_name='個体番号')
     user_password = models.CharField(max_length=16, verbose_name='パスワード')
@@ -26,7 +26,7 @@ class User(models.Model): # 一般ユーザ側アプリのユーザ情報テー�
     updatedate = models.DateField('最終更新日', blank=True, null=True)
 
     class Meta:
-        verbose_name_plural = 'User'
+        verbose_name_plural = 'MasterUser'
 
 class MasterHospital(models.Model): # 病院情報のマスタテーブル
     hospital_id = models.CharField(max_length=7, verbose_name='病院ID')
