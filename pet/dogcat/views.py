@@ -17,12 +17,9 @@ logger = logging.getLogger(__name__)
 #         dogcat = get_object_or_404(Vaccination, pk = self.kwargs['pk'])
 #         return self.request.user == dogcat.user
 
-class NotHomeView(generic.TemplateView):
-    template_name = "nothome.html"
-
 
 class IndexView(generic.TemplateView):
-    template_name = "index.html"
+    template_name = "nothome.html"
 
 class DetailView(LoginRequiredMixin, generic.DetailView):
     model = Vaccination

@@ -10,7 +10,7 @@ from .models import Medicine
 class CreateForm(forms.ModelForm):
     class Meta:
         model = Vaccination
-        fields = '__all__'
+        fields = ('mc_number','date','vaccination','hospital_id')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

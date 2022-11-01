@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-h1 { 
+h1 {
   font-size: 20px; /*文字のサイズ*/
   padding: 3px 6px; /*上下左右の余白*/
   color: #322a2a; /*文字色*/
@@ -38,23 +38,24 @@ header {
   margin: 25px;
 }
 
+
 div.logo_center{
   font-size: 3.2em; /*文字のサイズ*/
   display: block;
   margin: auto;
-	text-align:center;
-	line-height:0.95em;
-	font-weight:bold;
-	color: #4b5205;
-	text-shadow: 0.02em 0.02em 0.02em rgba(0,0,0,1);
+  text-align:center;
+  line-height:0.95em;
+  font-weight:bold;
+  color: #4b5205;
+  text-shadow: 0.02em 0.02em 0.02em rgba(0,0,0,1);
 }
 
 .logo_center .text {
-  font-size: 0.4em; /*文字のサイズ*/
-  line-height:0.1em;
+  font-size: 100px; /*文字のサイズ*/
+  line-height:1em;
   font-weight: normal;
-	text-align: left;
-	display: inline-block;
+  text-align: left;
+  display: inline-block;
   width: 50%;
 }
 
