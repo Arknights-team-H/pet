@@ -1,27 +1,35 @@
-{% extends 'base.html' %}
-
-{% block title %}Log In | Book Record{% endblock %}
-
-{% block active_login %}active{% endblock %}
-
-{% block contents %}
-<div class="container text-center ">
-    <div class="row">
-        <div class="my-div-style"  style = "background-color:  rgba(255, 255, 255, 0.7); padding:120px 500px;">
-            <h1>Log In</h1>
-            <form method="post" action="{% url 'account_login' %}">
-                {% csrf_token %}
-
-                {{ form.as_p }}
-
-                {% if redirect_field_value %}
-                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-                {% endif %}
-
-                <button class="btn btn-primary " type="submit">ログイン</button>
-                <p><a class="button secondaryAction" href="{% url 'account_reset_password' %}">パスワードを忘れましたか？</a></p>
-            </form>
-        </div>
-    </div>
-</div>
-{% endblock %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--    <link rel="stylesheet" type="text/css" href="static/css/Main.css"/>-->
+    {% load static %}
+<link href="static/css/Main.css" rel="stylesheet" type="text/css" />
+    <title>Dog&Cat｜Hチーム卒研</title>
+  </head>
+  <body>
+    <header>
+      <h1><a href= "nothome.html" >~犬猫の予防接種証明書電子化アプリ~</a></h1>
+      <ul>
+        <a href= "signup.html" >新規登録</a>
+        <a href= "login.html" >ログイン</a>
+      </ul>
+    </header>
+    <form id="login" method="post" action="#">
+      <label for="loginlabel">Log In</label>
+      <br>
+      <label for="ID">　　　　ID：</label>
+      <input  required name="login[ID]" type="text" autocapitalize="off" autocorrect="off"/>
+      <br>
+      <label for="password">パスワード：</label>
+      <input class="password" required name="login[password]" type="password" />
+      <br>
+      <a href="Forgot.html">パスワードやID忘れ？</a>
+      <br>
+      <button type="submit">ログイン</button>
+    </form>
+      <footer>
+        @ Pet System 2022.
+      </footer>
+  </body>
+</html>
