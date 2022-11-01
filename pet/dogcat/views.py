@@ -4,18 +4,18 @@ from django.views import generic
 from .forms import CreateForm
 from django.contrib import messages
 
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+# from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Vaccination
 from .models import MasterVaccination
 from django.shortcuts import get_object_or_404
 
 logger = logging.getLogger(__name__)
 
-class OnlyYouMixin(UserPassesTestMixin):
-    raise_exception = True
-    def test_func(self):
-        dogcat = get_object_or_404(Dogcat, pk = self.kwargs['pk'])
-        return self.request.user == dogcat.user
+# class OnlyYouMixin(UserPassesTestMixin):
+#     raise_exception = True
+#     def test_func(self):
+#         dogcat = get_object_or_404(Vaccination, pk = self.kwargs['pk'])
+#         return self.request.user == dogcat.user
 
 class NotHomeView(generic.TemplateView):
     template_name = "nothome.html"
@@ -46,7 +46,7 @@ class CreateView(generic.CreateView):
         return super().form_invalid(form)
 
 
-class UpdateView(LoginRequiredMixin, OnlyYouMixin, generic.UpdateView): # UpdateViewクラスを継承している
+class UpdateView(generic.UpdateView): # UpdateViewクラスを継承している
     model = Vaccination
     template_name = 'update.html'
     form_class = CreateForm
@@ -62,7 +62,7 @@ class UpdateView(LoginRequiredMixin, OnlyYouMixin, generic.UpdateView): # Update
         return super().form_invalid(form)
 
 
-class DeleteView(LoginRequiredMixin, OnlyYouMixin, generic.DeleteView):
+class DeleteView(generic.DeleteView):
     model = Vaccination
     template_name = 'delete.html'
     success_url = reverse_lazy('dogcat:SearchResults')
@@ -72,19 +72,19 @@ class DeleteView(LoginRequiredMixin, OnlyYouMixin, generic.DeleteView):
         return super().delete(request, *args, **kwargs)
 
 
-class VaccinationView(LoginRequiredMixin, OnlyYouMixin, generic.FormView):
+class VaccinationView(generic.FormView):
     model = Vaccination
     template_name = 'vaccination.html'
     success_url = reverse_lazy('dogcat:vaccination')
 
 
-class LoginView(LoginRequiredMixin, generic.FormView):
+class LoginView(generic.FormView):
     model = Vaccination
     template_name = 'login.html'
     success_url = reverse_lazy('dogcat:index')
 
 
-class SignupView(LoginRequiredMixin, generic.FormView):
+class SignupView(generic.FormView):
     model = Vaccination
     template_name = 'signup.html'
     success_url = reverse_lazy('dogcat:login')
