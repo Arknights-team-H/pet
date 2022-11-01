@@ -28,7 +28,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'dogcat.apps.DogcatConfig',
-    # 'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
@@ -162,5 +161,3 @@ LOGGING = {
         },
     }
 }
-
-# AUTH_USER_MODEL = 'accounts.CustomUser'
