@@ -28,6 +28,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'dogcat.apps.DogcatConfig',
+    'accounts.apps.AccountsConfig',
+
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+
 ]
 
 MIDDLEWARE = [
@@ -161,3 +167,6 @@ LOGGING = {
         },
     }
 }
+AUTH_USER_MODEL = 'accounts.HospitalUser'
+# django-allauthで利用するdjango.contrib.sitesを使うためにサイト識別用IDを設定
+SITE_ID = 1
