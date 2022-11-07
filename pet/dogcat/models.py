@@ -1,8 +1,9 @@
 from django.db import models
+from django.utils import timezone
 
 class Vaccination(models.Model): # 病院側の予防接種情報登録テーブル
     mc_number = models.CharField(max_length=15, verbose_name='個体番号', blank=True, null=True)
-    date = models.DateField('接種日付', blank=True, null=True)
+    date = models.DateField(verbose_name='接種日付', default=timezone.now())
     vaccination = models.CharField(max_length=40, verbose_name='接種ワクチン')
     hospital_id = models.CharField(max_length=7, verbose_name='病院ID', blank=True, null=True)
 
