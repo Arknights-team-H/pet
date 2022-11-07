@@ -80,13 +80,11 @@ class VaccinationView(generic.FormView):
 
 
 class LoginView(generic.FormView):
-    model = Vaccination
     template_name = 'login.html'
     success_url = reverse_lazy('dogcat:index')
 
 
 class SignupView(generic.FormView):
-    model = Vaccination
     template_name = 'signup.html'
     success_url = reverse_lazy('dogcat:login')
 
