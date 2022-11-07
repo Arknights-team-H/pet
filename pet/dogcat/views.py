@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Vaccination
 from .models import MasterVaccination
+from .models import Hospital
 from django.shortcuts import get_object_or_404
 
 logger = logging.getLogger(__name__)
@@ -80,11 +81,13 @@ class VaccinationView(generic.FormView):
 
 
 class LoginView(generic.FormView):
+    model = Hospital
     template_name = 'login.html'
     success_url = reverse_lazy('dogcat:index')
 
 
 class SignupView(generic.FormView):
+    model = Hospital
     template_name = 'signup.html'
     success_url = reverse_lazy('dogcat:login')
 

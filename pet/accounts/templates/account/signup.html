@@ -1,39 +1,26 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<!--    <link rel="stylesheet" type="text/css" href="static/css/Main.css"/>-->
-    {% load static %}
-<link href="static/css/Main.css" rel="stylesheet" type="text/css" />
-    <title>Dog&Cat｜Hチーム卒研</title>
-  </head>
-  <body>
-    <header>
-      <h1><a href= "nothome.html" >~犬猫の予防接種証明書電子化アプリ~</a></h1>
-      <ul>
-        <a href= "signup.html" >新規登録</a>
-        <a href= "login.html" >ログイン</a>
-      </ul>
-    </header>
-    <form id="signup" method="post" action="#">
-      <label for="signuplabel">Sign Up</label>
-      <br>
-      <label for="ID">　　　　 　　   ID：</label>
-      <input  required name="signup[ID]" type="text" autocapitalize="off" autocorrect="off"/>
-      <br>
-      <label for="mail"> 　メールアドレス：</label>
-      <input  class="mail" required name="signup[mail]" type="mail"/>
-      <br>
-      <label for="password">　　　パスワード：</label>
-      <input class="password" required name="signup[password]" type="password"/>
-      <br>
-      <label for="ID">パスワード再入力：</label>
-      <input class="password2" required name="signup[password2]" type="password2"/>
-      <br>
-      <button type="submit">登録</button>
-    </form>
-      <footer>
-        @ Pet System 2022.
-      </footer>
-  </body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}サインアップ | Private Diary{% endblock %}
+
+{% block active_signup %}active{% endblock %}
+
+{% block contents %}
+<div class="container">
+    <div class="row">
+        <div class="my-div-style" style="margin-top:6rem">
+            <h1>サインアップ</h1>
+            <form method="post" action="{% url 'account_signup' %}">
+                {% csrf_token %}
+
+                {{ form.as_p }}
+
+                {% if redirect_field_value %}
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                {% endif %}
+
+                <button class="btn btn-primary" type="submit">登録</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

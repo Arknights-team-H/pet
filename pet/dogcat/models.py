@@ -1,7 +1,7 @@
 from django.db import models
 
 class Vaccination(models.Model): # 病院側の予防接種情報登録テーブル
-    mc_number = models.BigIntegerField(max_length=15, verbose_name='個体番号', blank=True, null=True)
+    mc_number = models.CharField(max_length=15, verbose_name='個体番号', blank=True, null=True)
     date = models.DateField('接種日付', blank=True, null=True)
     vaccination = models.CharField(max_length=40, verbose_name='接種ワクチン')
     hospital_id = models.CharField(max_length=7, verbose_name='病院ID', blank=True, null=True)
@@ -19,9 +19,10 @@ class MasterUser(models.Model): # 一般ユーザ側アプリのユーザ情報�
     user_id = models.CharField(max_length=10, verbose_name='ユーザID')
     mc_number = models.CharField(max_length=15, verbose_name='個体番号')
     user_password = models.CharField(max_length=16, verbose_name='パスワード')
-    user_birthday = models.DateField('生年月日')
+    user_birthday = models.DateField('ユーザの生年月日')
     pet_id = models.CharField(max_length=11, verbose_name='ペットID')
     pet_name = models.CharField(max_length=40, verbose_name='名前')
+    pet_birthday = models.DateField('ペットの生年月日')
     createdate = models.DateField('作成日付', blank=True, null=True)
     updatedate = models.DateField('最終更新日', blank=True, null=True)
 
