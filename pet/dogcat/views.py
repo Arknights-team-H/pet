@@ -37,13 +37,15 @@ class CreateView(generic.CreateView):
     success_url = reverse_lazy('dogcat:index')
 
     def form_valid(self, form):
-        dogcat = form.save(commit=False)
-        dogcat.user = self.request.user
-        dogcat.save()
+        print("djfslkjklsd")
+        dogcat = form.save(commit=True)
+        # dogcat.user = self.request.user
+        # dogcat.save()
         messages.success(self.request, 'データベースを登録しました。')
         return super().form_valid(form)
 
     def form_invalid(self, form):
+        print(1)
         messages.error(self.request, "データベースの登録に失敗しました。")
         return super().form_invalid(form)
 
@@ -78,20 +80,5 @@ class VaccinationView(generic.FormView):
     model = Vaccination
     template_name = 'vaccination.html'
     success_url = reverse_lazy('dogcat:vaccination')
-
-
-class LoginView(generic.FormView):
-    model = Hospital
-    template_name = 'login.html'
-    success_url = reverse_lazy('dogcat:index')
-
-
-class SignupView(generic.FormView):
-    model = Hospital
-    template_name = 'signup.html'
-    success_url = reverse_lazy('dogcat:login')
-
-
-
 
 

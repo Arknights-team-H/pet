@@ -5,7 +5,6 @@
 
 {% block contents %}
 <div class="container">
-    <form id="detabase">
     <label>データベースの登録</label>　
     <div class="row">
         <div class="my-div-style w-100">
@@ -15,7 +14,7 @@
                     {{ form.as_table }}
                 </table>
                 <button><a href="{% url 'dogcat:index' %}" class="button-index">戻る</a></button>
-        　　　　　<button><a href="{% url 'dogcat:index' %}" class="button-index">登録</a></button>
+        　　　　　<button><a class="btn-primary">登録</a></button>
             </form>
         </div>
     </div>
