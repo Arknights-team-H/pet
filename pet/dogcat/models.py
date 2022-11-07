@@ -1,20 +1,24 @@
 from django.db import models
 from django.utils import timezone
 
+class MasterVaccination(models.Model): # 予防接種種類のマスタテーブル
+    vaccination_type = models.CharField(max_length=40, verbose_name='ワクチン種類')
+
+    def __str__(self):
+        return self.vaccination_type
+    class Meta:
+        verbose_name_plural = 'MasterVaccination'
+
+
 class Vaccination(models.Model): # 病院側の予防接種情報登録テーブル
     mc_number = models.CharField(max_length=15, verbose_name='個体番号', blank=True, null=True)
     date = models.DateField(verbose_name='接種日付', default=timezone.now())
-    vaccination = models.CharField(max_length=40, verbose_name='接種ワクチン')
+    vaccination_type = models.ForeignKey(MasterVaccination, on_delete=models.DO_NOTHING, verbose_name='接種ワクチン')
     hospital_id = models.CharField(max_length=7, verbose_name='病院ID', blank=True, null=True)
 
     class Meta:
         verbose_name_plural = 'Vaccination'
 
-class MasterVaccination(models.Model): # 予防接種種類のマスタテーブル
-    vaccination = models.CharField(max_length=40, verbose_name='ワクチン種類')
-
-    class Meta:
-        verbose_name_plural = 'MasterVaccination'
 
 class MasterUser(models.Model): # 一般ユーザ側アプリのユーザ情報テーブル
     user_id = models.CharField(max_length=10, verbose_name='ユーザID')

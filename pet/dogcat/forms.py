@@ -10,10 +10,14 @@ from .models import Medicine
 class CreateForm(forms.ModelForm):
     class Meta:
         model = Vaccination
-        fields = ('mc_number','date','vaccination','hospital_id')
+        fields = ('mc_number','date','vaccination_type','hospital_id')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field in self.fields.values():
             field.widget.attrs['class'] = 'form-control'
 
+class SelectForm(forms.ModelForm):
+    class Meta:
+        model = Vaccination
+        fields = ('vaccination_type',)
