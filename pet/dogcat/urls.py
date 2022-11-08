@@ -9,8 +9,5 @@ urlpatterns = [
     path('update/<int:pk>/', views.UpdateView.as_view(), name="update"),
     path('delete/<int:pk>/', views.DeleteView.as_view(), name="delete"),
     path('create/', views.CreateView.as_view(), name="create"),
-    path('Vsearch/', views.VsearchView.as_view(), name="Vsearch"),
-    path('detail/', views.DetailView.as_view(), name="detail"),
-    path('delete/', views.DeleteView.as_view(), name="delete"),
-    path('update/', views.UpdateView.as_view(), name="update"),
+    path('vaccination/', views.VaccinationView.as_view(), name="vaccination"),
 ]
