@@ -10,7 +10,7 @@
             <form method="POST" enctype='multipart/form-data'>
                 {% csrf_token %}
                 <table class="table" width="700">
-                    <label>データベースの登録</label>　
+                    <h2>データベースの登録</h2>　
                     {{ form.as_table }}
                 </table>
                 <button><a href="{% url 'dogcat:index' %}" class="button-index">戻る</a></button>
