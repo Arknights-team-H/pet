@@ -38,31 +38,31 @@ header {
   margin: 25px;
 }
 
-
 div.logo_center{
   font-size: 3.2em; /*文字のサイズ*/
   display: block;
   margin: auto;
-  text-align:center;
-  line-height:0.95em;
-  font-weight:bold;
-  color: #4b5205;
-  text-shadow: 0.02em 0.02em 0.02em rgba(0,0,0,1);
+	text-align:center;
+	line-height:0.95em;
+	font-weight:bold;
+	color: #4b5205;
+	text-shadow: 0.02em 0.02em 0.02em rgba(0,0,0,1);
 }
 
 .logo_center .text {
-  font-size: 100px; /*文字のサイズ*/
-  line-height:1em;
+  font-size: 0.4em; /*文字のサイズ*/
+  line-height:0.1em;
   font-weight: normal;
-  text-align: left;
-  display: inline-block;
+	text-align: left;
+	display: inline-block;
   width: 50%;
 }
 
+
 body {
-  background-image: url("/static/自然背景.png");
+  background-image: url("自然背景.png");
 }
-  
+
 .button-login {
   display: inline-block;
   padding: 0.7em 2em;
@@ -82,13 +82,12 @@ body {
 }
 
 footer {
-  width: 100%;
-  color : rgba(0, 0, 0, 0.308);
+  width: 99%;
   font-size:1.1em;
   text-align : center;
   bottom: 0;
   position: absolute;
-  padding: 14px 0;
+  padding: 13px 0;
 }
 
 form {
@@ -184,17 +183,17 @@ a.btn--menu:hover {
 
 
 .database{
-  position:relative; 
-  margin-bottom:20px;	
+  position:relative;
+  margin-bottom:20px;
 }
 
-.Individualnumber{	
-  outline:0;	
+.Individualnumber{
+  outline:0;
   height:50px;
-  padding:0 10px; 
-  position:absolute; 
+  padding:0 10px;
+  position:absolute;
   left:0;
-  top:0; 
+  top:0;
   max-width:270px;
   border-radius:2px;
   background:#eee;
