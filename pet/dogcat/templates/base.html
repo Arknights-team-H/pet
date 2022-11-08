@@ -18,15 +18,17 @@
                         <header>
                             <h1><a href="{% url 'dogcat:index' %}">~犬猫の予防接種証明書電子化アプリ~</a></h1>
                             <ul> {% if user.is_authenticated %}
-                                <ul>
-                                    <a href="{% url 'dogcat:password' %}">情報変更</a>
-                                    <a href="{% url 'dogcat:logout' %}">ログアウト</a>
-                                </ul>
-                                {% else %}
-                                <ul>
-                                    <a href="{% url 'account_signup' %}">新規登録</a>
-                                    <a href="{% url 'account_login' %}">ログイン</a>
-                                </ul>
+                                <nav>
+                                    <ul>
+                                        <a href="{% url 'dogcat:password' %}">情報変更</a>
+                                        <a href="{% url 'dogcat:logout' %}">ログアウト</a>
+                                    </ul>
+                                    {% else %}
+                                    <ul>
+                                        <a href="{% url 'account_signup' %}">新規登録</a>
+                                        <a href="{% url 'account_login' %}">ログイン</a>
+                                    </ul>
+                                </nav>
                             </ul>
                         </header>
                         <ul>
