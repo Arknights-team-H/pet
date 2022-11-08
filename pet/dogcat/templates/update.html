@@ -20,8 +20,8 @@
     <input class="hospitalidform" required name="database[hospitalid]" type="hospitalid"/>
     <br>
     <div class="return-button">
-        <button><a href="detail.html" class="button-index">戻る</a></button>
-        <button><a href="detail.html" class="button-index">確認</a></button>
+        <button><a href="{% url 'dogcat:detail' %}" class="button-index">戻る</a></button>
+        <button><a href="{% url 'dogcat:detail' %}" class="button-index">確認</a></button>
     </div>
 </form>
 {% endblock %}
