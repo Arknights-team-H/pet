@@ -81,6 +81,13 @@ class VsearchView(generic.FormView):
     form_class = CreateForm
     template_name = 'Vsearch.html'
     # success_url = reverse_lazy('dogcat:vaccination')
+    def get_queryset(self):
+        try:
+            q = self.request.GET["search"]
+        except:
+            q = None
+        return VaccinationModel.objects.search(query=q)
+
 
 class DetailView(generic.FormView):
     model = Vaccination
@@ -99,3 +106,4 @@ class UpdateView(generic.FormView):
     form_class = CreateForm
     template_name = 'update.html'
     # success_url = reverse_lazy('dogcat:vaccination')
+
