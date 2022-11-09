@@ -25,6 +25,15 @@ class HospitalUser(AbstractBaseUser):
             'unique': "A user with that username already exists.",
         },
     )
+    email = models.CharField(
+        'email',
+        max_length=150,
+        unique=True,
+        help_text='Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.',
+        error_messages={
+            'unique': "A user with that email already exists.",
+        },
+    )
     hospital_id = models.CharField(max_length=7, verbose_name='病院ID',primary_key=True)
     hospital_name = models.CharField(max_length=40, verbose_name='病院名')
     address = models.CharField(max_length=120, verbose_name='住所')
