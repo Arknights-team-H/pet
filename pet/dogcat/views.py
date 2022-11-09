@@ -76,9 +76,34 @@ class DeleteView(generic.DeleteView):
         return super().delete(request, *args, **kwargs)
 
 
-class VaccinationView(generic.FormView):
+class VsearchView(generic.FormView):
     model = Vaccination
-    template_name = 'vaccination.html'
-    success_url = reverse_lazy('dogcat:vaccination')
+    form_class = CreateForm
+    template_name = 'Vsearch.html'
+    # success_url = reverse_lazy('dogcat:vaccination')
+    def get_queryset(self):
+        try:
+            q = self.request.GET["search"]
+        except:
+            q = None
+        return VaccinationModel.objects.search(query=q)
 
+
+class DetailView(generic.FormView):
+    model = Vaccination
+    form_class = CreateForm
+    template_name = 'detail.html'
+    # success_url = reverse_lazy('dogcat:vaccination')
+
+class DeleteView(generic.FormView):
+    model = Vaccination
+    form_class = CreateForm
+    template_name = 'delete.html'
+    # success_url = reverse_lazy('dogcat:vaccination')
+
+class UpdateView(generic.FormView):
+    model = Vaccination
+    form_class = CreateForm
+    template_name = 'update.html'
+    # success_url = reverse_lazy('dogcat:vaccination')
 

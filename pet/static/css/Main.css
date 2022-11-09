@@ -8,25 +8,37 @@ h1 {
   border-left: solid 5px #7de6a5; /*左に色指定で枠線追加*/
 }
 
+/*機能リンク*/
 a {
   font-size: 20px; /*文字のサイズ*/
   color: #0b0b0b; /*文字色*/
   padding: 6px; /*上下左右の余白*/
   text-decoration: none; /*リンクの下線を消す*/
-  text-align: center;
+  text-align: center;/*中央寄せ*/
 }
-
 a:hover{
   color: #056c2c;
 }
 
-header {
+ul {
+  list-style: none;
   display: flex;
+}
+
+/*ヘッダー*/
+header {
   border:none;
   border-radius:10px;
-  box-shadow: none;
-  margin: 0.5em 0;
+  margin: 0.5em 1;
   background: #fff8e89a;
+
+  width: 100%;
+  display: flex; /* flexboxを作る */
+  align-items: center; /* 上下中央に揃える */
+  justify-content: space-between; /* 両端に配置 */
+  padding-left: 30px;
+  padding-right: 30px;
+  top: 0;
 }
 
 .text, p {
@@ -38,31 +50,32 @@ header {
   margin: 25px;
 }
 
-
+/*システムロゴ*/
 div.logo_center{
   font-size: 3.2em; /*文字のサイズ*/
   display: block;
   margin: auto;
-  text-align:center;
-  line-height:0.95em;
-  font-weight:bold;
-  color: #4b5205;
-  text-shadow: 0.02em 0.02em 0.02em rgba(0,0,0,1);
+	text-align:center;
+	line-height:0.95em;
+	font-weight:bold;
+	color: #4b5205;
+	text-shadow: 0.02em 0.02em 0.02em rgba(0,0,0,1);
 }
 
+/*ロゴ下メッセージ*/
 .logo_center .text {
-  font-size: 100px; /*文字のサイズ*/
-  line-height:1em;
+  font-size: 0.4em; /*文字のサイズ*/
+  line-height:0.1em;
   font-weight: normal;
-  text-align: left;
-  display: inline-block;
+	text-align: left;
+	display: inline-block;
   width: 50%;
 }
 
 body {
   background-image: url("/static/自然背景.png");
 }
-  
+
 .button-login {
   display: inline-block;
   padding: 0.7em 2em;
@@ -82,18 +95,17 @@ body {
 }
 
 footer {
-  width: 100%;
-  color : rgba(0, 0, 0, 0.308);
+  width: 99%;
   font-size:1.1em;
   text-align : center;
   bottom: 0;
   position: absolute;
-  padding: 14px 0;
+  padding: 13px 0;
 }
 
 form {
   margin:0 auto;
-  font-size: 1.3em; /*文字のサイズ*/
+  font-size: 1.4em; /*文字のサイズ*/
   background: #DAEDD9;
   padding: 1em 1em;
   border-radius: 30px;
@@ -106,7 +118,7 @@ form {
 input {
   width: 50%;
   padding: .5em .25em;
-  margin: 0 3% 1em;
+  margin: 0 3% 0.5em;
   font-size: 1.2em;
   border: 2px solid rgba(174, 54, 54, 0.11);
   outline: none;
@@ -167,12 +179,12 @@ a.btn--menu {
   border-bottom: 5px solid #5ccc00a4;
   text-align: center;
   margin: auto;
-	line-height:0.95em;
+  line-height:0.95em;
   width: 25%;
 }
 
 a.btn--menu:hover {
-  margin-top: 3px;
+  margin-top: 1px;
   color: rgba(0, 0, 0, 0.756);
   background: #24d668;
   border-bottom: 2px solid #98cf29;
@@ -184,17 +196,17 @@ a.btn--menu:hover {
 
 
 .database{
-  position:relative; 
-  margin-bottom:20px;	
+  position:relative;
+  margin-bottom:20px;
 }
 
-.Individualnumber{	
-  outline:0;	
+.Individualnumber{
+  outline:0;
   height:50px;
-  padding:0 10px; 
-  position:absolute; 
+  padding:0 10px;
+  position:absolute;
   left:0;
-  top:0; 
+  top:0;
   max-width:270px;
   border-radius:2px;
   background:#eee;

@@ -20,9 +20,9 @@
     <input class="hospitalidform" required name="database[hospitalid]" type="hospitalid"/>
     <br>
     <div class="return-button">
-        <button><a href="SearchResults.html" class="button-index">戻る</a></button>
-        <button><a href="update.html" class="button-index">変更</a></button>
-        <button><a href="delete.html" class="button-index">削除</a></button>
+        <button><a href="{% url 'dogcat:Vsearch' %}" class="button-index">戻る</a></button>
+        <button><a href="{% url 'dogcat:update' %}" class="button-index">変更</a></button>
+        <button><a href="{% url 'dogcat:delete' %}" class="button-index">削除</a></button>
     </div>
 </form>
 {% endblock %}
