@@ -3,6 +3,8 @@ from django.urls import reverse_lazy
 from django.views import generic
 from .forms import CreateForm
 from django.contrib import messages
+from django.db.models import Q #検索機能で使う
+from django.shortcuts import render
 
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Vaccination
@@ -28,7 +30,16 @@ class IndexView(generic.TemplateView):
 
 class DetailView(LoginRequiredMixin, generic.DetailView):
     model = Vaccination
-    template_name = 'detail.html'
+    # template_name = 'detail.html'
+    print(5)
+    def display(request):
+        template_name = "detail.html"
+        ctx = {}
+        qs = VaccinationModel.objects.all()
+        ctx["object_list"] = qs
+
+        return render(request, template_name, ctx)
+
 
 class CreateView(generic.CreateView):
     model = Vaccination
@@ -81,12 +92,18 @@ class VsearchView(generic.FormView):
     form_class = CreateForm
     template_name = 'Vsearch.html'
     # success_url = reverse_lazy('dogcat:vaccination')
-    def get_queryset(self):
-        try:
-            q = self.request.GET["search"]
-        except:
-            q = None
-        return VaccinationModel.objects.search(query=q)
+
+    # def get(self, request, *args, **kwargs):
+    #     return render(request, "Vsearch.html")
+
+    def post(self, request, *args, **kwargs):
+        number = request.POST["number"]
+        if Vaccination.objects.filter(mc_number__iexact=number):
+            return render(request, "detail.html")
+        else:
+            return render(request, "Vsearch.html")
+        messages.add_message(request, messages.INFO, "一致する値が見つかりません ")
+
 
 
 class DetailView(generic.FormView):
@@ -106,4 +123,6 @@ class UpdateView(generic.FormView):
     form_class = CreateForm
     template_name = 'update.html'
     # success_url = reverse_lazy('dogcat:vaccination')
+
+
 

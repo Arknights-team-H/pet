@@ -3,12 +3,13 @@
 
 {% block title %}Dogcat | チームH卒研{% endblock %}
 
+
 {% block contents %}
-<form id="database" method="post" action="#">
+<form action="" method="post" >{% csrf_token %}
     <label>予防接種情報</label>
+    <br><br>
+    <input type="text" name="number" placeholder="個体番号を入力">
     <br>
-    <input  class="Individual" required name="Individualnumberinput[Individual]" type="Individual" placeholder="個体番号を入力"/>
-    <br>
-    <button><a href="{% url 'dogcat:detail' %}" class="search">検索</a></button>
+    <button type="submit">検索</button>
 </form>
 {% endblock %}

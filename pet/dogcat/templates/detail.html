@@ -8,13 +8,13 @@
     <label for="databaseinput">詳細表示</label>
     <br>
     <label for="number">　　個体番号：</label>
-    <input class="numberform" required name="database[number]" type="number"/>
+    <input class="numberform" required name="database[number]" type="mc_number"/>
     <br>
     <label for="data">　　　　日付：</label>
     <input class="dataform" required name="database[data]" type="data"/>
     <br>
     <label for="vaccination">接種ワクチン：</label>
-    <input class="vaccinationform" required name="database[vaccination]" type="vaccination"/>
+    <input class="vaccinationform" required name="database[vaccination]" type="vaccination_type"/>
     <br>
     <label for="hospitalid">　　　病院ID：</label>
     <input class="hospitalidform" required name="database[hospitalid]" type="hospitalid"/>
@@ -23,6 +23,13 @@
         <button><a href="{% url 'dogcat:Vsearch' %}" class="button-index">戻る</a></button>
         <button><a href="{% url 'dogcat:update' %}" class="button-index">変更</a></button>
         <button><a href="{% url 'dogcat:delete' %}" class="button-index">削除</a></button>
+    </div>
+    <div>
+        <ul>
+            {% for obj in object_list %}
+            <li>{{ obj.title }}</li>
+            {% endfor %}
+        </ul>
     </div>
 </form>
 {% endblock %}
