@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from django.views import generic
 
-# Create your views here.
+class NotHomeView(generic.TemplateView):
+    template_name = "nothome.html"
+
+class IndexView(generic.TemplateView):
+    template_name = "index.html"
