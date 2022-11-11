@@ -1,9 +1,15 @@
-import os
-from django import forms
-from django.core.mail import EmailMessage
 from .models import HospitalUser
-from .allauth.account.forms import SignupForm
-from allauth.account.adapter import DefaultAccountAdapter
-from allauth.account.forms import (SignupForm,
-)
-class CustomSignupForm(SignupForm):
+from django.contrib.auth.forms import UserCreationForm
+
+class MysignupForm(UserCreationForm):
+    class Meta:
+        model = HospitalUser
+        fields = (
+            # 'username',
+            'email',
+            # 'hospital_id',
+            'hospital_name',
+            'address',
+            'phone_number',
+            'director_name',
+        )
