@@ -26,10 +26,6 @@ class IndexView(generic.TemplateView):
     template_name = "index.html"
 
 
-class DetailView(LoginRequiredMixin, generic.DetailView):
-    model = Vaccination
-    template_name = 'detail.html'
-
 class CreateView(generic.CreateView):
     model = Vaccination
     template_name = 'create.html'
