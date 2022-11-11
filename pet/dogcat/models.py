@@ -2,7 +2,7 @@ from django.db import models
 from django.utils import timezone
 
 class MasterVaccination(models.Model): # 予防接種種類のマスタテーブル
-    vaccination_type = models.CharField(max_length=40, verbose_name='ワクチン種類')
+    vaccination_ype = models.CharField(max_length=40, verbose_name='ワクチン種類')
 
     def __str__(self):
         return self.vaccination_type

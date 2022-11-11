@@ -54,3 +54,8 @@ class HospitalUser(AbstractBaseUser):
 
     class Meta:
         verbose_name_plural = 'HospitalUser'
+
+
+
+
+
