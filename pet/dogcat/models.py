@@ -2,7 +2,7 @@ from django.db import models
 from django.utils import timezone
 
 class MasterVaccination(models.Model): # 予防接種種類のマスタテーブル
-    vaccination_ype = models.CharField(max_length=40, verbose_name='ワクチン種類')
+    vaccination_type = models.CharField(max_length=40, verbose_name='ワクチン種類')
 
     def __str__(self):
         return self.vaccination_type
@@ -35,22 +35,18 @@ class MasterUser(models.Model): # 一般ユーザ側アプリのユーザ情報�
         verbose_name_plural = 'MasterUser'
 
 class MasterHospital(models.Model): # 病院情報のマスタテーブル
-    hospital_id = models.CharField(max_length=7, verbose_name='病院ID')
     hospital_name = models.CharField(max_length=40, verbose_name='病院名')
     address = models.CharField(max_length=120, verbose_name='住所')
     phone_number = models.CharField(max_length=12, verbose_name='電話番号')
     director_name = models.CharField(max_length=40, verbose_name='責任者名')
-    password = models.CharField(max_length=16, verbose_name='パスワード')
 
     class Meta:
         verbose_name_plural = 'MasterHospital'
 
-class Hospital(models.Model): # 病院側の病院情報テーブル
+class MasterHospitalUser(models.Model): # 病院側の病院情報テーブル
     hospital_id = models.CharField(max_length=7, verbose_name='病院ID')
-    hospital_name = models.CharField(max_length=40, verbose_name='病院名')
-    address = models.CharField(max_length=120, verbose_name='住所')
-    phone_number = models.CharField(max_length=12, verbose_name='電話番号')
-    director_name = models.CharField(max_length=40, verbose_name='責任者名')
+    password = models.CharField(max_length=16, verbose_name='パスワード')
+
 
     class Meta:
         verbose_name_plural = 'Hospital'

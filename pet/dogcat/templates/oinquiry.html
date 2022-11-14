@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}お問い合わせ | Dog Cat{% endblock %}
+
+{% block active_inquiry %}active{% endblock %}
+
+{% block contents %}
+  <form>
+    <br>
+    <p></p>
+    <br>
+    <br>
+    <br>
+    <br>
+    <a href="{% url 'dogcat:inquiry' %}" class="btn-inq">登録申請</a>
+    <a href="user.html" class="btn-inq">サンプル</a>
+  </form>
+<!--  <button onclick="location.href='inquiry.html'">登録申請</button>-->
+<!--  <button onclick="location.href='.html'">サンプル</button>-->
+{% endblock %}

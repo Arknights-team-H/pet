@@ -8,6 +8,11 @@ h1 {
   border-left: solid 5px #7de6a5; /*左に色指定で枠線追加*/
 }
 
+btn-inq {
+
+
+}
+
 /*機能リンク*/
 a {
   font-size: 20px; /*文字のサイズ*/
@@ -174,18 +179,17 @@ button.btn {
 }
 
 a.btn--menu {
-  margin-right: 200px;
+  margin-right: 50px
   color: #000;
   background-color: #c3e6e7c9;
   border-bottom: 5px solid #5ccc00a4;
   text-align: center;
-  margin: 10px auto;
-  line-height:0.9em;
-  width: 26%;
+  margin: 73px auto;
+  line-height:0.95em;
+  width: 25%;
 }
 
 a.btn--menu:hover {
-  margin-top: 1px;
   color: rgba(0, 0, 0, 0.756);
   background: #24d668;
   border-bottom: 2px solid #98cf29;

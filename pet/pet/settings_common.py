@@ -65,7 +65,7 @@ WSGI_APPLICATION = 'pet.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dogcat9',
+        'NAME': 'dogcat',
         'USER': os.environ.get('DB_USER'),
         'PASSWORD': os.environ.get('DB_PASSWORD'),
         'HOST': '',
@@ -158,3 +158,6 @@ ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 ACCOUNT_FORMS = {
     "signup" : "accounts.forms.MysignupForm",
 }
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

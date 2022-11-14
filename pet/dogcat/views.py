@@ -1,7 +1,7 @@
 import logging
 from django.urls import reverse_lazy
 from django.views import generic
-from .forms import CreateForm
+from .forms import CreateForm, InquiryForm
 from django.contrib import messages
 from django.db.models import Q #検索機能で使う
 from django.shortcuts import render
@@ -9,7 +9,7 @@ from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Vaccination
 from .models import MasterVaccination
-from .models import Hospital
+from .models import MasterHospitalUser
 from django.shortcuts import get_object_or_404
 
 logger = logging.getLogger(__name__)
@@ -26,6 +26,16 @@ class NotHomeView(generic.TemplateView):
 
 class IndexView(generic.TemplateView):
     template_name = "index.html"
+
+class InquiryView(generic.FormView):
+    template_name = "inquiry.html"
+    form_class = InquiryForm
+
+class OinquiryView(generic.TemplateView):
+    template_name = "oinquiry.html"
+
+
+
 
 
 class DetailView(LoginRequiredMixin, generic.DetailView):
