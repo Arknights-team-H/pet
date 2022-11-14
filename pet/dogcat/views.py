@@ -1,13 +1,13 @@
 import logging
 from django.urls import reverse_lazy
 from django.views import generic
-from .forms import CreateForm
+from .forms import CreateForm, InquiryForm
 from django.contrib import messages
 
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Vaccination
 from .models import MasterVaccination
-from .models import Hospital
+from .models import MasterHospitalUser
 from django.shortcuts import get_object_or_404
 
 logger = logging.getLogger(__name__)
@@ -24,6 +24,16 @@ class NotHomeView(generic.TemplateView):
 
 class IndexView(generic.TemplateView):
     template_name = "index.html"
+
+class ApplyView(generic.FormView):
+    template_name = "apply.html"
+    form_class = InquiryForm
+
+class InquiryView(generic.TemplateView):
+    template_name = "inquiry.html"
+
+
+
 
 
 class CreateView(generic.CreateView):
@@ -104,6 +114,6 @@ class UpdateView(generic.FormView):
     # success_url = reverse_lazy('dogcat:vaccination')
 
 class LoginView(generic.FormView):
-    model = Hospital
+    model = MasterHospitalUser
     form_class = CreateForm
     template_name = 'login.html'

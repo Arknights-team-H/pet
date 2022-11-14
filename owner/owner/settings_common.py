@@ -1,7 +1,6 @@
 import os
 from pathlib import Path
 from django.contrib.messages import constants as messages
-import accounts
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -18,14 +17,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'dogcat.apps.DogcatConfig',
-    'accounts.apps.AccountsConfig',
-
-    'django.contrib.sites',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-
+    'breeder.apps.BreederConfig',
+    'accounts.apps.AccountsConfig'
 ]
 
 MIDDLEWARE = [
@@ -38,12 +31,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'pet.urls'
+ROOT_URLCONF = 'owner.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'accounts', 'templates')],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -56,7 +49,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'pet.wsgi.application'
+WSGI_APPLICATION = 'owner.wsgi.application'
 
 
 # Database
@@ -114,6 +107,12 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS=(
     os.path.join(BASE_DIR,'static'),
 )
+
+
+#CSS(静的ファイル)の配置場所
+STATICFILES_DIRS=(
+    os.path.join(BASE_DIR,'static'),
+)
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
@@ -126,7 +125,7 @@ MESSAGE_TAGS = {
     messages.INFO: 'alert alert-info',
 }
 
-AUTH_USER_MODEL = 'accounts.HospitalUser'
+AUTH_USER_MODEL = 'accounts.CustomUser'
 # django-allauthで利用するdjango.contrib.sitesを使うためにサイト識別用IDを設定
 SITE_ID = 1
 
@@ -137,7 +136,7 @@ AUTHENTICATION_BACKENDS = (
 
 # メールアドレス認証に変更する設定
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
-ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
 
 # サインアップにメールアドレス確認を挟むよう設定
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
@@ -151,13 +150,3 @@ ACCOUNT_EMAIL_SUBJECT_PREFIX = ''
 
 # デフォルトのメール送信元を設定
 DEFAULT_FROM_EMAIL = os.environ.get('FROM_EMAIL')
-
-LOGIN_REDIRECT_URL = '/'
-ACCOUNT_LOGOUT_REDIRECT_URL = '/'
-
-ACCOUNT_FORMS = {
-    "signup" : "accounts.forms.MysignupForm",
-}
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
