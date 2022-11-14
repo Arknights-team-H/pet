@@ -1,7 +1,7 @@
 import logging
 from django.urls import reverse_lazy
 from django.views import generic
-from .forms import CreateForm, InquiryForm
+from .forms import CreateForm, ApplyForm
 from django.contrib import messages
 
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -27,13 +27,10 @@ class IndexView(generic.TemplateView):
 
 class ApplyView(generic.FormView):
     template_name = "apply.html"
-    form_class = InquiryForm
+    form_class = ApplyForm
 
 class InquiryView(generic.TemplateView):
     template_name = "inquiry.html"
-
-
-
 
 
 class CreateView(generic.CreateView):

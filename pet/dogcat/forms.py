@@ -4,6 +4,7 @@ from django.core.mail import EmailMessage
 from django.contrib.admin.widgets import AdminDateWidget
 from .models import Vaccination
 from .models import MasterHospitalUser
+from .models import HospitalApply
 from .models import Medicine
 
 
@@ -48,4 +49,14 @@ class InquiryForm(forms.Form):
         self.fields['file'].widget.attrs['placeholder'] = '画像をここに添付してください。'
 
 
-# 必要項目＝代表者名、画像、パソコンのipアドレス（2台or3台まで）、病院名、住所、電話番号
+# 必要項目＝代表者名、画像、パソコンのipアドレス（3台まで）、病院名、住所、電話番号
+
+class ApplyForm(forms.ModelForm):
+    class Meta:
+        model = HospitalApply
+        fields = ('hospital_name','address','phone_number','director_name', 'licence_copy')
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.widget.attrs['class'] = 'form-control'
