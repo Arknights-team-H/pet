@@ -3,7 +3,7 @@ from . import views
 
 app_name = 'dogcat'
 urlpatterns = [
-    path('', views.NotHomeView.as_view(), name="nothome"),
+    path('', views.LoginView.as_view(), name="login"),
     path('index', views.IndexView.as_view(), name="index"),
     path('detail/<int:pk>/', views.DetailView.as_view(), name="detail"),
     path('update/<int:pk>/', views.UpdateView.as_view(), name="update"),

@@ -103,3 +103,7 @@ class UpdateView(generic.FormView):
     template_name = 'update.html'
     # success_url = reverse_lazy('dogcat:vaccination')
 
+class LoginView(generic.FormView):
+    model = Hospital
+    form_class = CreateForm
+    template_name = 'login.html'
