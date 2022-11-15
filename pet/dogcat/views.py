@@ -19,8 +19,8 @@ logger = logging.getLogger(__name__)
 #         return self.request.user == dogcat.user
 
 
-class NotHomeView(generic.TemplateView):
-    template_name = "nothome.html"
+class LoginView(generic.TemplateView):
+    template_name = "login.html"
 
 class IndexView(generic.TemplateView):
     template_name = "index.html"
