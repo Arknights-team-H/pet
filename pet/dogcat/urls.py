@@ -3,8 +3,8 @@ from . import views
 
 app_name = 'dogcat'
 urlpatterns = [
-    path('', views.NotHomeView.as_view(), name="login"),
-    path('index', views.IndexView.as_view(), name="index"),
+    path('login', views.LoginView.as_view(), name="login"),
+    path('', views.IndexView.as_view(), name="index"),
     path('apply/',views.ApplyView.as_view(),name="apply"),
     path('inquiry/',views.InquiryView.as_view(),name="inquiry"),
     path('detail/<int:pk>/', views.DetailView.as_view(), name="detail"),

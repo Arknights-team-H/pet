@@ -13,3 +13,9 @@ class MysignupForm(UserCreationForm):
             'phone_number',
             'director_name',
         )
+# class MyLoginForm(UserCreationForm):
+#     class Meta:
+#         model = HospitalUser
+#         fields = (
+#             'hospital_id',
+#         )
