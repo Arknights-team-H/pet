@@ -6,6 +6,7 @@ urlpatterns = [
     path('login', views.LoginView.as_view(), name="login"),
     path('', views.IndexView.as_view(), name="index"),
     path('apply/',views.ApplyView.as_view(),name="apply"),
+    path('Capply/',views.CapplyView.as_view(),name="Capply"),
     path('inquiry/',views.InquiryView.as_view(),name="inquiry"),
     path('detail/<int:pk>/', views.DetailView.as_view(), name="detail"),
     path('update/<int:pk>/', views.UpdateView.as_view(), name="update"),

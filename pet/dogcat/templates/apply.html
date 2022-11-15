@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base_2.html' %}
 
 {% block title %}お問い合わせ | Dog Cat{% endblock %}
 
@@ -7,32 +7,16 @@
 {% block contents %}
 <div class="container">
     <div class="row">
-        <div class="my-div-style">
-            <form method="post">
+        <div class="my-div-style w-100">
+            <form method="POST" enctype='multipart/form-data'>
                 {% csrf_token %}
-
-                {{ form.non_field_errors }}
-
-                {% for field in form %}
-                    <div class="form-group row">
-                        <label for="{{ field.id_for_label }}" class="col-sm-4 col-form-label">
-                            <strong>{{ field.label_tag }}</strong>
-                        </label>
-                        <div class="col-sm-8">
-                            {{ field }}
-                            {{ field.errors }}
-                        </div>
-                    </div>
-                {% endfor %}
-
-                <div class="offset-sm-4 col-sm-8">
-                    <button class="btn btn-primary" type="submit">申請</button>
-                </div>
+                <table class="table" width="850">
+                    <h2>利用申請</h2>　
+                    {{ form.as_table }}
+                </table>
+        　　　　　<button><a class="btn-primary">申請</a></button>
             </form>
         </div>
     </div>
 </div>
 {% endblock %}
-
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>-->
-

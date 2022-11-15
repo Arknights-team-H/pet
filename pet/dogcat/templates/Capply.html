@@ -11,12 +11,14 @@
             <form method="POST" enctype='multipart/form-data'>
                 {% csrf_token %}
                 <table class="table" width="850">
-                    <h2>Login</h2>　
+                    <h2>登録情報変更申請</h2>　
                     {{ form.as_table }}
                 </table>
-        　　　　　<button><a class="btn-primary">login</a></button>
+        　　　　　<button><a class="btn-primary">申請</a></button>
             </form>
         </div>
     </div>
 </div>
 {% endblock %}
+
+

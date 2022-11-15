@@ -1,7 +1,7 @@
 import logging
 from django.urls import reverse_lazy
 from django.views import generic
-from .forms import CreateForm, ApplyForm
+from .forms import CreateForm, ApplyForm, LoginForm
 from django.contrib import messages
 
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -12,15 +12,6 @@ from django.shortcuts import get_object_or_404
 
 logger = logging.getLogger(__name__)
 
-# class OnlyYouMixin(UserPassesTestMixin):
-#     raise_exception = True
-#     def test_func(self):
-#         dogcat = get_object_or_404(Vaccination, pk = self.kwargs['pk'])
-#         return self.request.user == dogcat.user
-
-
-class LoginView(generic.TemplateView):
-    template_name = "login.html"
 
 class IndexView(generic.TemplateView):
     template_name = "index.html"
@@ -28,6 +19,23 @@ class IndexView(generic.TemplateView):
 class ApplyView(generic.FormView):
     template_name = "apply.html"
     form_class = ApplyForm
+    success_url = reverse_lazy('dogcat:login')
+
+    def form_valid(self, form):
+        dogcat = form.save(commit=True)
+        messages.success(self.request, 'データベースに登録しました。')
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        print(1)
+        messages.error(self.request, "データベースの登録に失敗しました。")
+        return super().form_invalid(form)
+
+
+class CapplyView(generic.FormView):
+    template_name = "Capply.html"
+    form_class = ApplyForm
+    success_url = reverse_lazy('dogcat:login')
 
 class InquiryView(generic.TemplateView):
     template_name = "inquiry.html"
@@ -112,5 +120,5 @@ class UpdateView(generic.FormView):
 
 class LoginView(generic.FormView):
     model = MasterHospitalUser
-    form_class = CreateForm
+    form_class = LoginForm
     template_name = 'login.html'
