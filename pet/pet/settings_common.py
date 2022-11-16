@@ -24,7 +24,6 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'allauth',
     'allauth.account',
-
 ]
 
 MIDDLEWARE = [
@@ -64,7 +63,7 @@ WSGI_APPLICATION = 'pet.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dogcat12',
+        'NAME': 'dogcat',
         'USER': os.environ.get('DB_USER'),
         'PASSWORD': os.environ.get('DB_PASSWORD'),
         'HOST': '',

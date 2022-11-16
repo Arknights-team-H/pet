@@ -55,7 +55,7 @@ class HospitalApply(models.Model): # 病院情報のマスタテーブル
 
 class MasterHospitalUser(models.Model): # 病院側の病院情報テーブル
     hospital_id = models.CharField(max_length=7, verbose_name='病院ID')
-    password = models.CharField(max_length=16, verbose_name='パスワード')
+    password = models.CharField(max_length=256, verbose_name='パスワード')
 
 
     class Meta:

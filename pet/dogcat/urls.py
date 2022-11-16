@@ -16,4 +16,5 @@ urlpatterns = [
     path('detail/', views.DetailView.as_view(), name="detail"),
     path('delete/', views.DeleteView.as_view(), name="delete"),
     path('update/', views.UpdateView.as_view(), name="update"),
+    path('useradd/', views.UserAddView.as_view(), name="useradd"),
 ]

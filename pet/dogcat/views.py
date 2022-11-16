@@ -1,4 +1,5 @@
 import logging
+import hashlib
 from django.urls import reverse_lazy
 from django.views import generic
 from .forms import CreateForm, ApplyForm, LoginForm
@@ -122,3 +123,47 @@ class LoginView(generic.FormView):
     model = MasterHospitalUser
     form_class = LoginForm
     template_name = 'login.html'
+    flag = 5
+    if flag == 0:
+        success_url = reverse_lazy('dogcat:index')
+    else:
+        success_url = reverse_lazy('dogcat:login')
+
+    def post(self, request, *args, **kwargs):
+        if request.method == 'POST':
+            # フォーム入力のユーザーID・パスワード取得
+            hospital_id = request.POST.get('hospital_id')
+            Password = request.POST.get('password')
+            password = hashlib.sha256(Password.encode()).hexdigest()
+            print(hospital_id)
+            print(password)
+            if MasterHospitalUser.objects.filter(hospital_id=hospital_id, password=password):
+                flag = 0
+                print(1)
+            else:
+                flag = 1
+                print(2)
+            obj = flag
+            # obj.save()
+            # messages.success(self.request, 'データベースを登録しました。')
+            return super().post(obj)
+
+class UserAddView(generic.FormView):
+    model = MasterHospitalUser
+    form_class = LoginForm
+    template_name = 'useradd.html'
+    success_url = reverse_lazy('dogcat:login')
+
+    def post(self, request, *args, **kwargs):
+        if request.method == 'POST':
+            # フォーム入力のユーザーID・パスワード取得
+            hospital_id = request.POST.get('hospital_id')
+            Password = request.POST.get('password')
+            password = hashlib.sha256(Password.encode()).hexdigest()
+            print(hospital_id)
+            print(password)
+            obj = MasterHospitalUser(hospital_id=hospital_id, password=password)
+            obj.save()
+            messages.success(self.request, 'データベースを登録しました。')
+            return super().post(obj)
+
