@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 from .forms import CreateForm, ApplyForm, LoginForm
 from django.contrib import messages
+from django.shortcuts import render, redirect
 
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Vaccination
@@ -123,11 +124,7 @@ class LoginView(generic.FormView):
     model = MasterHospitalUser
     form_class = LoginForm
     template_name = 'login.html'
-    flag = 5
-    if flag == 0:
-        success_url = reverse_lazy('dogcat:index')
-    else:
-        success_url = reverse_lazy('dogcat:login')
+    success_url = reverse_lazy('dogcat:login')
 
     def post(self, request, *args, **kwargs):
         if request.method == 'POST':
@@ -138,13 +135,13 @@ class LoginView(generic.FormView):
             print(hospital_id)
             print(password)
             if MasterHospitalUser.objects.filter(hospital_id=hospital_id, password=password):
-                flag = 0
                 print(1)
+                return render(request, 'index.html')
             else:
-                flag = 1
                 print(2)
-            obj = flag
-            # obj.save()
+                def name(request):
+                    return redirect('/login')
+            obj = 0
             # messages.success(self.request, 'データベースを登録しました。')
             return super().post(obj)
 
