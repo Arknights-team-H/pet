@@ -1,7 +1,6 @@
 import os
 from pathlib import Path
 from django.contrib.messages import constants as messages
-import accounts
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -19,11 +18,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'dogcat.apps.DogcatConfig',
-    'accounts.apps.AccountsConfig',
-
-    'django.contrib.sites',
-    'allauth',
-    'allauth.account',
 ]
 
 MIDDLEWARE = [
@@ -41,7 +35,7 @@ ROOT_URLCONF = 'pet.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'accounts', 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -123,39 +117,3 @@ MESSAGE_TAGS = {
     messages.SUCCESS: 'alert alert-success',
     messages.INFO: 'alert alert-info',
 }
-
-AUTH_USER_MODEL = 'accounts.HospitalUser'
-# django-allauthで利用するdjango.contrib.sitesを使うためにサイト識別用IDを設定
-SITE_ID = 1
-
-AUTHENTICATION_BACKENDS = (
-    'allauth.account.auth_backends.AuthenticationBackend',  # 一般ユーザー用(メールアドレス認証)
-    'django.contrib.auth.backends.ModelBackend',  # 管理サイト用(ユーザー名認証)
-)
-
-# メールアドレス認証に変更する設定
-ACCOUNT_AUTHENTICATION_METHOD = 'email'
-ACCOUNT_USERNAME_REQUIRED = True
-
-# サインアップにメールアドレス確認を挟むよう設定
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
-ACCOUNT_EMAIL_REQUIRED = True
-
-# ログアウトリンクのクリック一発でログアウトする設定
-ACCOUNT_LOGOUT_ON_GET = True
-
-# django-allauthが送信するメールの件名に自動付与される接頭辞をブランクにする設定
-ACCOUNT_EMAIL_SUBJECT_PREFIX = ''
-
-# デフォルトのメール送信元を設定
-DEFAULT_FROM_EMAIL = os.environ.get('FROM_EMAIL')
-
-LOGIN_REDIRECT_URL = '/'
-ACCOUNT_LOGOUT_REDIRECT_URL = '/'
-
-ACCOUNT_FORMS = {
-    "signup" : "accounts.forms.MysignupForm",
-}
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
