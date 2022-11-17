@@ -67,16 +67,6 @@ class UpdateView(generic.UpdateView): # UpdateViewクラスを継承している
     model = Vaccination
     template_name = 'update.html'
     form_class = CreateForm
-    def get_success_url(self): # オーバーライド
-        return reverse_lazy('dogcat:detail', kwargs = {'pk': self.kwargs['pk']})
-
-    def form_valid(self, form): # 更新が成功した時の処理。formはユーザが入力したのが入っている。オーバーライド。
-        messages.success(self.request, "データベースを更新しました。")
-        return super().form_valid(form)
-
-    def form_invalid(self, form): # オーバーライド
-        messages.error(self.request, "データベースの更新に失敗しました。")
-        return super().form_invalid(form)
 
 
 class DeleteView(generic.DeleteView):
@@ -98,11 +88,10 @@ class VsearchView(generic.FormView):
         if request.method == 'POST':
             mc_number = request.POST.get('mc_number')
             if Vaccination.objects.filter(mc_number=mc_number):
-                q = Vaccination.objects.get(mc_number=mc_number)
-                print(q)
-                ctx = {
-                    "mc_number" : mc_number,
-                }
+                result = Vaccination.objects.filter(mc_number=mc_number).first()
+                print(result.mc_number)
+                ctx = {}
+                ctx["objects"] = result
                 return render(request, 'detail.html', ctx)
             obj = 0
             return super().post(obj)
@@ -130,6 +119,15 @@ class UpdateView(generic.FormView):
     form_class = CreateForm
     template_name = 'update.html'
     # success_url = reverse_lazy('dogcat:vaccination')
+
+    def form_valid(self, form):
+        print("djfslkjklsd")
+        dogcat = form.save(commit=True)
+        # dogcat.user = self.request.user
+        # dogcat.save()
+        messages.success(self.request, '登録情報を変更しましたしました。')
+        return super().form_valid(form)
+
 
 class LoginView(generic.FormView):
     model = MasterHospitalUser

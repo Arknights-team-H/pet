@@ -4,24 +4,19 @@
 {% block title %}Dogcat | チームH卒研{% endblock %}
 
 {% block contents %}
-<form id="database" method="post" action="#">
-    <label for="databaseinput">変更画面</label>
-    <br>
-    <label for="number">　　個体番号：</label>
-    <input class="numberform" required name="database[number]" type="number"/>
-    <br>
-    <label for="data">　　　　日付：</label>
-    <input class="dataform" required name="database[data]" type="data"/>
-    <br>
-    <label for="vaccination">接種ワクチン：</label>
-    <input class="vaccinationform" required name="database[vaccination]" type="vaccination"/>
-    <br>
-    <label for="hospitalid">　　　病院ID：</label>
-    <input class="hospitalidform" required name="database[hospitalid]" type="hospitalid"/>
-    <br>
-    <div class="return-button">
-        <button><a href="{% url 'dogcat:detail' %}" class="button-index">戻る</a></button>
-        <button><a href="{% url 'dogcat:detail' %}" class="button-index">確認</a></button>
+<div class="container">
+    <div class="row">
+        <div class="my-div-style w-100">
+            <form method="POST" enctype='multipart/form-data'>
+                {% csrf_token %}
+                <table class="table" width="850">
+                    <h2>登録情報の変更</h2>　
+                    {{ form.as_table }}
+                </table>
+                <button><a href="{% url 'dogcat:Vsearch' %}" class="button-index">戻る</a></button>
+        　　　　　<button><a class="btn-primary">変更</a></button>
+            </form>
+        </div>
     </div>
-</form>
+</div>
 {% endblock %}

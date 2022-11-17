@@ -7,13 +7,13 @@
 <form id="database" method="post" action="#">
     <h2>詳細表示</h2>
     <br>
-    <label for="number">　　個体番号：{{ mc_number }}</label>
+    <label for="number">　　個体番号：{{ objects.mc_number }}</label>
     <br>
-    <label for="data">　　　　日付：{{ date }}</label>
+    <label for="data">　　　　日付：{{ objects.date }}</label>
     <br>
-    <label for="vaccination">接種ワクチン：{{ vaccination_type }}</label>
+    <label for="vaccination">接種ワクチン：{{ objects.vaccination_type }}</label>
     <br>
-    <label for="hospitalid">　　　病院ID：{{ hospital_id }}</label>
+    <label for="hospitalid">　　　病院ID：{{ objects.hospital_id }}</label>
     <br>
     <div class="return-button">
         <button><a href="{% url 'dogcat:Vsearch' %}" class="button-index">戻る</a></button>
