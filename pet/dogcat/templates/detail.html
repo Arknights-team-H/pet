@@ -7,17 +7,13 @@
 <form id="database" method="post" action="#">
     <h2>詳細表示</h2>
     <br>
-    <label for="number">　　個体番号：</label>
-    <input class="numberform" required name="database[number]" type="mc_number"/>
+    <label for="number">　　個体番号：{{ mc_number }}</label>
     <br>
-    <label for="data">　　　　日付：</label>
-    <input class="dataform" required name="database[data]" type="data"/>
+    <label for="data">　　　　日付：{{ date }}</label>
     <br>
-    <label for="vaccination">接種ワクチン：</label>
-    <input class="vaccinationform" required name="database[vaccination]" type="vaccination_type"/>
+    <label for="vaccination">接種ワクチン：{{ vaccination_type }}</label>
     <br>
-    <label for="hospitalid">　　　病院ID：</label>
-    <input class="hospitalidform" required name="database[hospitalid]" type="hospitalid"/>
+    <label for="hospitalid">　　　病院ID：{{ hospital_id }}</label>
     <br>
     <div class="return-button">
         <button><a href="{% url 'dogcat:Vsearch' %}" class="button-index">戻る</a></button>

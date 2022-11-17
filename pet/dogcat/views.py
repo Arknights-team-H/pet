@@ -2,7 +2,7 @@ import logging
 import hashlib
 from django.urls import reverse_lazy
 from django.views import generic
-from .forms import CreateForm, ApplyForm, LoginForm
+from .forms import CreateForm, ApplyForm, LoginForm, SelectForm
 from django.contrib import messages
 from django.shortcuts import render, redirect
 
@@ -91,22 +91,33 @@ class DeleteView(generic.DeleteView):
 
 class VsearchView(generic.FormView):
     model = Vaccination
-    form_class = CreateForm
+    form_class = SelectForm
     template_name = 'Vsearch.html'
-    # success_url = reverse_lazy('dogcat:vaccination')
-    def get_queryset(self):
-        try:
-            q = self.request.GET["search"]
-        except:
-            q = None
-        return VaccinationModel.objects.search(query=q)
+    success_url = reverse_lazy('dogcat:Vsearch')
+    def post(self, request, *args, **kwargs):
+        if request.method == 'POST':
+            mc_number = request.POST.get('mc_number')
+            if Vaccination.objects.filter(mc_number=mc_number):
+                q = Vaccination.objects.get(mc_number=mc_number)
+                print(q)
+                ctx = {
+                    "mc_number" : mc_number,
+                }
+                return render(request, 'detail.html', ctx)
+            obj = 0
+            return super().post(obj)
 
 
 class DetailView(generic.FormView):
     model = Vaccination
-    form_class = CreateForm
     template_name = 'detail.html'
     # success_url = reverse_lazy('dogcat:vaccination')
+
+    def DetailView(request, mc_number):
+        ctx = {}
+        q = VaccinationModel.objects.get(mc_number=mc_number)
+        ctx["object"] = q
+        return render(request, ctx)
 
 class DeleteView(generic.FormView):
     model = Vaccination
@@ -137,10 +148,6 @@ class LoginView(generic.FormView):
             if MasterHospitalUser.objects.filter(hospital_id=hospital_id, password=password):
                 print(1)
                 return render(request, 'index.html')
-            else:
-                print(2)
-                def name(request):
-                    return redirect('/login')
             obj = 0
             # messages.success(self.request, 'データベースを登録しました。')
             return super().post(obj)
