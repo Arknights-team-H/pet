@@ -20,7 +20,7 @@ LOGGING = {
             'handlers': ['console'],
             'level': 'INFO',
         },
-        # diaryアプリケーションが利用するロガー
+        # dogcatアプリケーションが利用するロガー
         'dogcat': {
             'handlers': ['console'],
             'level': 'DEBUG',
