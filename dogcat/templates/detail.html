@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Dogcat | チームH卒研{% endblock %}
+
+{% block contents %}
+<form id="database" method="post" action="#">
+    <h2>詳細表示</h2>
+    <br>
+    <label for="number">　　個体番号：{{ objects.mc_number }}</label>
+    <br>
+    <label for="data">　　　　日付：{{ objects.date }}</label>
+    <br>
+    <label for="vaccination">接種ワクチン：{{ objects.vaccination_type }}</label>
+    <br>
+    <label for="hospitalid">　　　病院ID：{{ objects.hospital_id }}</label>
+    <br>
+    <div class="return-button">
+        <button><a href="{% url 'dogcat:Vsearch' %}" class="button-index">戻る</a></button>
+        <button><a href="{% url 'dogcat:update' %}" class="button-index">変更</a></button>
+        <button><a href="{% url 'dogcat:delete' %}" class="button-index">削除</a></button>
+    </div>
+    <div>
+        <ul>
+            {% for obj in object_list %}
+            <li>{{ obj.title }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</form>
+{% endblock %}

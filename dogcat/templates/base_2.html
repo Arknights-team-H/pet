@@ -1,0 +1,58 @@
+{% load static %}
+
+<html lang="ja">
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <!-- Custom styles for this template -->
+        <link href="{% static 'css/Main.css' %}" rel="stylesheet">
+        <!-- My style -->
+        <link rel="stylesheet" type="text/css" href="{% static 'css/Main.css' %}">
+        {% block head %}{% endblock %}
+    </head>
+
+    <body>
+        <div id="wrapper">
+            <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul>
+                        <header>
+                            <h1><a>~犬猫の予防接種証明書電子化アプリ~</a></h1>
+                            <ul>
+                                <nav>
+                                    <ul>
+                                        <a href="{% url 'dogcat:apply' %}">利用申請</a>
+                                        <a href="{% url 'dogcat:Capply' %}">登録情報変更申請</a>
+                                    </ul>
+                                </nav>
+                            </ul>
+                        </header>
+                    </ul>
+                </div>
+            </nav>
+            {% block header%}{% endblock %}
+
+            {% if messages %}
+            <div class="container">
+                <div class="row">
+                    <div class="my-div-style">
+                        <ul class="messages"> {% for message in messages %}
+                            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}> {{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            {% block contents%}{% endblock %}
+
+            <!-- Footer -->
+            <footer>
+                @ Pet System 2022.
+            </footer>
+            <!-- Bootstrap core JavaScript -->
+            <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+            <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+        </div>
+    </body>
+</html>
