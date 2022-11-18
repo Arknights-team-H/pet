@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Dogcat | チームH卒研{% endblock %}
+
+{% block contents %}
+<form id="delete" method="post" action="#">
+    <p1>本当に削除しますか？</p1>
+    <br>
+    <button><a href="{% url 'dogcat:Vsearch' %}" class="button-logout">はい</a></button>
+    <br>
+    <button><a href="{% url 'dogcat:detail' %}" class="button-index">いいえ</a></button>
+</form>
+{% endblock %}
