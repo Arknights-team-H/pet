@@ -68,15 +68,42 @@ class UpdateView(generic.UpdateView): # UpdateViewクラスを継承している
     template_name = 'update.html'
     form_class = CreateForm
 
+    def form_valid(self, form):
+        print("djfslkjklsd")
+        dogcat = form.save(commit=True)
+        # dogcat.user = self.request.user
+        # dogcat.save()
+        messages.success(self.request, 'データベースを登録しました。')
+        return super().form_valid(form)
 
-class DeleteView(generic.DeleteView):
-    model = Vaccination
-    template_name = 'delete.html'
-    success_url = reverse_lazy('dogcat:SearchResults')
+    def form_invalid(self, form):
+        print(1)
+        messages.error(self.request, "データベースの登録に失敗しました。")
+        return super().form_invalid(form)
+    # 編集フォームをHTMLへ返す
+    # def showEditUserForm(request, id):
+    #
+    #     # idをもとにユーザ情報を取得
+    #     userinfo = get_object_or_404(UserInfo, pk=id)
+    #     # フォームをオブジェクトを作成
+    #     userForm = CreateForm(instance=userinfo)
+    #     # ユーザ情報をフォームに格納
+    #     context = {
+    #         'userinfo': userinfo,
+    #         'userForm': userForm,
+    #     }
+    #     # user.htmlへデータを渡す
+    #     return render(request, 'myapp/edit.html', context)
 
-    def delete(self, request, *args, **kwargs):
-        messages.success(self.request, "データを削除しました。")
-        return super().delete(request, *args, **kwargs)
+
+# class DeleteView(generic.DeleteView):
+#     model = Vaccination
+#     template_name = 'delete.html'
+#     success_url = reverse_lazy('dogcat:SearchResults')
+#
+#     def delete(self, request, *args, **kwargs):
+#         messages.success(self.request, "データを削除しました。")
+#         return super().delete(request, *args, **kwargs)
 
 
 class VsearchView(generic.FormView):
@@ -97,16 +124,16 @@ class VsearchView(generic.FormView):
             return super().post(obj)
 
 
-class DetailView(generic.FormView):
-    model = Vaccination
-    template_name = 'detail.html'
-    # success_url = reverse_lazy('dogcat:vaccination')
-
-    def DetailView(request, mc_number):
-        ctx = {}
-        q = VaccinationModel.objects.get(mc_number=mc_number)
-        ctx["object"] = q
-        return render(request, ctx)
+# class DetailView(generic.FormView):
+#     model = Vaccination
+#     template_name = 'detail.html'
+#     # success_url = reverse_lazy('dogcat:vaccination')
+#
+#     def DetailView(request, mc_number):
+#         ctx = {}
+#         q = VaccinationModel.objects.get(mc_number=mc_number)
+#         ctx["object"] = q
+#         return render(request, ctx)
 
 class DeleteView(generic.FormView):
     model = Vaccination
