@@ -5,6 +5,6 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('dogcat.urls')),
-    path('owner/', include('owner.urls')),
+    path('', include('owner.urls')),
 ]
 
