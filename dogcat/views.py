@@ -169,3 +169,5 @@ class UserAddView(generic.FormView):
             messages.success(self.request, 'データベースを登録しました。')
             return super().post(obj)
 
+
+

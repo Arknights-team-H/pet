@@ -32,7 +32,7 @@ LOGGING = {
             'level': 'INFO',
         },
         # diaryアプリケーションが利用するロガー
-        'diary': {
+        'dogcat': {
             'handlers': ['file'],
             'level': 'INFO',
         },

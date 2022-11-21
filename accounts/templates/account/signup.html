@@ -1,0 +1,22 @@
+{% extends 'userbase.html' %}
+{% load static %}
+
+{% block title %}新規登録｜Dog&Cat{% endblock %}
+
+{% block header%}
+    <div class="example-label">
+      <p>Sign Up</p>
+      <form method="post" action="{% url 'account_signup' %}">
+        {% csrf_token %}
+        {{ forms.as_p }}
+        {% if redirect_field_value %}
+           <input type="hidden" name="{{ redirect_filed_name }}" value="{{ redirect_field_value }}">
+        {%  endif %}
+         <a href="{% url 'account_login' %}" class="btn-solid-gold">　登録　</a>
+      </form>
+    </div>
+    <div class="example">
+
+
+    </div>
+{% endblock %}
