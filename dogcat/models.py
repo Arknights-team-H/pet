@@ -70,12 +70,10 @@ class MasterMedicine(models.Model): # 一般ユーザ側のお薬情報マスタ
 class Medicine(models.Model): # 一般ユーザ側のお薬情報テーブル
 
     pet_id = models.CharField(max_length=11, verbose_name='ペットID')
-    taking_date = models.DateField('飲んだ日付け')
+    taking_date = models.DateField('飲む日付け')
     create_date = models.DateField('作成日付', blank=True, null=True)
     update_date = models.DateField('最終更新日', blank=True, null=True)
     taking1 = models.CharField(max_length=40, verbose_name='飲んだ薬①')
-    taking2 = models.CharField(max_length=40, verbose_name='飲んだ薬②')
-    taking3 = models.CharField(max_length=40, verbose_name='飲んだ薬③')
     class Meta:
         verbose_name_plural = 'Medicine'
 
