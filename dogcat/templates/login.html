@@ -1,6 +1,6 @@
 {% extends 'base_2.html' %}
 
-{% block title %}お問い合わせ | Dog Cat{% endblock %}
+{% block title %}ログイン | Dog&Cat{% endblock %}
 
 {% block active_inquiry %}active{% endblock %}
 
@@ -11,10 +11,11 @@
             <form method="POST" enctype='multipart/form-data'>
                 {% csrf_token %}
                 <table class="table" width="850">
-                    <h2>Login</h2>　
+                    <h2>Log In</h2>　
                     {{ form.as_table }}
                 </table>
-        　　　　　<button><a class="btn-primary">login</a></button>
+                <br>
+        　　　　　<button><a class="btn-primary">　ログイン　</a></button>
             </form>
         </div>
     </div>

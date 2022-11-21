@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'userbase.html' %}
 {% load static %}
 
 {% block title %}Dog&Cat | 卒研Hチーム{% endblock %}
@@ -11,6 +11,6 @@
   </div>
   <div class="pet-text">ペット向けの予防接種証明書を電子化する<br>システムでございます。<br>ぜひ、お試しにご利用ください。</div>
   <div class="example">
-    <a href="{% url 'breeder:userlogin' %}" class="btn-solid-gold">　Log In　</a>
+    <a href="{% url 'owner:userlogin' %}" class="btn-solid-gold">　Log In　</a>
   </div>
 {% endblock %}

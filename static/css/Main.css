@@ -8,11 +8,6 @@ h1 {
   border-left: solid 5px #7de6a5; /*左に色指定で枠線追加*/
 }
 
-btn-inq {
-
-
-}
-
 /*機能リンク*/
 a {
   font-size: 20px; /*文字のサイズ*/
@@ -59,12 +54,12 @@ header {
 div.logo_center{
   font-size: 3.2em; /*文字のサイズ*/
   display: block;
-  margin: auto;
-	text-align:center;
-	line-height:0.95em;
-	font-weight:bold;
-	color: #4b5205;
-	text-shadow: 0.02em 0.02em 0.02em rgba(0,0,0,1);
+  margin: 100px auto;
+  text-align:center;
+  line-height:0.95em;
+  font-weight:bold;
+  color: #4b5205;
+  text-shadow: 0.02em 0.02em 0.02em rgba(0,0,0,1);
 }
 
 /*ロゴ下メッセージ*/
@@ -72,8 +67,8 @@ div.logo_center{
   font-size: 0.4em; /*文字のサイズ*/
   line-height:0.1em;
   font-weight: normal;
-	text-align: left;
-	display: inline-block;
+  text-align: left;
+  display: inline-block;
   width: 50%;
 }
 
@@ -138,11 +133,10 @@ button {
   user-select: none;
   background: #028d37;
   border: 1px #00b5ad solid;
-  border-radius: px;
+  border-radius: 10px;
   transition: 0.2s ease;
   font-family:sans-serif;
   display:block;
-  width:148px;
   margin:0 auto;
 }
 
@@ -156,6 +150,7 @@ button {
 .btn,
 a.btn,
 button.btn {
+  text-align: center;
   font-size: 1em;
   font-weight: 700;
   line-height: 0.5;
