@@ -10,4 +10,4 @@ class MySignupForm(UserCreationForm):
             'pet_id',
             'pet_name',
             'pet_birthday',
-        )
+           )

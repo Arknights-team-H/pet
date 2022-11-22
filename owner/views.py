@@ -30,9 +30,9 @@ class StoreView(generic.TemplateView):
             obj = 0
             return super().post(obj)
 
-class UserloginView(generic.TemplateView):
-    template_name = "userlogin.html"
-class UsersignupView(generic.TemplateView):
-    template_name = "usersignup.html"
+# class UserloginView(generic.TemplateView):
+#     template_name = "userlogin.html"
+# class UsersignupView(generic.TemplateView):
+#     template_name = "usersignup.html"
 class UserlogoutView(generic.TemplateView):
     template_name = "userlogout.html"

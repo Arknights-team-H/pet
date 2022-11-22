@@ -1,12 +1,11 @@
 from django.contrib.auth.models import AbstractUser
-from django.db import  models
-
+from django.db import models
 
 class MyUser(AbstractUser):
     """拡張ユーザーモデル"""
     class Meta(AbstractUser.Meta):
         db_table = 'my_user'
-        verbose_name_plural = 'ユーザ'
+        verbose_name = 'ユーザ'
         verbose_name_plural = 'ユーザ'
 
     mc_number = models.CharField(max_length=15, verbose_name='個体番号')
