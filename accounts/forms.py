@@ -7,7 +7,6 @@ class MySignupForm(UserCreationForm):
         fields = (
             'mc_number',
             'user_birthday',
-            'pet_id',
             'pet_name',
             'pet_birthday',
            )
