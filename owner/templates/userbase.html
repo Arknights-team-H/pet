@@ -30,16 +30,19 @@
             </ul>
         </header>
         {% endif %}
+
+        {% block contents %}{% endblock %}
+
         <footer>
             <div class="sen"></div>
-            <div class="pet-function">
-              <a href="{% url 'owner:userindex' %}">🏡　<br>ホーム</a>
-              <a href="{% url 'owner:store' %}">🏥　<br>病院検索</a>
-              <a href="{% url 'owner:drug' %}">💊　<br>お薬手帳</a>
-              <a href>📜　<br>証明書</a>
-            </div>
+                <div class="pet-function">
+                  <a href="{% url 'owner:userindex' %}">🏡　<br>ホーム</a>
+                  <a href="{% url 'owner:Ssearch' %}">🏥　<br>病院検索</a>
+                  <a href="{% url 'owner:drug' %}">💊　<br>お薬手帳</a>
+                  <a href>📜　<br>証明書</a>
+                </div>
             © 2022 Pet System
         </footer>
-        {% block header%}{% endblock %}
+
     </body>
 </html>
