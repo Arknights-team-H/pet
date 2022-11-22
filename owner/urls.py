@@ -7,6 +7,7 @@ urlpatterns = [
     path('userindex/', views.UserindexView.as_view(), name="userindex"),
     path('drug/', views.DrugView.as_view(), name="drug"),
     path('drug_create/', views.Drug_createView.as_view(), name="drug_create"),
+    path('Ssearch/', views.SsearchView.as_view(), name="Ssearch"),
     path('store/', views.StoreView.as_view(), name="store"),
     path('userlogin/', views.UserloginView.as_view(), name="userlogin"),
     path('usersignup/', views.UsersignupView.as_view(), name="usersignup"),

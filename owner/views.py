@@ -13,22 +13,22 @@ class DrugView(generic.TemplateView):
     template_name = "drug.html"
 class Drug_createView(generic.TemplateView):
     template_name = "drug_create.html"
-class StoreView(generic.TemplateView):
+class SsearchView(generic.ListView):
     model = MasterHospital
-    template_name = "store.html"
-    success_url = reverse_lazy('owner:store')
+    template_name = "Ssearch.html"
+    success_url = reverse_lazy('owner:Ssearch')
+
     def post(self, request, *args, **kwargs):
         if request.method == 'POST':
             prefectures = request.POST.get('prefectures')
-            if MasterHospital.objects.get(address__contains=prefectures):
-                print(1)
-                result = MasterHospital.objects.filter(address=prefectures).all()
-                print(result.mc_number)
-                ctx = {}
-                ctx["objects"] = result
-                return render(request, 'store.html', ctx)
-            obj = 0
-            return super().post(obj)
+
+            def get_queryset(self):
+                hospitals = MasterHospital.objects.filter(address=prefectures).order_by('-created_at')
+                return hospitals
+
+
+class StoreView(generic.TemplateView):
+    template_name = "store.html"
 
 class UserloginView(generic.TemplateView):
     template_name = "userlogin.html"
