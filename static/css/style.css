@@ -287,10 +287,12 @@ footer {
   width: 99%;
   font-size:1.1em;
   text-align : center;
+  padding: 18px 0;
+  margin-top: auto;
   position: absolute;
   bottom: 0;
-  padding: 18px 0;
 }
+
 
 .drug_box, input {
   text-align: center;
