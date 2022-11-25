@@ -4,6 +4,7 @@ from django.shortcuts import render
 
 
 from dogcat.models import MasterHospital
+from django.shortcuts import *
 
 class NotHomeView(generic.TemplateView):
     template_name = "nothome.html"
@@ -13,18 +14,22 @@ class DrugView(generic.TemplateView):
     template_name = "drug.html"
 class Drug_createView(generic.TemplateView):
     template_name = "drug_create.html"
+
 class SsearchView(generic.ListView):
     model = MasterHospital
     template_name = "Ssearch.html"
-    success_url = reverse_lazy('owner:Ssearch')
+    success_url = reverse_lazy('owner:store')
 
     def post(self, request, *args, **kwargs):
         if request.method == 'POST':
             prefectures = request.POST.get('prefectures')
-
-            def get_queryset(self):
-                hospitals = MasterHospital.objects.filter(address=prefectures).order_by('-created_at')
-                return hospitals
+            if MasterHospital.objects.filter(address=prefectures):
+                hospitals = MasterHospital.objects.filter(address=prefectures)
+                ctx = []
+                ctx["objects"] = hospitals
+                return render(request, 'store.html', ctx)
+            obj = 0
+            return obj
 
 
 class StoreView(generic.TemplateView):

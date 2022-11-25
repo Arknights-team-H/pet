@@ -43,6 +43,8 @@ class MasterHospital(models.Model): # 病院情報のマスタテーブル
     class Meta:
         verbose_name_plural = 'MasterHospital'
 
+
+
 class HospitalApply(models.Model): # 病院情報のマスタテーブル
     hospital_name = models.CharField(max_length=40, verbose_name='病院名')
     address = models.CharField(max_length=120, verbose_name='住所')
@@ -71,7 +73,7 @@ class MasterMedicine(models.Model): # 一般ユーザ側のお薬情報マスタ
 class Medicine(models.Model): # 一般ユーザ側のお薬情報テーブル
 
     pet_id = models.CharField(max_length=11, verbose_name='ペットID')
-    taking_date = models.DateField('飲んだ日付け')
+    taking_date = models.DateField('飲む日付け')
     create_date = models.DateField('作成日付', blank=True, null=True)
     update_date = models.DateField('最終更新日', blank=True, null=True)
     type = models.ForeignKey(MasterMedicine, on_delete=models.DO_NOTHING, verbose_name='服用薬')
