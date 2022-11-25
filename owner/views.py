@@ -2,8 +2,10 @@ from django.views import generic
 from django.urls import reverse_lazy
 from django.shortcuts import render
 from .forms import MedicineForm
+from .forms import PrefectureForm
 from dogcat.models import Medicine
 from dogcat.models import MasterHospital
+from dogcat.models import MasterPrefectures
 
 class NotHomeView(generic.TemplateView):
     template_name = "nothome.html"
@@ -15,19 +17,23 @@ class Drug_createView(generic.FormView):
     template_name = "drug_create.html"
     form_class = MedicineForm
     model = Medicine
-class SsearchView(generic.ListView):
+class SsearchView(generic.FormView):
     model = MasterHospital
+    form_class = PrefectureForm
     template_name = "Ssearch.html"
     success_url = reverse_lazy('owner:Ssearch')
-
     def post(self, request, *args, **kwargs):
         if request.method == 'POST':
-            prefectures = request.POST.get('prefectures')
-
-            def get_queryset(self):
-                hospitals = MasterHospital.objects.filter(address=prefectures).order_by('-created_at')
-                return hospitals
-
+            prefecture = request.POST.get('prefectures')
+            print(prefecture)
+            if MasterHospital.objects.filter(address__contains=prefecture):
+                result = MasterHospital.objects.filter(address__contains=prefecture).first()
+                print(result)
+                ctx = {}
+                ctx["objects"] = result
+                return render(request, 'store.html', ctx)
+            obj = 0
+            return super().post(obj)
 
 class StoreView(generic.TemplateView):
     template_name = "store.html"

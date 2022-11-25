@@ -105,3 +105,8 @@ class QRcodeHistory(models.Model): # 一般ユーザ側のQRコード発行テ�
     issue_limit = models.DateField('発行期限', blank=True, null=True)
     class Meta:
         verbose_name_plural = 'QRcodeHistory'
+
+class MasterPrefectures(models.Model):
+    prefectures = models.CharField(max_length=4, verbose_name='都道府県')
+    class Meta:
+        verbose_name_plural = 'MasterPrefectures'
