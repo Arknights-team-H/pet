@@ -6,29 +6,12 @@
 {% block contents %}
 <div class="drug_box" xmlns="http://www.w3.org/1999/html">
       <p class="label-title">お薬情報の登録</p>
-        <label class="required">飲む日</label>
-        <br>
-        <input type="date" id="date" name="飲む日" value="2022-11-17" />           <br>
-        <label class="required">お薬名</label>
-        <br>
-        <input type="" name="drugname" class="form-1">
-        <br>
-        <label class="required">用法</label>
-        <br>
-        <input type="" name="usage" class="form-1">
-        <br>
-        <label class="required">１回量</label>
-        <br>
-        <input type="" name="dose" class="form-1">
-        <br>
-        <label class="required">調剤量</label>
-        <br>
-        <input type="" name="Dosage" class="form-1">
-        <br>
-        <label class="required1">飲み方</label>
-        <br>
-        <input type="" name="ive" class="form-1">
-      <div class="example">
+        <form method="post" action="{% url 'owner:drug' %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                {% if redirect_field_value %}
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                {% endif %}
         <a href="drug.html" class="drug-btn">保存する</a>
       </div>
     </div>
