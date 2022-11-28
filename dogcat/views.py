@@ -54,7 +54,7 @@ class CreateView(generic.CreateView):
         dogcat = form.save(commit=True)
         # dogcat.user = self.request.user
         # dogcat.save()
-        messages.success(self.request, 'データベースを登録しました。')
+        messages.success(self.request, 'データベースに登録しました。')
         return super().form_valid(form)
 
     def form_invalid(self, form):

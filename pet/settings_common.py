@@ -160,9 +160,6 @@ DEFAULT_FROM_EMAIL = os.environ.get('FROM_EMAIL')
 ACCOUNT_FORMS = {
     'signup' : 'accounts.forms.MySignupForm',
 }
-SOCIALACCOUNT_FORMS = {
-    'signup': 'accounts.forms.CustomSignupForm'
-}
 
 
 

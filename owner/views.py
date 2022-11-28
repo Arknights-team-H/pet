@@ -5,6 +5,7 @@ from .forms import MedicineForm
 from dogcat.models import Medicine
 from dogcat.models import MasterHospital
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib import messages
 
 class NotHomeView(generic.TemplateView):
     template_name = "nothome.html"
@@ -12,10 +13,27 @@ class UserindexView(generic.TemplateView):
     template_name = "userindex.html"
 class DrugView(LoginRequiredMixin,generic.TemplateView):
     template_name = "drug.html"
-class Drug_createView(generic.FormView):
+class Drug_createView(generic.CreateView):
     template_name = "drug_create.html"
     form_class = MedicineForm
     model = Medicine
+    success_url = reverse_lazy('owner:userindex')
+
+    def form_valid(self, form):
+        print("djfslkjklsd")
+        owner = form.save(commit=True) #データベース名
+        messages.success(self.request, 'データベースni登録しました。')
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        print(1)
+        messages.error(self.request, "データベースの登録に失敗しました。")
+        return super().form_invalid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['add_drug_form'] = MedicineForm  # ここで定義した変数名
+        return context
 class SsearchView(generic.ListView):
     model = MasterHospital
     template_name = "Ssearch.html"
