@@ -4,12 +4,13 @@ from django.shortcuts import render
 from .forms import MedicineForm
 from dogcat.models import Medicine
 from dogcat.models import MasterHospital
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 class NotHomeView(generic.TemplateView):
     template_name = "nothome.html"
 class UserindexView(generic.TemplateView):
     template_name = "userindex.html"
-class DrugView(generic.TemplateView):
+class DrugView(LoginRequiredMixin,generic.TemplateView):
     template_name = "drug.html"
 class Drug_createView(generic.FormView):
     template_name = "drug_create.html"

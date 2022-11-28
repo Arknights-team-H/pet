@@ -145,8 +145,8 @@ ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_EMAIL_REQUIRED = True
 
 # # ログイン/ログアウト後の遷移先を設定
-# LOGIN_REDIRECT_URL = 'owner.index'
-# ACCOUNT_LOGOUT_REDIRECT_URL = 'account_login'
+LOGIN_REDIRECT_URL = 'owner:userindex'
+ACCOUNT_LOGOUT_REDIRECT_URL = 'account_login'
 
 # ログアウトリンクのクリック一発でログアウトする設定
 ACCOUNT_LOGOUT_ON_GET = True
@@ -159,6 +159,9 @@ DEFAULT_FROM_EMAIL = os.environ.get('FROM_EMAIL')
 
 ACCOUNT_FORMS = {
     'signup' : 'accounts.forms.MySignupForm',
+}
+SOCIALACCOUNT_FORMS = {
+    'signup': 'accounts.forms.CustomSignupForm'
 }
 
 
