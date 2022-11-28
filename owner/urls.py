@@ -6,6 +6,7 @@ urlpatterns = [
     path('', views.NotHomeView.as_view(), name="nothome"),
     path('userindex/', views.UserindexView.as_view(), name="userindex"),
     path('drug/', views.DrugView.as_view(), name="drug"),
+    path('drug/<int:year>/<int:month>/', views.DrugView.as_view(), name="drug"),
     path('drug_create/', views.Drug_createView.as_view(), name="drug_create"),
     path('Ssearch/', views.SsearchView.as_view(), name="Ssearch"),
     # path('store/', views.StoreView.as_view(), name="store"),
