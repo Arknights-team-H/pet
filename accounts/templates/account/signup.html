@@ -1,4 +1,4 @@
-{% extends 'userbase.html' %}
+
 
 {% block title %}サインアップ | owner{% endblock %}
 
@@ -7,16 +7,14 @@
 {% block contents %}
 <div class="container">
     <div class="row">
-        <div class="my-div-style" style="margin-top">
+        <div class="my-div-style" style="margin-top" >
             <h1>新規登録</h1>
             <form method="post" action="{% url 'account_signup' %}">
                 {% csrf_token %}
-                {{ form.as_p }}
+                {{ form.as_ul }}
                 {% if redirect_field_value %}
                     <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                 {% endif %}
-
-
                 <button class="btn btn-primary" type="submit">登録</button>
             </form>
         </div>
