@@ -1,19 +1,29 @@
 from django.views import generic
 from django.urls import reverse_lazy
 from django.shortcuts import render
+
+from . import mixins
 from .forms import MedicineForm
 from .forms import PrefectureForm
 from dogcat.models import Medicine
 from dogcat.models import MasterHospital
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from dogcat.models import MasterPrefectures
+
 
 class NotHomeView(generic.TemplateView):
     template_name = "nothome.html"
 class UserindexView(generic.TemplateView):
     template_name = "userindex.html"
-class DrugView(LoginRequiredMixin,generic.TemplateView):
+class DrugView(mixins.MonthWithScheduleMixin, LoginRequiredMixin,generic.TemplateView):
     template_name = "drug.html"
+    model = Medicine
+    date_field = 'taking_date'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        calendar_context = self.get_month_calendar()
+        context.update(calendar_context)
+        return context
 class Drug_createView(generic.FormView):
     template_name = "drug_create.html"
     form_class = MedicineForm
@@ -46,3 +56,4 @@ class StoreView(generic.TemplateView):
 #     template_name = "usersignup.html"
 class UserlogoutView(generic.TemplateView):
     template_name = "userlogout.html"
+

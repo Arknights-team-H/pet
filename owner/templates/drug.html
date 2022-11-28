@@ -6,63 +6,57 @@
 {% block contents %}
     <br>
     <div class="calendar-container">
-      <h4>2022年11月</h4>
-      <table class="calendar">
+      <style>
+        table {
+            table-layout: fixed;
+        }
+
+        td > div {
+            height: 100px;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+    </style>
+    <a href="{% url 'owner:drug' month_previous.year month_previous.month %}">前月</a>
+    {{ month_current | date:"Y年m月" }}
+    <a href="{% url 'owner:drug' month_next.year month_next.month %}">次月</a>
+    <table class="table">
+        <thead>
         <tr>
-          <th>日</th>
-          <th>月</th>
-          <th>火</th>
-          <th>水</th>
-          <th>木</th>
-          <th>金</th>
-          <th>土</th>
+            {% for w in week_names %}
+                <th>{{ w }}</th>
+            {% endfor %}
         </tr>
-        <tr class="day">
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td>1</td>
-          <td>2</td>
-          <td>3</td>
-        </tr>
-        <tr class="day">
-          <td>4</td>
-          <td>5</td>
-          <td>6</td>
-          <td>7</td>
-          <td>8</td>
-          <td>9</td>
-          <td>10</td>
-        </tr>
-        <tr class="day">
-          <td>11</td>
-          <td>12</td>
-          <td>13</td>
-          <td>14</td>
-          <td>15</td>
-          <td>16</td>
-          <td>17</td>
-        </tr>
-        <tr class="day">
-          <td>18</td>
-          <td>19</td>
-          <td>20</td>
-          <td>21</td>
-          <td>22</td>
-          <td>23</td>
-          <td>24</td>
-        </tr>
-        <tr class="day">
-          <td>25</td>
-          <td>26</td>
-          <td>27</td>
-          <td>28</td>
-          <td>29</td>
-          <td>30</td>
-          <td>31</td>
-        </tr>
-      </table>
+        </thead>
+        <tbody>
+        {% for week_day_schedles in month_day_schedules %}
+            <tr>
+                {% for day, schedules in week_day_schedles.items %}
+                    {% if now == day %}
+                        <td class="table-success">
+                            {% else %}
+                        <td>
+                    {% endif %}
+
+                <div>
+                    {% if month_current.month != day.month %}
+                        {{ day | date:"m/d" }}
+                    {% else %}
+                        {{ day.day }}
+                    {% endif %}
+
+                    {% for medicine in medicines %}
+                        <p>{{ medicine.type }}</p>
+                        <p>{{ medicine.pet_id }}</p>
+                    {% endfor %}
+                </div>
+                </td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
     </div>
     <div class="example">
       <a href="" class="btn-drug">🕓アラーム</a>
