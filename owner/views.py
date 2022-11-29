@@ -78,3 +78,6 @@ class StoreView(generic.TemplateView):
 class UserlogoutView(generic.TemplateView):
     template_name = "userlogout.html"
 
+class CertificateView(generic.TemplateView):
+    template_name = "certificate.html"
+
