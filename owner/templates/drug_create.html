@@ -7,12 +7,16 @@
 <div class="drug_box" xmlns="http://www.w3.org/1999/html">
       <p class="label-title">お薬情報の登録</p>
         <form method="post" action="{% url 'owner:drug' %}">
-                {% csrf_token %}
-                {{ form.as_p }}
-                {% if redirect_field_value %}
-                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-                {% endif %}
-        <a href="drug.html" class="drug-btn">保存する</a>
+            <br>
+            {% csrf_token %}
+            {{ form.as_p }}
+            {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
+            <div class="example">
+                <a href="{% url 'owner:drug' %}" class="drug-btn">保存する</a>
+            </div>
+        </form>
       </div>
     </div>
 {% endblock %}
