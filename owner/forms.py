@@ -9,7 +9,7 @@ from django.contrib.admin.widgets import AdminDateWidget
 class MedicineForm(forms.ModelForm):
     class Meta:
         model = Medicine
-        fields = ('taking_date','type',)
+        fields = ('taking_date','medicine_type',)
         # widgets = {
         #     'taking_date': AdminDateWidget(),
         # }

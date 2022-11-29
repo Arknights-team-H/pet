@@ -23,15 +23,15 @@ class DrugView(mixins.MonthWithScheduleMixin, LoginRequiredMixin,generic.Templat
         calendar_context = self.get_month_calendar()
         context.update(calendar_context)
         return context
-class Drug_createView(generic.CreateView):
-    model = Medicine
-    date_field = 'taking_date'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        calendar_context = self.get_month_calendar()
-        context.update(calendar_context)
-        return context
+# class Drug_createView(generic.CreateView):
+#     model = Medicine
+#     date_field = 'taking_date'
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         calendar_context = self.get_month_calendar()
+#         context.update(calendar_context)
+#         return context
 class Drug_createView(generic.FormView):
     template_name = "drug_create.html"
     form_class = MedicineForm
@@ -40,13 +40,13 @@ class Drug_createView(generic.FormView):
 
     def form_valid(self, form):
         print("djfslkjklsd")
-        owner = form.save(commit=True)  # データベース名
-        messages.success(self.request, 'データベースni登録しました。')
+        dogcat = form.save(commit=True)  # データベース名
+        messages.success(self.request, '情報を登録しました。')
         return super().form_valid(form)
 
     def form_invalid(self, form):
         print(1)
-        messages.error(self.request, "データベースの登録に失敗しました。")
+        messages.error(self.request, "情報の登録に失敗しました。")
         return super().form_invalid(form)
 
 
