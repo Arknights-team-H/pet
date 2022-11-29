@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.shortcuts import render
 
 from . import mixins
-from .forms import MedicineForm
+from .forms import MedicineForm, PrefectureForm
 from dogcat.models import Medicine
 from dogcat.models import MasterHospital
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -54,18 +54,24 @@ def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['add_drug_form'] = MedicineForm  # ここで定義した変数名
         return context
-class SsearchView(generic.ListView):
+class SsearchView(generic.FormView):
     model = MasterHospital
+    form_class = PrefectureForm
     template_name = "Ssearch.html"
     success_url = reverse_lazy('owner:Ssearch')
 
     def post(self, request, *args, **kwargs):
         if request.method == 'POST':
-            prefectures = request.POST.get('prefectures')
-
-            def get_queryset(self):
-                hospitals = MasterHospital.objects.filter(address=prefectures).order_by('-created_at')
-                return hospitals
+            prefecture = request.POST.get('prefectures')
+            print(prefecture)
+            if MasterHospital.objects.filter(address__contains=prefecture):
+                result = MasterHospital.objects.filter(address__contains=prefecture).first()
+                print(result)
+                ctx = {}
+                ctx["objects"] = result
+                return render(request, 'store.html', ctx)
+            obj = 0
+            return super().post(obj)
 
 
 class StoreView(generic.TemplateView):
