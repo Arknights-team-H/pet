@@ -8,8 +8,10 @@
 <div class="container">
     <div class="row">
         <div class="my-div-style" style="margin-top">
-            <h1>Log In</h1>
+            <br>
             <form method="post" action="{% url 'account_login' %}">
+
+                <h5>Log In</h5>
                 {% csrf_token %}
 
                 {{ form.as_p }}
@@ -18,7 +20,9 @@
                     <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                 {% endif %}
 
-                <button class="btn btn-primary" type="submit">ログイン</button>
+                <div class="example">
+                  <a href class="btn-solid-gold">　ログイン　</a>
+                </div>
                 <p><a class="button secondaryAction" href="{% url 'account_reset_password' %}">パスワードを忘れましたか？</a></p>
             </form>
         </div>
