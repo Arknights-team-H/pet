@@ -2,6 +2,7 @@ import calendar
 import itertools
 import datetime
 from collections import deque
+from dogcat.models import Medicine
 
 
 class BaseCalendarMixin:
@@ -77,6 +78,8 @@ class MonthCalendarMixin(BaseCalendarMixin):
 class MonthWithScheduleMixin(MonthCalendarMixin):
     """スケジュール付きの、月間カレンダーを提供するMixin"""
 
+    model = Medicine
+
     def get_month_schedules(self, start, end, days):
         """それぞれの日とスケジュールを返す"""
         lookup = {
@@ -84,13 +87,13 @@ class MonthWithScheduleMixin(MonthCalendarMixin):
             '{}__range'.format(self.date_field): (start, end)
         }
         # 例えば、Schedule.objects.filter(date__range=(1日, 31日)) になる
-        queryset = self.model.objects.filter(**lookup)
-
+        queryset = Medicine.objects.filter(**lookup)
+        print(queryset)
         # {1日のdatetime: 1日のスケジュール全て, 2日のdatetime: 2日の全て...}のような辞書を作る
         day_schedules = {day: [] for week in days for day in week}
-        for medicine in queryset:
-            schedule_date = getattr(medicine, self.date_field)
-            day_schedules[schedule_date].append(medicine)
+        for schedule in queryset:
+            schedule_date = getattr(schedule, self.date_field)
+            day_schedules[schedule_date].append(schedule)
 
         # day_schedules辞書を、周毎に分割する。[{1日: 1日のスケジュール...}, {8日: 8日のスケジュール...}, ...]
         # 7個ずつ取り出して分割しています。
