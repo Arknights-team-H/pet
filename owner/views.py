@@ -23,20 +23,12 @@ class DrugView(mixins.MonthWithScheduleMixin, LoginRequiredMixin,generic.Templat
         calendar_context = self.get_month_calendar()
         context.update(calendar_context)
         return context
-# class Drug_createView(generic.CreateView):
-#     model = Medicine
-#     date_field = 'taking_date'
-#
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         calendar_context = self.get_month_calendar()
-#         context.update(calendar_context)
-#         return context
+
 class Drug_createView(generic.FormView):
     template_name = "drug_create.html"
     form_class = MedicineForm
     model = Medicine
-    success_url = reverse_lazy('owner:userindex')
+    success_url = reverse_lazy('owner:drug')
 
     def form_valid(self, form):
         print("djfslkjklsd")
