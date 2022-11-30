@@ -20,7 +20,7 @@
         <tbody>
         {% for week_day_schedles in month_day_schedules %}
             <tr>
-                {% for day, schedules in week_day_schedles.items %}
+                {% for day, medicines in week_day_schedles.items %}
                     {% if now == day %}
                         <td class="table-success">
                             {% else %}
@@ -35,8 +35,8 @@
                     {% endif %}
 
                     {% for medicine in medicines %}
-                        <p>{{ medicine.pet_id }}</p>
-                        <p>{{ medicine.medicine_type }}</p>
+                            {{ medicines.pet_id }}<br>
+                            {{ medicine.medicine_type }}
                     {% endfor %}
                 </div>
                 </td>
