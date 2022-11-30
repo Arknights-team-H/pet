@@ -11,10 +11,15 @@ class MasterVaccination(models.Model): # 予防接種種類のマスタテーブ
 
 
 class Vaccination(models.Model): # 病院側の予防接種情報登録テーブル
-    mc_number = models.CharField(max_length=15, verbose_name='個体番号', blank=True, null=True)
+    mc_number = models.CharField(max_length=15, verbose_name='個体番号')
     date = models.DateField(verbose_name='接種日付', default=timezone.now())
     vaccination_type = models.ForeignKey(MasterVaccination, on_delete=models.DO_NOTHING, verbose_name='接種ワクチン')
-    hospital_id = models.CharField(max_length=7, verbose_name='病院ID', blank=True, null=True)
+    hospital_id = models.CharField(max_length=7, verbose_name='病院ID')
+    owner_name = models.CharField(max_length=100, verbose_name='飼い主名')
+    owner_address = models.CharField(max_length=255, verbose_name='住所')
+    pet_name = models.CharField(max_length=100, verbose_name='ペット名')
+    species = models.CharField(max_length=100, verbose_name='種別')
+    gender = models.CharField(max_length=2, verbose_name='性別')
 
     class Meta:
         verbose_name_plural = 'Vaccination'
@@ -42,7 +47,6 @@ class MasterHospital(models.Model): # 病院情報のマスタテーブル
 
     class Meta:
         verbose_name_plural = 'MasterHospital'
-
 
 
 class HospitalApply(models.Model): # 病院情報のマスタテーブル

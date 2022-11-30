@@ -119,14 +119,13 @@ input {
 }
 
 form {
-  margin:0 auto;
+  margin: auto;
   font-size: 1em; /*文字のサイズ*/
   background: #DAEDD9;
   padding: 0rem 1em;
   border-radius: 30px;
   text-align:center;
-  width: 300px;
-  height:380px;
+  width: 800px;
   line-height:25px;
 }
 
@@ -305,6 +304,8 @@ footer {
   font-size:1.1em;
   text-align : center;
   padding: 18px 0;
+  position: absolute;
+  bottom: 0;
 }
 
 
@@ -344,6 +345,7 @@ footer {
   color: #2c2c2f;
   background: #f4f7fb;/*背景色*/
   border: 1px solid hsl(0, 27%, 2%);
+  text-align: left;
 }
 
 .link-cer {
@@ -443,3 +445,8 @@ table {
 nav {
     text-align: center;
 }
+/*
+.signup-form {
+    height: 100px;
+    width: 100px;
+}*/
