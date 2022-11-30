@@ -4,17 +4,18 @@
 {% block title %}詳細表示｜Dog&Cat{% endblock %}
 
 {% block contents %}
+<br>
 <form id="database" method="post" action="#">
-    <h2>検索結果</h2>
+    <h5>検索結果</h5>
     <br>
-    <label for="hospital_name">　　病院名：{{ objects.hospital_name }}</label>
-    <br>
-    <label for="address">　　　　住所：{{ objects.address }}</label>
-    <br>
-    <label for="phone_number">電話番号：{{ objects.phone_number }}</label>
-    <br>
-    <label for="director_name">　　　責任者名：{{ objects.director_name }}</label>
-    <br>
+    <label for="hospital_name">　病院名：　　{{ objects.hospital_name }}</label>
+    <hr>
+    <label for="address">住所：{{ objects.address }}</label>
+    <hr>
+    <label for="phone_number">　電話番号：　 {{ objects.phone_number }}</label>
+    <hr>
+    <label for="director_name">責任者名： 　　{{ objects.director_name }}</label>
+    <hr>
     <div class="return-button">
         <button><a href="{% url 'owner:Ssearch' %}" class="button-index">戻る</a></button>
     </div>

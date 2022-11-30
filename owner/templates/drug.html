@@ -4,20 +4,8 @@
 {% block title %}お薬手帳｜Dog&Cat{% endblock %}
 
 {% block contents %}
-    <br>
-    <div class="calendar-container">
-      <style>
-        table {
-            table-layout: fixed;
-        }
-
-        td > div {
-            height: 100px;
-            overflow: hidden;
-            white-space: nowrap;
-        }
-
-    </style>
+<br>
+<div class="calendar-container">
     <a href="{% url 'owner:drug' month_previous.year month_previous.month %}">前月</a>
     {{ month_current | date:"Y年m月" }}
     <a href="{% url 'owner:drug' month_next.year month_next.month %}">次月</a>
@@ -57,9 +45,9 @@
         {% endfor %}
         </tbody>
     </table>
-    </div>
-    <div class="example">
-      <a href="" class="btn-drug">🕓アラーム</a>
-      <a href="{% url 'owner:drug_create' %}" class="btn-drug">お薬情報の登録</a>
-    </div>
+</div>
+<div class="example">
+  <a href="" class="btn-drug">🕓アラーム</a>
+  <a href="{% url 'owner:drug_create' %}" class="btn-drug">お薬情報の登録</a>
+</div>
 {% endblock %}
