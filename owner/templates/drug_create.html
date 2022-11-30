@@ -2,6 +2,14 @@
 {% load static %}
 
 {% block title %}お薬情報の登録｜Dog&Cat{% endblock %}
+<head>
+<link rel="stylesheet" type="text/css" href="{% static 'admin/css/base.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'admin/css/forms.css' %}"/>
+<script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
+{{ add_drug_form.media }}
+<script type="text/javascript" src="{% static 'admin/js/core.js' %}"></script>
+<script type="text/javascript" src="{% static 'admin/js/admin/RelatedObjectLookups.js' %}"></script>
+</head>
 {% block contents %}
 <div class="drug_box" xmlns="http://www.w3.org/1999/html">
     <p class="label-title">お薬情報の登録</p>
