@@ -4,14 +4,16 @@
 {% block title %}お薬情報の登録｜Dog&Cat{% endblock %}
 {% block contents %}
 <div class="drug_box" xmlns="http://www.w3.org/1999/html">
-      <p class="label-title">お薬情報の登録</p>
-        <form method="POST"  enctype='multipart/form-data'>
-                {% csrf_token %}
-                {{ form.as_p }}
-                {% if redirect_field_value %}
-                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-                {% endif %}
+    <p class="label-title">お薬情報の登録</p>
+    <form method="POST"  enctype='multipart/form-data'>
+        {% csrf_token %}
+        {{ form.as_p }}
+        {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+        {% endif %}
+
+        <button><a href="{% url 'owner:drug' %}" class="button-index">戻る</a></button>
         <button><a class="btn-primary">保存する</a></button>
-        </form>
+    </form>
 </div>
 {% endblock %}
