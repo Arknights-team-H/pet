@@ -5,6 +5,7 @@ app_name = 'owner'
 urlpatterns = [
     path('', views.NotHomeView.as_view(), name="nothome"),
     path('userindex/', views.UserindexView.as_view(), name="userindex"),
+    path('user-detail/', views.UserDetailView.as_view(), name="user-detail"),
     path('drug/', views.DrugView.as_view(), name="drug"),
     path('drug/<int:year>/<int:month>/', views.DrugView.as_view(), name="drug"),
     path('drug_create/', views.Drug_createView.as_view(), name="drug_create"),
@@ -14,4 +15,5 @@ urlpatterns = [
     # path('usersignup/', views.UsersignupView.as_view(), name="usersignup"),
     path('userlogout/', views.UserlogoutView.as_view(), name="userlogout"),
     path('certificate/', views.CertificateView.as_view(), name="certificate"),
+
 ]

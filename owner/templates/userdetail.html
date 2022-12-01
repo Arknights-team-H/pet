@@ -1,0 +1,63 @@
+{% extends 'userbase.html' %}
+{% load static %}
+
+{% block title %}{% endblock %}
+
+{% block contents %}
+<div class="container">
+    <div class="my-div-style w-100">
+        <div class="row">
+            <div class="col-3">
+                <strong>ユーザ名</strong>
+            </div>
+            <div class="col-9">
+                {{ user.username }}
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-3">
+                <strong>e-mail</strong>
+            </div>
+            <div class="col-9">
+                {{ user.email }}
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-3">
+                <strong>個体番号</strong>
+            </div>
+            <div class="col-9">
+                {{ user.mc_number }}
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-3">
+                <strong>ペットの名前</strong>
+            </div>
+            <div class="col-9">
+                {{ user.pet_name }}
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-3">
+                <strong>ペットの生年月日</strong>
+            </div>
+            <div class="col-9">
+                {{ user.pet_birthday }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
