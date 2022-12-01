@@ -13,5 +13,6 @@ urlpatterns = [
     # path('userlogin/', views.UserloginView.as_view(), name="userlogin"),
     # path('usersignup/', views.UsersignupView.as_view(), name="usersignup"),
     path('userlogout/', views.UserlogoutView.as_view(), name="userlogout"),
+    path('security/', views.SecurityView.as_view(), name="security"),
     path('certificate/', views.CertificateView.as_view(), name="certificate"),
 ]
