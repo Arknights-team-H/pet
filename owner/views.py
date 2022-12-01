@@ -4,8 +4,7 @@ from django.shortcuts import render
 
 from . import mixins
 from .forms import MedicineForm, PrefectureForm
-from dogcat.models import Medicine
-from dogcat.models import MasterHospital
+from dogcat.models import Medicine, Vaccination, MasterHospital
 from accounts.models import MyUser
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib import messages
@@ -83,8 +82,19 @@ class StoreView(generic.TemplateView):
 class UserlogoutView(generic.TemplateView):
     template_name = "userlogout.html"
 
-class CertificateView(generic.TemplateView):
+class CertificateView(generic.FormView):
     template_name = "certificate.html"
+    model = Vaccination, MyUser
+    success_url = 'certificate.html'
+
+    # def get_context_data(self):
+    #     context = Vaccination.objects.filter()
+    #     # informations = MyUser.objects.filter(user=self.request.user, mc_number=mc_number)
+    #     print(context)
+    #     return context
+
+class SecurityView(LoginRequiredMixin, generic.TemplateView):
+    template_name = "security.html"
 
 class UserDetailView(LoginRequiredMixin,generic.TemplateView):
     template_name = "userdetail.html"
