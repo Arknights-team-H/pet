@@ -4,16 +4,29 @@ from django.shortcuts import render
 
 from . import mixins
 from .forms import MedicineForm, PrefectureForm
-from dogcat.models import Medicine, Vaccination, MasterHospital
+from dogcat.models import Medicine
+from dogcat.models import MasterHospital
 from accounts.models import MyUser
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib import messages
+from django.shortcuts import get_object_or_404
+
+
+class OnlyYouMixin(UserPassesTestMixin):
+    raise_exception = True
+
+    def test_func(self):
+        # URLに埋め込まれた主キーから日記データを1件取得。取得出来なかった場合は404エラー
+        owner = get_object_or_404(Owner, pk=self.kwargs['pk'])
+        # ログインユーザと日記の作成ページを比較し、異なればraise_exceptionの設定に従う
+        return self.request.user == owner.user
+
 
 class NotHomeView(generic.TemplateView):
     template_name = "nothome.html"
 class UserindexView(generic.TemplateView):
     template_name = "userindex.html"
-class DrugView(mixins.MonthWithScheduleMixin, LoginRequiredMixin, generic.TemplateView):
+class DrugView(mixins.MonthWithScheduleMixin, LoginRequiredMixin,generic.TemplateView):
     template_name = "drug.html"
     model = Medicine
     date_field = 'taking_date'
@@ -40,12 +53,6 @@ class Drug_createView(generic.FormView):
         print(1)
         messages.error(self.request, "情報の登録に失敗しました。")
         return super().form_invalid(form)
-
-
-def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['add_drug_form'] = MedicineForm  # ここで定義した変数名
-        return context
 class SsearchView(generic.FormView):
     model = MasterHospital
     form_class = PrefectureForm
@@ -76,17 +83,15 @@ class StoreView(generic.TemplateView):
 class UserlogoutView(generic.TemplateView):
     template_name = "userlogout.html"
 
-class CertificateView(generic.FormView):
+class CertificateView(generic.TemplateView):
     template_name = "certificate.html"
-    model = Vaccination, MyUser
-    success_url = 'certificate.html'
 
-    # def get_context_data(self):
-    #     context = Vaccination.objects.filter()
-    #     # informations = MyUser.objects.filter(user=self.request.user, mc_number=mc_number)
-    #     print(context)
-    #     return context
+class UserDetailView(LoginRequiredMixin,generic.TemplateView):
+    template_name = "userdetail.html"
+    model = MyUser
+    pk_url_kwarg = 'id'
 
-class SecurityView(LoginRequiredMixin, generic.TemplateView):
-    template_name = "security.html"
+    def get_queryset(self):
+        diaries = MyUser.objects.filter(user=self.request.user).order_by('-created_at') #公開、非公開設定
+        return diaries
 
