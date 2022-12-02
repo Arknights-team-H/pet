@@ -25,8 +25,27 @@ h1 {
   border-bottom: 2px solid rgb(6, 0, 0);
 }
 
+h3 {
+  font-size: 15px; /*文字のサイズ*/
+  padding: 1px 1px; /*上下左右の余白*/
+  line-height: 1px;
+  text-align: center;
+}
+
+h4 {
+  line-height: 25px;
+  text-align: center;
+}
+
 h5 {
   font-size: 19px; /*文字のサイズ*/
+}
+
+h6 {
+  line-height: 0px;
+  font-size: 30px; /*文字のサイズ*/
+  color: red;
+  text-align: center;
 }
 
 a {
@@ -167,17 +186,6 @@ form {
   color: #1a1a1a;
 }
 
-h3 {
-  font-size: 15px; /*文字のサイズ*/
-  padding: 1px 1px; /*上下左右の余白*/
-  line-height: 1px;
-  text-align: center;
-}
-
-h4 {
-  line-height: 25px;
-  text-align: center;
-}
 
 table {
   width: 100%;

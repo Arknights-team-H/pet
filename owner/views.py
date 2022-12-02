@@ -82,19 +82,29 @@ class StoreView(generic.TemplateView):
 class UserlogoutView(generic.TemplateView):
     template_name = "userlogout.html"
 
-class CertificateView(generic.FormView):
+class CertificateView(generic.TemplateView):
     template_name = "certificate.html"
     model = Vaccination, MyUser
-    success_url = 'certificate.html'
 
-    # def get_context_data(self):
-    #     context = Vaccination.objects.filter()
-    #     # informations = MyUser.objects.filter(user=self.request.user, mc_number=mc_number)
-    #     print(context)
-    #     return context
+    def get_context_data(self, *args, **kwargs):
+        # informations = MyUser.objects.filter(user=self.request.user)
+        context = Vaccination.objects.filter(mc_number=123456789123456).first()
+        context_dict = {
+            'context': context
+        }
+        print(context_dict)
+        # print(informations)
+        return context_dict
 
 class SecurityView(LoginRequiredMixin, generic.TemplateView):
     template_name = "security.html"
+    model = MyUser
+    pk_url_kwarg = 'id'
+
+    def get_queryset(self):
+        diaries = MyUser.objects.filter(user=self.request.user).order_by('-created_at') #公開、非公開設定
+        return diaries
+
 
 class UserDetailView(LoginRequiredMixin,generic.TemplateView):
     template_name = "userdetail.html"

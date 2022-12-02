@@ -1,15 +1,71 @@
 {% extends 'userbase.html' %}
 {% load static %}
 
-{% block title %}｜Dog&Cat{% endblock %}
+{% block title %} 確認画面｜Dog&Cat{% endblock %}
 
 {% block contents %}
-<div class="drug_box" xmlns="http://www.w3.org/1999/html">
-    <p class="label-title">照合</p>
-    <form>
-        {% csrf_token%}
-        <br>
-        <button><a href="{% url 'owner:certificate' %}">確認</a></button>
-    </form>
+<div class="container">
+    <div class="my-div-style w-100">
+        <h6>表示されたペットの予防接種証明書を発行しますか？</h6>
+        <form>
+            <div class="row">
+                <div class="col-3">
+                    <strong>ユーザ名</strong>
+                </div>
+                <div class="col-9">
+                    {{ user.username }}
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="row">
+                <div class="col-3">
+                    <strong>e-mail</strong>
+                </div>
+                <div class="col-9">
+                    {{ user.email }}
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="row">
+                <div class="col-3">
+                    <strong>個体番号</strong>
+                </div>
+                <div class="col-9">
+                    {{ user.mc_number }}
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="row">
+                <div class="col-3">
+                    <strong>ペットの名前</strong>
+                </div>
+                <div class="col-9">
+                    {{ user.pet_name }}
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="row">
+                <div class="col-3">
+                    <strong>ペットの生年月日</strong>
+                </div>
+                <div class="col-9">
+                    {{ user.pet_birthday }}
+                </div>
+            </div>
+
+            <br>
+
+            <button><a href="{% url 'owner:userindex' %}">いいえ</a></button>
+            <button><a href="{% url 'owner:certificate' %}">はい</a></button>
+        </form>
+    </div>
 </div>
 {% endblock %}
