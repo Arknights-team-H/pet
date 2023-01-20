@@ -37,6 +37,7 @@
                     {% for medicine in medicines %}
                             {{ medicines.pet_id }}<br>
                             {{ medicine.medicine_type }}
+                            <a class="btn btn-danger mt-5 ml-2 md-3" href="{% url 'owner:drug_delete' medicine.pk %}">削除</a>
                     {% endfor %}
                 </div>
                 </td>
