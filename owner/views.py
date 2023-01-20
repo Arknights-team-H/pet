@@ -115,3 +115,13 @@ class UserDetailView(LoginRequiredMixin,generic.TemplateView):
         diaries = MyUser.objects.filter(user=self.request.user).order_by('-created_at') #公開、非公開設定
         return diaries
 
+class Drug_DeleteView(LoginRequiredMixin,generic.DeleteView):
+    template_name = "userdelete.html"
+    model = Medicine
+    success_url = reverse_lazy('owner:drug')
+
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request,"予定を削除しました。")
+        return super().delete(request,*args,**kwargs)
+
