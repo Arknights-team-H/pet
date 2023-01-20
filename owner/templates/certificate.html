@@ -6,24 +6,89 @@
 {% block contents %}
     <div class="box4">
         <h3>予防接種証明書</h3>
-        <div class="box4">
-            <strong>飼主名 : {{ context_dict.mc_number }}</strong>
-            <hr>
-            <strong>住所 : {{ context_dict.mc_number }}</strong>
-            <hr>
-            <strong>名前 : {{ context_dict.mc_number }}</strong>
-            <hr>
-            <strong>カルテNo : {{ context_dict.mc_number }}</strong>
-            <strong>生年月日 : {{ context_dict.mc_number }}</strong>
-            <hr>
-            <strong>種別 : {{ context_dict.mc_number }}</strong>
-            <strong>性別 : {{ context_dict.mc_number }}</strong>
-            <hr>
-            <strong>接種したワクチンの種類 : {{ context_dict.mc_number }}<br>接種生年月日 : {{ context_dict.mc_number }}</strong>
-            <hr>
-            <br>
-            {病院情報}
-        </div>
+        <form>
+            <div class="row">
+                <div class="col-3">
+                    <strong>個体番号</strong>
+                </div>
+                <div class="col-9">
+                    {{ context.mc_number }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-3">
+                    <strong>接種日付</strong>
+                </div>
+                <div class="col-9">
+                    {{ context.date }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-3">
+                    <strong>接種ワクチン</strong>
+                </div>
+                <div class="col-9">
+                    {{ context.vaccination_type }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-3">
+                    <strong>病院ID</strong>
+                </div>
+                <div class="col-9">
+                    {{ context.hospital_id }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-3">
+                    <strong>飼い主</strong>
+                </div>
+                <div class="col-9">
+                    {{ context.owner_name }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-3">
+                    <strong>住所</strong>
+                </div>
+                <div class="col-9">
+                    {{ context.owner_address }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-3">
+                    <strong>ペット名</strong>
+                </div>
+                <div class="col-9">
+                    {{ context.pet_name }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-3">
+                    <strong>種別</strong>
+                </div>
+                <div class="col-9">
+                    {{ context.species }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-3">
+                    <strong>性別</strong>
+                </div>
+                <div class="col-9">
+                    {{ context.gender }}
+                </div>
+            </div>
+
+        </form>
         上記の通り接種したことを証明します。
     </div>
 

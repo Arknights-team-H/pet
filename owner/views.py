@@ -86,14 +86,19 @@ class CertificateView(generic.TemplateView):
     template_name = "certificate.html"
     model = Vaccination, MyUser
 
-    def get_context_data(self, *args, **kwargs):
-        # informations = MyUser.objects.filter(user=self.request.user)
+    # def get_queryset(self):
+    #     diaries = MyUser.objects.filter(user=self.request.user).order_by('-created_at') #公開、非公開設定
+    #     obj = diaries.mc_number
+    #     print(obj)
+    #     return diaries
+
+    def get_context_data(self):
+        informations = MyUser.objects.filter(user=self.request.user)
+        print(informations)
         context = Vaccination.objects.filter(mc_number=123456789123456).first()
         context_dict = {
             'context': context
         }
-        print(context_dict)
-        # print(informations)
         return context_dict
 
 class SecurityView(LoginRequiredMixin, generic.TemplateView):
