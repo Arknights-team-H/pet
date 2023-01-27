@@ -1,9 +1,10 @@
 from django.views import generic
 from django.urls import reverse_lazy
 from django.shortcuts import render
+import json
 
 from . import mixins
-from .forms import MedicineForm, PrefectureForm
+from .forms import MedicineForm, PrefectureForm, VerificationForm
 from dogcat.models import Medicine, Vaccination, MasterHospital
 from accounts.models import MyUser
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -25,7 +26,7 @@ class NotHomeView(generic.TemplateView):
     template_name = "nothome.html"
 class UserindexView(generic.TemplateView):
     template_name = "userindex.html"
-class DrugView(mixins.MonthWithScheduleMixin, LoginRequiredMixin,generic.TemplateView):
+class DrugView(mixins.MonthWithScheduleMixin, LoginRequiredMixin, generic.TemplateView):
     template_name = "drug.html"
     model = Medicine
     date_field = 'taking_date'
@@ -84,7 +85,7 @@ class UserlogoutView(generic.TemplateView):
 
 class CertificateView(generic.TemplateView):
     template_name = "certificate.html"
-    model = Vaccination, MyUser
+    model = Vaccination
 
     # def get_queryset(self):
     #     diaries = MyUser.objects.filter(user=self.request.user).order_by('-created_at') #公開、非公開設定
@@ -92,26 +93,42 @@ class CertificateView(generic.TemplateView):
     #     print(obj)
     #     return diaries
 
-    def get_context_data(self):
-        informations = MyUser.objects.filter(user=self.request.user)
-        print(informations)
-        context = Vaccination.objects.filter(mc_number=123456789123456).first()
-        context_dict = {
-            'context': context
-        }
-        return context_dict
+    # def get_context_data(self):
+    #     informations = MyUser.objects.filter(user=self.request.user)
+    #     print(informations)
+    #     context = Vaccination.objects.filter(mc_number=123456789123456).first()
+    #     context_dict = {
+    #         'context': context
+    #     }
+    #     return context_dict
 
-class SecurityView(LoginRequiredMixin, generic.TemplateView):
+class SecurityView(LoginRequiredMixin, generic.FormView):
     template_name = "security.html"
-    model = MyUser
-    pk_url_kwarg = 'id'
+    model = Vaccination
+    form_class = VerificationForm
+    # pk_url_kwarg = 'id'
+    success_url = reverse_lazy('owner:Certificate.html')
 
-    def get_queryset(self):
-        diaries = MyUser.objects.filter(user=self.request.user).order_by('-created_at') #公開、非公開設定
-        return diaries
+    def post(self, request, *args, **kwargs):
+        if request.method == 'POST':
+            mc_number = request.POST.get('mc_number')
+            owner_name = request.POST.get('owner_name')
+            print(mc_number)
+            print(owner_name)
+            if Vaccination.objects.filter(mc_number=mc_number, owner_name=owner_name):
+                print(1)
+                obj = Vaccination.objects.filter(mc_number=mc_number, owner_name=owner_name).order_by("-date").first()
+                print(obj)
+                obj1 = vars(obj)
+                print(obj1)
+                return render(request, 'certificate.html', obj1)
+            else:
+                return render(request, 'security.html')
+            obj = 0
+            return super().post(obj)
 
 
-class UserDetailView(LoginRequiredMixin,generic.TemplateView):
+class UserDetailView(LoginRequiredMixin, generic.TemplateView):
     template_name = "userdetail.html"
     model = MyUser
     pk_url_kwarg = 'id'
@@ -120,13 +137,12 @@ class UserDetailView(LoginRequiredMixin,generic.TemplateView):
         diaries = MyUser.objects.filter(user=self.request.user).order_by('-created_at') #公開、非公開設定
         return diaries
 
-class Drug_DeleteView(LoginRequiredMixin,generic.DeleteView):
+class Drug_DeleteView(LoginRequiredMixin, generic.DeleteView):
     template_name = "userdelete.html"
     model = Medicine
     success_url = reverse_lazy('owner:drug')
 
-
     def delete(self, request, *args, **kwargs):
-        messages.success(self.request,"予定を削除しました。")
-        return super().delete(request,*args,**kwargs)
+        messages.success(self.request, "予定を削除しました。")
+        return super().delete(request, *args, **kwargs)
 

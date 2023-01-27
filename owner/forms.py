@@ -1,6 +1,7 @@
 from django import forms
 from dogcat.models import Medicine
 from dogcat.models import MasterPrefectures
+from dogcat.models import Vaccination
 import os
 from django.contrib.admin.widgets import AdminDateWidget
 
@@ -30,3 +31,13 @@ class PrefectureForm(forms.ModelForm):
             for field in self.fields.values():
                 field.widget.attrs['class'] = 'form-control'
 
+
+class VerificationForm(forms.ModelForm):
+    class Meta:
+        model = Vaccination
+        fields = ('mc_number', 'owner_name',)
+
+        def __init__(self, *args, **kwargs):
+            super().__init__(*args, **kwargs)
+            for field in self.fields.values():
+                field.widget.attrs['class'] = 'form-control'

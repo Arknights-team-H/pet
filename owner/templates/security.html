@@ -5,67 +5,18 @@
 
 {% block contents %}
 <div class="container">
-    <div class="my-div-style w-100">
-        <h6>表示されたペットの予防接種証明書を発行しますか？</h6>
-        <form>
-            <div class="row">
-                <div class="col-3">
-                    <strong>ユーザ名</strong>
-                </div>
-                <div class="col-9">
-                    {{ user.username }}
-                </div>
-            </div>
-
-            <hr>
-
-            <div class="row">
-                <div class="col-3">
-                    <strong>e-mail</strong>
-                </div>
-                <div class="col-9">
-                    {{ user.email }}
-                </div>
-            </div>
-
-            <hr>
-
-            <div class="row">
-                <div class="col-3">
-                    <strong>個体番号</strong>
-                </div>
-                <div class="col-9">
-                    {{ user.mc_number }}
-                </div>
-            </div>
-
-            <hr>
-
-            <div class="row">
-                <div class="col-3">
-                    <strong>ペットの名前</strong>
-                </div>
-                <div class="col-9">
-                    {{ user.pet_name }}
-                </div>
-            </div>
-
-            <hr>
-
-            <div class="row">
-                <div class="col-3">
-                    <strong>ペットの生年月日</strong>
-                </div>
-                <div class="col-9">
-                    {{ user.pet_birthday }}
-                </div>
-            </div>
-
-            <br>
-
-            <button><a href="{% url 'owner:userindex' %}">いいえ</a></button>
-            <button><a href="{% url 'owner:certificate' %}">はい</a></button>
-        </form>
+    <div class="row">
+        <div class="my-div-style w-100">
+            <form method="POST" enctype='multipart/form-data'>
+                {% csrf_token %}
+                <h6>確認のため情報の入力をお願いします</h6>　
+                <table>
+                    {{ form.as_table }}
+                </table>
+                <br>
+        　　　　　<button><a class="btn-primary">検索</a></button>
+            </form>
+        </div>
     </div>
 </div>
 {% endblock %}
