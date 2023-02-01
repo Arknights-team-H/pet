@@ -64,7 +64,7 @@ class SsearchView(generic.FormView):
             prefecture = request.POST.get('prefectures')
             print(prefecture)
             if MasterHospital.objects.filter(address__contains=prefecture):
-                result = MasterHospital.objects.filter(address__contains=prefecture).first()
+                result = MasterHospital.objects.filter(address__contains=prefecture)
                 print(result)
                 ctx = {}
                 ctx["objects"] = result

@@ -91,8 +91,7 @@ class VsearchView(generic.FormView):
         if request.method == 'POST':
             mc_number = request.POST.get('mc_number')
             if Vaccination.objects.filter(mc_number=mc_number):
-                result = Vaccination.objects.filter(mc_number=mc_number).first()
-                print(result.mc_number)
+                result = Vaccination.objects.filter(mc_number=mc_number)
                 ctx = {}
                 ctx["objects"] = result
                 return render(request, 'detail.html', ctx)
