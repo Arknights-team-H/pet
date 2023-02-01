@@ -19,10 +19,11 @@ img {
 }
 
 h1 {
-  font-size: 20px; /*文字のサイズ*/
-  padding: 3px 6px; /*上下左右の余白*/
-  color: #322a2a; /*文字色*/
-  border-bottom: 2px solid rgb(6, 0, 0);
+    width: 100%;
+    font-size: 20px; /*文字のサイズ*/
+    padding: 3px 36px; /*上下左右の余白*/
+    color: #322a2a; /*文字色*/
+    border-bottom: 2px solid rgb(6, 0, 0);
 }
 
 h3 {
@@ -60,7 +61,7 @@ a {
   text-align: right;
 }
 
-a:hover{
+a:hover {
   color: #056c2c;
 }
 
@@ -313,17 +314,17 @@ ul, a {
 }
 
 footer {
-  width: 100%;
-  font-size:1.1em;
-  text-align : center;
-  padding: 18px 0;
-  position: absolute;
-  bottom: 0;
+    width: 100%;
+    font-size:1.1em;
+    text-align : center;
+    padding: 100px 0;
+    bottom: 0;
 }
 
 
-.drug_box, input {
-  text-align: center;
+.drug_box {
+    width: 100%;
+    text-align: center;
 }
 
 .box2 {
