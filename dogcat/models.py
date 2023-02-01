@@ -79,7 +79,7 @@ class MasterMedicine(models.Model): # 一般ユーザ側のお薬情報マスタ
 class Medicine(models.Model): # 一般ユーザ側のお薬情報テーブル
 
     pet_id = models.CharField(max_length=11, verbose_name='ペットID')
-    taking_date = models.DateField('飲む日付け')
+    taking_date = models.DateField('飲む日付')
     create_date = models.DateField('作成日付', blank=True, default=timezone.now())
     update_date = models.DateField('最終更新日', blank=True, null=True)
     medicine_type = models.ForeignKey(MasterMedicine, on_delete=models.DO_NOTHING, verbose_name='服用薬')

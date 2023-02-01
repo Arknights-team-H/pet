@@ -107,7 +107,7 @@ class SecurityView(LoginRequiredMixin, generic.FormView):
     model = Vaccination
     form_class = VerificationForm
     # pk_url_kwarg = 'id'
-    success_url = reverse_lazy('owner:Certificate.html')
+    success_url = reverse_lazy('owner:security')
 
     def post(self, request, *args, **kwargs):
         if request.method == 'POST':
@@ -122,8 +122,8 @@ class SecurityView(LoginRequiredMixin, generic.FormView):
                 obj1 = vars(obj)
                 print(obj1)
                 return render(request, 'certificate.html', obj1)
-            else:
-                return render(request, 'security.html')
+            # else:
+            #     return render(request, 'security.html')
             obj = 0
             return super().post(obj)
 
