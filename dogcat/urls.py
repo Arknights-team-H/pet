@@ -17,4 +17,5 @@ urlpatterns = [
     # path('delete/', views.DeleteView.as_view(), name="delete"),
     path('update/', views.UpdateView.as_view(), name="update"),
     path('useradd/', views.UserAddView.as_view(), name="useradd"),
+    path('vaccination_delete/<int:pk>/', views.VaccinationDeleteView.as_view(), name="vaccination_delete"),
 ]

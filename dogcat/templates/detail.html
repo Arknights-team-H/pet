@@ -36,6 +36,7 @@
                 　　{{ aiueo.hospital_id }}
             </div>
         </div>
+        <a class="btn btn-danger mt-5 ml-2 md-3" href="{% url 'dogcat:vaccination_delete' aiueo.pk %}">削除</a>
         <br><br>
     {% endfor %}
 
@@ -43,7 +44,7 @@
 
     <div class="return-button">
         <button><a href="{% url 'dogcat:Vsearch' %}" class="button-index">戻る</a></button>
-        <button><a href="{% url 'dogcat:update' %}" class="button-index">変更</a></button>
+<!--        <button><a href="{% url 'dogcat:update' %}" class="button-index">変更</a></button>-->
     </div>
     <div>
         <ul>

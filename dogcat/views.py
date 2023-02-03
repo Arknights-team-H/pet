@@ -161,5 +161,13 @@ class UserAddView(generic.FormView):
             messages.success(self.request, 'データベースを登録しました。')
             return super().post(obj)
 
+class VaccinationDeleteView(generic.DeleteView):
+    template_name = "vaccination_delete.html"
+    model = Vaccination
+    success_url = reverse_lazy('dogcat:Vsearch')
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, "情報を削除しました。")
+        return super().delete(request, *args, **kwargs)
 
 
