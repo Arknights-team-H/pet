@@ -6,42 +6,42 @@
 {% block contents %}
 <table class="yorusika">
     <h8>予防接種証明書</h8>
-    <tr class="certificate">
-        <th class="certificate">個体番号</th>
-        <td>{{ mc_number }}</td>
-    </tr>
-    <tr class="certificate">
-        <th class="certificate">接種日付</th>
-        <td>{{ date }}</td>
-    </tr>
-    <tr class="certificate">
-        <th class="certificate">接種ワクチン</th>
-        <td>{{ vaccination_type }}</td>
-    </tr>
-    <tr class="certificate">
-        <th class="certificate">病院ID</th>
-        <td>{{ hospital_id }}</td>
-    </tr>
-    <tr class="certificate">
-        <th class="certificate">飼い主名</th>
-        <td>{{ owner_name }}</td>
-    </tr>
-    <tr class="certificate">
-        <th class="certificate">住所</th>
-        <td>{{ owner_address }}</td>
-    </tr>
-    <tr class="certificate">
-        <th class="certificate">ペット名</th>
-        <td>{{ pet_name }}</td>
-    </tr>
-    <tr class="certificate">
-        <th class="certificate">種別</th>
-        <td>{{ species }}</td>
-    </tr>
-    <tr class="certificate">
-        <th class="certificate">性別</th>
-        <td>{{ gender }}</td>
-    </tr>
+    <br><br>
+        <tr class="certificate">
+            <th class="agenda">所有者名</th>
+            <td class="content">{{ objects.owner_name }}</td>
+        </tr>
+
+        <tr class="certificate">
+            <th class="agenda">住所</th>
+            <td class="content">{{ objects.owner_address }}</td>
+        </tr>
+
+        <tr class="certificate">
+            <th class="agenda">ワクチン</th>
+            <td class="content">{{ objects.vaccination_type }}</td>
+            <th class="agenda">接種日</th>
+            <td class="content">{{ objects.date }}</td>
+        </tr>
+
+        <tr class="certificate">
+            <th class="agenda">病院ID</th>
+            <td class="content">{{ objects.hospital_id }}</td>
+        </tr>
+
+        <tr class="certificate">
+            <th class="agenda">個体番号</th>
+            <td class="content">{{ objects.mc_number }}</td>
+            <th class="agenda">ペット名</th>
+            <td class="content">{{ objects.pet_name }}</td>
+        </tr>
+
+        <tr class="certificate">
+            <th class="agenda">種別</th>
+            <td class="content">{{ objects.species }}</td>
+            <th class="agenda">性別</th>
+            <td class="content">{{ objects.gender }}</td>
+        </tr>
 </table>
 <h5>上記の通り接種したことを証明します。</h5>
 

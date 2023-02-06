@@ -101,9 +101,9 @@ class SecurityView(LoginRequiredMixin, generic.FormView):
                 print(1)
                 obj = Vaccination.objects.filter(mc_number=mc_number, owner_name=owner_name).order_by("-date").first()
                 print(obj)
-                obj1 = vars(obj)
-                print(obj1)
-                return render(request, 'certificate.html', obj1)
+                ctx = {}
+                ctx["objects"] = obj
+                return render(request, 'certificate.html', ctx)
             obj = 0
             return super().post(obj)
 

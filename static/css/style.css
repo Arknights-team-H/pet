@@ -55,8 +55,9 @@ h7 {
 }
 
 h8 {
-  font-size: 30px; /*文字のサイズ*/
-  text-align: center;
+    font-size: 40px; /*文字のサイズ*/
+    font-weight: bold;
+    text-align: center;
 }
 
 a {
@@ -461,6 +462,17 @@ nav {
     border: solid 1px;
 }
 
+.agenda {
+    border: solid 1px;
+    width: 150px;
+}
+
+.content {
+    width: 350px;
+}
+
 .yorusika {
     background-color: #FFFFFF;
+    width: auto;
+    margin: auto;
 }
