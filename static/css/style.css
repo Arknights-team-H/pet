@@ -50,7 +50,12 @@ h6 {
 }
 
 h7 {
-  font-size: 20px; /*文字のサイズ*/
+  font-size: 30px; /*文字のサイズ*/
+  text-align: center;
+}
+
+h8 {
+  font-size: 30px; /*文字のサイズ*/
   text-align: center;
 }
 
@@ -200,14 +205,6 @@ th, td {
   padding: 6px;
 }
 
-th {
-  font-weight: normal;
-  font-size: 15px;
-}
-
-td {
-  font-weight: bold;
-}
 
 .day *:first-child {
   color: #ff838b;
@@ -459,8 +456,11 @@ table {
 nav {
     text-align: center;
 }
-/*
-.signup-form {
-    height: 100px;
-    width: 100px;
-}*/
+
+.certificate {
+    border: solid 1px;
+}
+
+.yorusika {
+    background-color: #FFFFFF;
+}
