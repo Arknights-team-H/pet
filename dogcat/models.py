@@ -8,12 +8,6 @@ class MasterVaccination(models.Model): # 予防接種種類マスタテーブル
     class Meta:
         verbose_name_plural = 'MasterVaccination'
 
-class MasterSpecies(models.Model): # 種別マスタテーブル
-    species = models.CharField(max_length=1, verbose_name='種別')
-    def __str__(self):
-        return self.species
-    class Meta:
-        verbose_name_plural = 'MasterSpecies'
 
 class MasterGender(models.Model): # 性別マスタテーブル
     gender = models.CharField(max_length=2, verbose_name='性別')
@@ -31,7 +25,7 @@ class Vaccination(models.Model): # 予防接種情報テーブル
     owner_name = models.CharField(max_length=100, verbose_name='飼い主名')
     owner_address = models.CharField(max_length=255, verbose_name='住所')
     pet_name = models.CharField(max_length=100, verbose_name='ペット名')
-    species = models.ForeignKey(MasterSpecies, on_delete=models.DO_NOTHING, verbose_name='種別')
+    species = models.CharField(max_length=30, verbose_name='種別')
     gender = models.ForeignKey(MasterGender, on_delete=models.DO_NOTHING, verbose_name='性別')
 
     class Meta:
