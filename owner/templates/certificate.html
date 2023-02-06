@@ -4,96 +4,50 @@
 {% block title %}予防接種証明書｜Dog&Cat{% endblock %}
 
 {% block contents %}
-    <div class="box4">
-        <h7>予防接種証明書</h7>
-        <form>
-            <div class="row">
-                <div class="col-3">
-                    <strong>個体番号</strong>
-                </div>
-                <div class="col-9">
-                    {{ mc_number }}
-                </div>
-            </div>
+<table class="yorusika">
+    <h8>予防接種証明書</h8>
+    <tr class="certificate">
+        <th class="certificate">個体番号</th>
+        <td>{{ mc_number }}</td>
+    </tr>
+    <tr class="certificate">
+        <th class="certificate">接種日付</th>
+        <td>{{ date }}</td>
+    </tr>
+    <tr class="certificate">
+        <th class="certificate">接種ワクチン</th>
+        <td>{{ vaccination_type }}</td>
+    </tr>
+    <tr class="certificate">
+        <th class="certificate">病院ID</th>
+        <td>{{ hospital_id }}</td>
+    </tr>
+    <tr class="certificate">
+        <th class="certificate">飼い主名</th>
+        <td>{{ owner_name }}</td>
+    </tr>
+    <tr class="certificate">
+        <th class="certificate">住所</th>
+        <td>{{ owner_address }}</td>
+    </tr>
+    <tr class="certificate">
+        <th class="certificate">ペット名</th>
+        <td>{{ pet_name }}</td>
+    </tr>
+    <tr class="certificate">
+        <th class="certificate">種別</th>
+        <td>{{ species }}</td>
+    </tr>
+    <tr class="certificate">
+        <th class="certificate">性別</th>
+        <td>{{ gender }}</td>
+    </tr>
+</table>
+<h5>上記の通り接種したことを証明します。</h5>
 
-            <div class="row">
-                <div class="col-3">
-                    <strong>接種日付</strong>
-                </div>
-                <div class="col-9">
-                    {{ date }}
-                </div>
-            </div>
+<div class="link-cer">
+    <img src=”/static/QRコード.png" >
+    <a href="">QRコードを発行する</a>
+</div>
 
-            <div class="row">
-                <div class="col-3">
-                    <strong>接種ワクチン</strong>
-                </div>
-                <div class="col-9">
-                    {{ vaccination_type }}
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-3">
-                    <strong>病院ID</strong>
-                </div>
-                <div class="col-9">
-                    {{ hospital_id }}
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-3">
-                    <strong>飼い主</strong>
-                </div>
-                <div class="col-9">
-                    {{ owner_name }}
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-3">
-                    <strong>住所</strong>
-                </div>
-                <div class="col-9">
-                    {{ owner_address }}
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-3">
-                    <strong>ペット名</strong>
-                </div>
-                <div class="col-9">
-                    {{ pet_name }}
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-3">
-                    <strong>種別</strong>
-                </div>
-                <div class="col-9">
-                    {{ species }}
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-3">
-                    <strong>性別</strong>
-                </div>
-                <div class="col-9">
-                    {{ gender }}
-                </div>
-            </div>
-
-        </form>
-        上記の通り接種したことを証明します。
-    </div>
-
-    <div class="link-cer">
-        <img src=”/static/QRコード.png" >
-      <a href="">QRコードを発行する</a>
-    </div>
 {% endblock %}
