@@ -74,7 +74,6 @@ class SsearchView(generic.FormView):
             obj = 0
             return super().post(obj)
 
-
 class StoreView(generic.TemplateView):
     template_name = "store.html"
 

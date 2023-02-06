@@ -25,7 +25,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'allauth',
     'allauth.account',
-
+    'django_bootstrap5',
 ]
 
 MIDDLEWARE = [
