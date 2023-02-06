@@ -24,8 +24,10 @@ class OnlyYouMixin(UserPassesTestMixin):
 
 class NotHomeView(generic.TemplateView):
     template_name = "nothome.html"
+
 class UserindexView(generic.TemplateView):
     template_name = "userindex.html"
+
 class DrugView(mixins.MonthWithScheduleMixin, LoginRequiredMixin, generic.TemplateView):
     template_name = "drug.html"
     model = Medicine
@@ -53,6 +55,7 @@ class Drug_createView(generic.FormView):
         print(1)
         messages.error(self.request, "情報の登録に失敗しました。")
         return super().form_invalid(form)
+
 class SsearchView(generic.FormView):
     model = MasterHospital
     form_class = PrefectureForm
@@ -61,10 +64,9 @@ class SsearchView(generic.FormView):
 
     def post(self, request, *args, **kwargs):
         if request.method == 'POST':
-            prefecture = request.POST.get('prefectures')
-            print(prefecture)
-            if MasterHospital.objects.filter(address__contains=prefecture):
-                result = MasterHospital.objects.filter(address__contains=prefecture)
+            address = request.POST.get('address')
+            if MasterHospital.objects.filter(address__contains=address):
+                result = MasterHospital.objects.filter(address__contains=address)
                 print(result)
                 ctx = {}
                 ctx["objects"] = result
@@ -76,10 +78,6 @@ class SsearchView(generic.FormView):
 class StoreView(generic.TemplateView):
     template_name = "store.html"
 
-# class UserloginView(generic.TemplateView):
-#     template_name = "userlogin.html"
-# class UsersignupView(generic.TemplateView):
-#     template_name = "usersignup.html"
 class UserlogoutView(generic.TemplateView):
     template_name = "userlogout.html"
 
@@ -87,26 +85,11 @@ class CertificateView(generic.TemplateView):
     template_name = "certificate.html"
     model = Vaccination
 
-    # def get_queryset(self):
-    #     diaries = MyUser.objects.filter(user=self.request.user).order_by('-created_at') #公開、非公開設定
-    #     obj = diaries.mc_number
-    #     print(obj)
-    #     return diaries
-
-    # def get_context_data(self):
-    #     informations = MyUser.objects.filter(user=self.request.user)
-    #     print(informations)
-    #     context = Vaccination.objects.filter(mc_number=123456789123456).first()
-    #     context_dict = {
-    #         'context': context
-    #     }
-    #     return context_dict
 
 class SecurityView(LoginRequiredMixin, generic.FormView):
     template_name = "security.html"
     model = Vaccination
     form_class = VerificationForm
-    # pk_url_kwarg = 'id'
     success_url = reverse_lazy('owner:security')
 
     def post(self, request, *args, **kwargs):
@@ -122,11 +105,8 @@ class SecurityView(LoginRequiredMixin, generic.FormView):
                 obj1 = vars(obj)
                 print(obj1)
                 return render(request, 'certificate.html', obj1)
-            # else:
-            #     return render(request, 'security.html')
             obj = 0
             return super().post(obj)
-
 
 class UserDetailView(LoginRequiredMixin, generic.TemplateView):
     template_name = "userdetail.html"

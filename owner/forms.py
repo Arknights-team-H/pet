@@ -1,6 +1,6 @@
 from django import forms
 from dogcat.models import Medicine
-from dogcat.models import MasterPrefectures
+from dogcat.models import MasterHospital
 from dogcat.models import Vaccination
 import os
 from django.contrib.admin.widgets import AdminDateWidget
@@ -8,6 +8,7 @@ from django.contrib.admin.widgets import AdminDateWidget
 
 class DateInput(forms.DateInput):
     input_type = 'date'
+
 class MedicineForm(forms.ModelForm):
     class Meta:
         model = Medicine
@@ -23,14 +24,13 @@ class MedicineForm(forms.ModelForm):
 
 class PrefectureForm(forms.ModelForm):
     class Meta:
-        model = MasterPrefectures
-        fields = ('prefectures',)
+        model = MasterHospital
+        fields = ('address',)
 
         def __init__(self, *args, **kwargs):
             super().__init__(*args, **kwargs)
             for field in self.fields.values():
                 field.widget.attrs['class'] = 'form-control'
-
 
 class VerificationForm(forms.ModelForm):
     class Meta:
