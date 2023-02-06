@@ -13,5 +13,3 @@ class MyUser(AbstractUser):
     pet_id = models.CharField(max_length=11, verbose_name='ペットID')
     pet_name = models.CharField(max_length=40, verbose_name='ペットの名前')
     pet_birthday = models.DateField(verbose_name='ペットの生年月日')
-
-
