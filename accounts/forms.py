@@ -1,9 +1,10 @@
 from django.contrib.auth.forms import UserCreationForm
 from .models import MyUser
 from allauth.socialaccount.forms import SignupForm
+from django import forms
+from django.contrib.admin.widgets import AdminDateWidget
 
-
-class MySignupForm(UserCreationForm):
+class MySignupForm(UserCreationForm,forms.ModelForm):
     class Meta:
         model = MyUser
         fields = (
@@ -14,6 +15,15 @@ class MySignupForm(UserCreationForm):
             'pet_name',
             'pet_birthday',
            )
+        widgets = {
+            'user_birthday': forms.SelectDateWidget(years=[x for x in range(1900, 2030)]),
+            'pet_birthday': forms.SelectDateWidget(years=[x for x in range(1900, 2030)]),
+        }
+
+        def __init__(self, *args, **kwargs):
+            super().__init__(*args, **kwargs)
+            for field in self.fields.values():
+                field.widget.attrs['class'] = 'form-control'
 
 class CustomSignupForm(SignupForm):
     def validate_unique_email(self, value):
