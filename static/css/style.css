@@ -21,7 +21,7 @@ img {
 h1 {
     width: 100%;
     font-size: 20px; /*文字のサイズ*/
-    padding: 3px 36px; /*上下左右の余白*/
+    padding: 3px 0px; /*上下左右の余白*/
     color: #322a2a; /*文字色*/
     border-bottom: 2px solid rgb(6, 0, 0);
 }
@@ -475,4 +475,39 @@ nav {
     background-color: #FFFFFF;
     width: auto;
     margin: auto;
+}
+
+
+@media screen and (max-width:480px) {
+	/*　画面サイズが480px以下の場合ここの記述が適用される　*/
+    form {
+        margin: auto;
+        font-size: 1em; /*文字のサイズ*/
+        background: #DAEDD9;
+        padding: 0rem 1em;
+        border-radius: 30px;
+        text-align:center;
+        width: auto;
+        line-height:25px;
+    }
+
+    .calendar-container .table {
+        table-layout: fixed;
+        width: auto;
+    }
+
+    h6 {
+        line-height: 0px;
+        font-size: 15px; /*文字のサイズ*/
+        color: red;
+        text-align: center;
+    }
+
+    footer {
+        width: 100%;
+        font-size:1.1em;
+        text-align : center;
+        padding: 100px 0;
+        bottom: 0;
+    }
 }
