@@ -120,7 +120,6 @@ class UpdateView(generic.FormView):
         messages.success(self.request, '登録情報を変更しましたしました。')
         return super().form_valid(form)
 
-
 class LoginView(generic.FormView):
     model = MasterHospitalUser
     form_class = LoginForm

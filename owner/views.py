@@ -87,7 +87,7 @@ class CertificateView(generic.TemplateView):
 
 class SecurityView(LoginRequiredMixin, generic.FormView):
     template_name = "security.html"
-    model = Vaccination
+    model = Vaccination, MyUser
     form_class = VerificationForm
     success_url = reverse_lazy('owner:security')
 
