@@ -1,17 +1,22 @@
 {% extends 'userbase.html' %}
 {% load static %}
 
-{% block title %}ホーム｜Dog&Cat{% endblock %}
+{% block title %}ホーム｜U T T A{% endblock %}
 
 {% block contents %}
     <p class="pet-name">ペット対象：犬・猫</p>
     <div class="pet-logo">
       <p></p>
-      <h2><br>Dog&Cat</h2>
+      <h2><br>U T T A</h2>
     </div>
     <div class="pet-text">ご利用いただきありがとうございます。</div>
     <div class="example">
-      <bottom><a href="{% url 'owner:security' %}" class="btn-solid-gold">予防接種証明書</a></bottom>
+        {% if user.is_authenticated %}
+        <nav>
+            <bottom><a href="{% url 'owner:security' %}" class="btn-solid-gold">予防接種証明書</a></bottom>
+            {% else %}
+            <bottom><a href="{% url 'account_login' %}" class="btn-solid-gold">Log In</a></bottom>
+        </nav>{% endif %}
     </div>
     <br><br><br><br><br>
 {% endblock %}
