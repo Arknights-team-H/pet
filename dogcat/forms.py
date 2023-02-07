@@ -8,6 +8,8 @@ from .models import Medicine
 class DateInput(forms.DateInput):
     input_type = 'date'
 
+class PasswordInput(forms.PasswordInput):
+    input_type = 'password'
 
 class CreateForm(forms.ModelForm):
     class Meta:
@@ -48,6 +50,10 @@ class LoginForm(forms.ModelForm):
     class Meta:
         model = MasterHospitalUser
         fields = ('hospital_id','password')
+        widgets = {
+            'password': PasswordInput(),
+        }
+        # password = forms.CharField(widget=forms.PasswordInput)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
