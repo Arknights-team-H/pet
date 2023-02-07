@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
-
+from django.core.validators import MinLengthValidator
+from django.core.validators import RegexValidator
 class MasterVaccination(models.Model): # 予防接種種類マスタテーブル
     vaccination_type = models.CharField(max_length=40, verbose_name='ワクチン種類')
     def __str__(self):
@@ -18,10 +19,13 @@ class MasterGender(models.Model): # 性別マスタテーブル
 
 
 class Vaccination(models.Model): # 予防接種情報テーブル
-    mc_number = models.CharField(max_length=15, verbose_name='個体番号')
+    mc_number = models.CharField(max_length=15,verbose_name='個体番号',
+                                 validators=[MinLengthValidator(15),
+                                             RegexValidator(r'^[0-9]*$', '数字のみを入力してください。')],
+                                 )
     date = models.DateField(verbose_name='接種日付', default=timezone.now())
     vaccination_type = models.ForeignKey(MasterVaccination, on_delete=models.DO_NOTHING, verbose_name='接種ワクチン')
-    hospital_id = models.CharField(max_length=7, verbose_name='病院ID')
+    hospital_id = models.CharField(max_length=7, verbose_name='病院ID',validators=[MinLengthValidator(7)])
     owner_name = models.CharField(max_length=100, verbose_name='飼い主名')
     owner_address = models.CharField(max_length=255, verbose_name='住所')
     pet_name = models.CharField(max_length=100, verbose_name='ペット名')
