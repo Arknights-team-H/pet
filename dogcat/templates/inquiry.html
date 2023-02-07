@@ -6,12 +6,10 @@
 
 {% block contents %}
 <form>
-    <br>
-    <p></p>
-    <br>
-    <br>
-    <br>
+    <br><br>
     <a href="{% url 'dogcat:apply' %}" class="btn btn--menu">利用申請</a>
     <a href="{% url 'dogcat:Capply' %}" class="btn btn--menu">登録情報変更申請</a>
+    <br><br>
+    <a href="{% url 'dogcat:login' %}" class="btn btn--menu">戻る</a>
 </form>
 {% endblock %}
