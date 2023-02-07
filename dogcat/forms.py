@@ -5,6 +5,8 @@ from .models import Vaccination
 from .models import MasterHospitalUser
 from .models import HospitalApply
 from .models import Medicine
+class DateInput(forms.DateInput):
+    input_type = 'date'
 
 
 class CreateForm(forms.ModelForm):
@@ -12,6 +14,9 @@ class CreateForm(forms.ModelForm):
         model = Vaccination
         fields = ('mc_number', 'date', 'vaccination_type', 'hospital_id',
                   'owner_name', 'owner_address', 'pet_name', 'species', 'gender')
+        widgets = {
+            'date': DateInput(),
+        }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
