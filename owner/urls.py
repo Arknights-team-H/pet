@@ -3,7 +3,7 @@ from . import views
 
 app_name = 'owner'
 urlpatterns = [
-    path('', views.NotHomeView.as_view(), name="userindex"),
+    path('', views.UserindexView.as_view(), name="userindex"),
     path('userindex/', views.UserindexView.as_view(), name="userindex"),
     path('user-detail/', views.UserDetailView.as_view(), name="user-detail"),
     path('drug/', views.DrugView.as_view(), name="drug"),

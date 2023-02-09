@@ -21,10 +21,6 @@ class OnlyYouMixin(UserPassesTestMixin):
         # ログインユーザと日記の作成ページを比較し、異なればraise_exceptionの設定に従う
         return self.request.user == owner.user
 
-
-class NotHomeView(generic.TemplateView):
-    template_name = "nothome.html"
-
 class UserindexView(generic.TemplateView):
     template_name = "userindex.html"
 
