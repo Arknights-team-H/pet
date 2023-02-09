@@ -4,6 +4,7 @@
 {% block title %}予防接種情報の登録｜U T T A{% endblock %}
 
 {% block contents %}
+<script src="https://yubinbango.github.io/yubinbango/yubinbango.js" charset="UTF-8"></script>
 <link href="{% static 'css/Main.css' %}" rel="stylesheet">
 <div class="container">
     <div class="row">
@@ -13,7 +14,6 @@
                 <table class="table" width="850">
                     <h2>予防接種情報の登録</h2>
                     {{ form.as_table }}
-                    {{form.errorlist }}
                 </table>
                 <br>
                 <button><a href="{% url 'dogcat:index' %}">戻る</a></button>

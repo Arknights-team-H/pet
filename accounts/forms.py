@@ -25,9 +25,9 @@ class MySignupForm(UserCreationForm,forms.ModelForm):
             for field in self.fields.values():
                 field.widget.attrs['class'] = 'form-control'
 
-# class CustomSignupForm(SignupForm):
-#     def validate_unique_email(self, value):
-#         try:
-#             return super(SignupForm, self).validate_unique_email(value)
-#         except forms.ValidationError:
-#             raise forms.ValidationError("既に同じメールアドレスが登録済みです。別のメールアドレスを登録お願いします。")
+class CustomSignupForm(SignupForm):
+    def validate_unique_email(self, value):
+        try:
+            return super(SignupForm, self).validate_unique_email(value)
+        except forms.ValidationError:
+            raise forms.ValidationError("既に同じメールアドレスが登録済みです。別のメールアドレスを登録お願いします。")
