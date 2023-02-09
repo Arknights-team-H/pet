@@ -2,7 +2,6 @@ from django.views import generic
 from django.urls import reverse_lazy
 from django.shortcuts import render
 import json
-
 from . import mixins
 from .forms import MedicineForm, PrefectureForm, VerificationForm
 from dogcat.models import Medicine, Vaccination, MasterHospital
@@ -10,6 +9,7 @@ from accounts.models import MyUser
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib import messages
 from django.shortcuts import get_object_or_404
+import qrcode
 
 
 class OnlyYouMixin(UserPassesTestMixin):
@@ -125,3 +125,14 @@ class Drug_DeleteView(LoginRequiredMixin, generic.DeleteView):
         messages.success(self.request, "予定を削除しました。")
         return super().delete(request, *args, **kwargs)
 
+class QRcodeView(LoginRequiredMixin,generic.TemplateView):
+    template_name = "certificate.html"
+
+    def get(self, request, *args, **kwargs):
+        qr = qrcode.QRCode()
+        qr.add_data('http://127.0.0.1:8000/owner/security/')
+        img = qr.make_image(fill_color="black", back_color="white")
+        img.show()
+        img.save("sample1.png")
+
+        return render(request, 'userindex.html')

@@ -170,3 +170,4 @@ class VaccinationDeleteView(generic.DeleteView):
         return super().delete(request, *args, **kwargs)
 
 
+

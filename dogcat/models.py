@@ -53,7 +53,8 @@ class MasterHospital(models.Model): # 病院情報マスタテーブル
 class HospitalApply(models.Model): # 病院側利用申請テーブル
     hospital_name = models.CharField(max_length=40, verbose_name='病院名')
     address = models.CharField(max_length=120, verbose_name='住所')
-    phone_number = models.CharField(max_length=12, verbose_name='電話番号')
+    phone_number = models.CharField(max_length=12, verbose_name='電話番号',
+                                    validators=[RegexValidator(r'^[0-9]*$', '数字のみを入力してください。')])
     director_name = models.CharField(max_length=40, verbose_name='責任者名')
     licence_copy = models.ImageField(verbose_name='獣医師免許写し')
 
