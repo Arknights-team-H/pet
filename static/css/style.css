@@ -24,8 +24,8 @@ img {
 
 h1 {
     width: 100%;
-    font-size: 20px; /*文字のサイズ*/
-    padding: 3px 0px; /*上下左右の余白*/
+    font-size: 25px; /*文字のサイズ*/
+    padding: 10px; /*上下左右の余白*/
     color: #322a2a; /*文字色*/
     border-bottom: 2px solid rgb(6, 0, 0);
 }
@@ -126,9 +126,10 @@ input {
 }
 
 .pet-logo ,h2 {
-    font-size: 50px;
+    font-size: 80px;
     text-align: center;
     margin: auto;
+    padding-top: 30px;
 }
 
 .pet-text {
@@ -156,7 +157,7 @@ form {
     margin: auto;
     font-size: 1em; /*文字のサイズ*/
     background: #DAEDD9;
-    padding: 0rem 1em;
+    padding: 2em 1em;
     border-radius: 30px;
     text-align:center;
     width: 800px;
@@ -276,6 +277,16 @@ a.btn-drug:hover {
     border-radius: 6px;
     background:  #340beb;
     color: #fff;
+    width: 800px;
+    margin: auto;
+}
+
+.label-title2 {
+    font-size: 30px;
+    text-align: center;
+    color: #f00;
+    width: 800px;
+    margin: auto;
 }
 
 .drug-btn,
@@ -326,6 +337,7 @@ footer {
 .drug_box {
     width: 100%;
     text-align: center;
+    margin: 20px;
 }
 
 .box2 {
@@ -481,6 +493,11 @@ nav {
     margin: auto;
 }
 
+.userbase {
+    padding: 10px;
+}
+
+
 
 @media screen and (max-width:480px) {
 	/*　画面サイズが480px以下の場合ここの記述が適用される　*/
@@ -515,3 +532,4 @@ nav {
         bottom: 0;
     }
 }
+
