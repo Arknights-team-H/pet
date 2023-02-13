@@ -16,9 +16,8 @@ class OnlyYouMixin(UserPassesTestMixin):
     raise_exception = True
 
     def test_func(self):
-        # URLに埋め込まれた主キーから日記データを1件取得。取得出来なかった場合は404エラー
+        #取得出来なかった場合は404エラー
         owner = get_object_or_404(Owner, pk=self.kwargs['pk'])
-        # ログインユーザと日記の作成ページを比較し、異なればraise_exceptionの設定に従う
         return self.request.user == owner.user
 
 class UserindexView(generic.TemplateView):
@@ -118,7 +117,7 @@ class Drug_DeleteView(LoginRequiredMixin, generic.DeleteView):
     success_url = reverse_lazy('owner:drug')
 
     def delete(self, request, *args, **kwargs):
-        messages.success(self.request, "予定を削除しました。")
+        messages.success(self.request, "接種情報を削除しました。")
         return super().delete(request, *args, **kwargs)
 
 class QRcodeView(LoginRequiredMixin,generic.TemplateView):
