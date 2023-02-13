@@ -29,22 +29,10 @@
                             <a href="{% url 'account_signup' %}">新規登録</a>
                         </ul>
                     </nav>
-                </ul>
+                </ul>{% endif %}
+            <p class="pet-name">ペット対象：犬・猫</p>
             </header>
-            {% endif %}
 
-            {% if messages %}
-            <div class="container">
-                <div class="row">
-                    <div class="my-div-style">
-                        <ul class="messages"> {% for message in messages %}
-                            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}> {{ message }}</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            {% endif %}
 
             {% block contents %}{% endblock %}
 
@@ -60,6 +48,21 @@
                     integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
                     crossorigin="anonymous"></script>
             {% block extrajs %}{% endblock %}
+
+            {% if messages %}
+            <br>
+                <div class="container">
+                    <div class="row">
+                        <div class="my-div-style">
+                            <div class="messages"> {% for message in messages %}
+                                <p {% if message.tags %} class="{{ message.tags }}" {% endif %}> {{ message }}</p>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+
             <footer>
                 <div class="sen"></div>
                 <div class="pet-function">

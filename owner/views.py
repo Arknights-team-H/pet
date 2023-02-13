@@ -66,6 +66,8 @@ class SsearchView(generic.FormView):
                 ctx = {}
                 ctx["objects"] = result
                 return render(request, 'store.html', ctx)
+            else:
+                messages.error(self.request, "該当する情報がありませんでした。")
             obj = 0
             return super().post(obj)
 
@@ -99,6 +101,8 @@ class SecurityView(LoginRequiredMixin, generic.FormView):
                 ctx = {}
                 ctx["objects"] = obj
                 return render(request, 'certificate.html', ctx)
+            else:
+                messages.error(self.request, "該当する情報がありませんでした。")
             obj = 0
             return super().post(obj)
 
