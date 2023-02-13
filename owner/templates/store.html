@@ -5,8 +5,9 @@
 
 {% block contents %}
 <br>
-<form id="database" method="post" action="#">
+<form id="database" method="post" class="kensaku">
     <h5>検索結果</h5>
+    <br>
     {% for hospital in objects %}
         <label for="hospital_name">　病院名：　　{{ hospital.hospital_name }}</label>
         <hr>
@@ -15,7 +16,7 @@
         <label for="phone_number">　電話番号：　 {{ hospital.phone_number }}</label>
         <hr>
         <label for="director_name">責任者名： 　　{{ hospital.director_name }}</label>
-        <br><br><br>
+        <br><br>
     {% endfor %}
     <div class="return-button">
         <button><a href="{% url 'owner:Ssearch' %}" class="button-index">戻る</a></button>

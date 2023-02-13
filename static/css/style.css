@@ -153,15 +153,26 @@ input {
     font-size: 1.4em;
 }
 
+.user-detail {
+    margin: auto;
+    width: 500px;
+}
+
 form {
     margin: auto;
     font-size: 1em; /*文字のサイズ*/
     background: #DAEDD9;
-    padding: 2em 1em;
     border-radius: 30px;
     text-align:center;
-    width: 800px;
+    width: 600px;
+    height: auto;
     line-height:25px;
+}
+
+.kensaku {
+    margin: auto;
+    overflow: auto;
+    height: 500px;
 }
 
 .btn-circle {
@@ -329,7 +340,7 @@ footer {
     width: 100%;
     font-size:1.1em;
     text-align : center;
-    bottom: 20;
+    bottom: 0;
     position: absolute;
 }
 
