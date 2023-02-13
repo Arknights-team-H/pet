@@ -43,12 +43,12 @@ class Drug_createView(generic.FormView):
     def form_valid(self, form):
         print("djfslkjklsd")
         dogcat = form.save(commit=True)  # データベース名
-        messages.success(self.request, '情報を登録しました。')
+        messages.success(self.request, 'お薬情報を登録しました。')
         return super().form_valid(form)
 
     def form_invalid(self, form):
         print(1)
-        messages.error(self.request, "情報の登録に失敗しました。")
+        messages.error(self.request, "お薬情報の登録に失敗しました。")
         return super().form_invalid(form)
 
 class SsearchView(generic.FormView):
@@ -117,7 +117,7 @@ class Drug_DeleteView(LoginRequiredMixin, generic.DeleteView):
     success_url = reverse_lazy('owner:drug')
 
     def delete(self, request, *args, **kwargs):
-        messages.success(self.request, "接種情報を削除しました。")
+        messages.success(self.request, "お薬情報を削除しました。")
         return super().delete(request, *args, **kwargs)
 
 class QRcodeView(LoginRequiredMixin,generic.TemplateView):
