@@ -1,5 +1,6 @@
 {% extends 'userbase.html' %}
 {% load i18n %}
+
 {% block title %}サインアップ | U T T A{% endblock %}
 
 {% block active_signup %}active{% endblock %}
@@ -13,13 +14,13 @@
                 {% csrf_token %}
                 <div class="mb-4 col-4">
                     {{form.username.label_tag}}{{form.username}}<br><br>
-                    {{form.email.label_tag}}{{form.email}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
+                    {{form.email.label_tag}}{{form.email}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
                     {{form.user_birthday.label_tag}}{{form.user_birthday}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
                     {{form.mc_number.label_tag}}{{form.mc_number}}<br><br>
-                    {{form.pet_name.label_tag}}{{form.pet_name}}&nbsp;&nbsp;&nbsp;<br><br>
+                    {{form.pet_name.label_tag}}{{form.pet_name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
                     {{form.pet_birthday.label_tag}}{{form.pet_birthday}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
-                    {{form.password1.label_tag}}{{form.password1}}<br><br>
-                    {{form.password2.label_tag}}{{form.password2}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    {{form.password1.label_tag}}{{form.password1}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>
+                    {{form.password2.label_tag}}{{form.password2}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 </div>
                     {% if redirect_field_value %}
                     <input type="hidden"  name="{{ redirect_field_name }}" value="{{ redirect_field_value }}">
