@@ -508,6 +508,9 @@ nav {
     padding: 10px;
 }
 
+.messages {
+    text-align: left;
+}
 
 
 @media screen and (max-width:480px) {
