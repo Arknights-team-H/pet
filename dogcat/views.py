@@ -25,12 +25,12 @@ class ApplyView(generic.FormView):
 
     def form_valid(self, form):
         dogcat = form.save(commit=True)
-        messages.success(self.request, 'データベースに登録しました。')
+        messages.success(self.request, '登録完了しました。')
         return super().form_valid(form)
 
     def form_invalid(self, form):
         print(1)
-        messages.error(self.request, "データベースの登録に失敗しました。")
+        messages.error(self.request, "登録に失敗しました。")
         return super().form_invalid(form)
 
 
@@ -54,12 +54,12 @@ class CreateView(generic.CreateView):
         dogcat = form.save(commit=True)
         # dogcat.user = self.request.user
         # dogcat.save()
-        messages.success(self.request, 'データベースに登録しました。')
+        messages.success(self.request, '予防接種情報を登録しました。')
         return super().form_valid(form)
 
     def form_invalid(self, form):
         print(1)
-        messages.error(self.request, "データベースの登録に失敗しました。")
+        messages.error(self.request, "予防接種情報の登録に失敗しました。")
         return super().form_invalid(form)
 
 
@@ -73,7 +73,7 @@ class UpdateView(generic.UpdateView): # UpdateViewクラスを継承している
         dogcat = form.save(commit=True)
         # dogcat.user = self.request.user
         # dogcat.save()
-        messages.success(self.request, 'データベースを登録しました。')
+        messages.success(self.request, '登録完了しました。')
         return super().form_valid(form)
 
     def form_invalid(self, form):
@@ -113,11 +113,10 @@ class UpdateView(generic.FormView):
     # success_url = reverse_lazy('dogcat:vaccination')
 
     def form_valid(self, form):
-        print("djfslkjklsd")
         dogcat = form.save(commit=True)
         # dogcat.user = self.request.user
         # dogcat.save()
-        messages.success(self.request, '登録情報を変更しましたしました。')
+        messages.success(self.request, '登録情報を変更しました。')
         return super().form_valid(form)
 
 class LoginView(generic.FormView):
@@ -138,9 +137,8 @@ class LoginView(generic.FormView):
                 print(1)
                 return render(request, 'index.html')
             obj = 0
-            # messages.success(self.request, 'データベースを登録しました。')
+            messages.success(self.request, 'ログインしました。')
             return super().post(obj)
-
 class UserAddView(generic.FormView):
     model = MasterHospitalUser
     form_class = LoginForm
@@ -166,7 +164,7 @@ class VaccinationDeleteView(generic.DeleteView):
     success_url = reverse_lazy('dogcat:Vsearch')
 
     def delete(self, request, *args, **kwargs):
-        messages.success(self.request, "情報を削除しました。")
+        messages.success(self.request, "予防接種情報を削除しました。")
         return super().delete(request, *args, **kwargs)
 
 
