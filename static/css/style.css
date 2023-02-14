@@ -172,7 +172,7 @@ form {
 .kensaku {
     margin: auto;
     overflow: auto;
-    height: 500px;
+    height: 450px;
 }
 
 .btn-circle {
@@ -507,6 +507,9 @@ nav {
     padding: 10px;
 }
 
+.messages {
+    text-align: left;
+}
 
 
 @media screen and (max-width:480px) {
