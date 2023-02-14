@@ -64,6 +64,17 @@ h8 {
     text-align: center;
 }
 
+h9 {
+    font-size: 19px; /*文字のサイズ*/
+    text-align: center;
+}
+
+h10 {
+    font-size: 40px; /*文字のサイズ*/
+    font-weight: bold;
+    text-align: center;
+}
+
 a {
     color: #0b0b0b; /*文字色*/
     padding: 4px; /*上下左右の余白*/
@@ -501,7 +512,8 @@ nav {
 .yorusika {
     background-color: #FFFFFF;
     width: auto;
-    margin: auto;
+    margin: 0 auto;
+    text-align: center;
 }
 
 .userbase {
