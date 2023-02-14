@@ -190,9 +190,6 @@ a.btn--menu:hover {
     border-bottom: 2px solid #98cf29;
 }
 
-.return-button, button{
-    display:inline-block;
-}
 
 a.btn--orange {
     color: #fff;
