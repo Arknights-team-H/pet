@@ -30,6 +30,7 @@ h1 {
     border-bottom: 2px solid rgb(6, 0, 0);
 }
 
+
 h3 {
     font-size: 15px; /*文字のサイズ*/
     padding: 1px 1px; /*上下左右の余白*/
@@ -59,6 +60,17 @@ h7 {
 }
 
 h8 {
+    font-size: 40px; /*文字のサイズ*/
+    font-weight: bold;
+    text-align: center;
+}
+
+.h9 {
+    font-size: 19px; /*文字のサイズ*/
+    text-align: center;
+}
+
+.h10 {
     font-size: 40px; /*文字のサイズ*/
     font-weight: bold;
     text-align: center;
@@ -211,6 +223,7 @@ form {
 .calendar-container {
     background: #f6f5f4;
     color: #1a1a1a;
+    text-align: center;
 }
 
 table {
@@ -500,7 +513,8 @@ nav {
 .yorusika {
     background-color: #FFFFFF;
     width: auto;
-    margin: auto;
+    margin: 0 auto;
+    text-align: center;
 }
 
 .userbase {

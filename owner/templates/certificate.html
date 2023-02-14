@@ -4,9 +4,10 @@
 {% block title %}予防接種証明書｜U T T A{% endblock %}
 
 {% block contents %}
+
 <table class="yorusika">
-    <h8>予防接種証明書</h8>
-    <br><br>
+    <div class="h10">予防接種証明書</div>
+    <br>
         <tr class="certificate">
             <th class="agenda">所有者名</th>
             <td class="content">{{ objects.owner_name }}</td>
@@ -44,7 +45,7 @@
         </tr>
 </table>
 <br>
-<h5>上記の通り接種したことを証明します。</h5>
+<div class="h9">上記の通り接種したことを証明します。</div>
 
 <div class="link-cer">
     <h4><a href="{% url 'owner:QRcode' %}">QRコードを発行する</a></h4>
