@@ -136,8 +136,22 @@ button {
     border-radius: 10px;
     transition: 0.2s ease;
     font-family:sans-serif;
-    display:block;
     margin: auto;
+}
+
+.V-button {
+    padding: 0.4em 1.6em;
+    font-size: 0.8em;
+    color: rgb(145, 231, 194);
+    text-decoration: none;
+    user-select: none;
+    background: #028d37;
+    border: 1px #00b5ad solid;
+    border-radius: 10px;
+    transition: 0.2s ease;
+    font-family:sans-serif;
+    margin: auto;
+    display: block;
 }
 
 *,
@@ -213,3 +227,17 @@ a.btn--shadow {
     width: auto;
     padding: 20px;
 }
+
+.kensaku {
+    margin: auto;
+    overflow: auto;
+    height: 450px;
+    width: 800px;
+}
+/*
+.table {
+    width: auto;
+    margin: auto;
+    padding: auto;
+    position: center;
+}*/
