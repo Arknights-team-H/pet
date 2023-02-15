@@ -135,9 +135,20 @@ class LoginView(generic.FormView):
             print(password)
             if MasterHospitalUser.objects.filter(hospital_id=hospital_id, password=password):
                 print(1)
+                messages.success(self.request, 'ログインしました。')
                 return render(request, 'index.html')
+            elif MasterHospitalUser.objects.filter(hospital_id=hospital_id):
+                messages.success(self.request, 'ログインに失敗しました。')
+                messages.success(self.request, '病院IDが一致しません。')
+            elif MasterHospitalUser.objects.filter(password=password):
+                messages.success(self.request, 'ログインに失敗しました。')
+                messages.success(self.request, 'パスワードが一致しません。')
+            else:
+                messages.success(self.request, 'ログインに失敗しました。')
+                messages.success(self.request, '病院IDが一致しません。')
+
+                messages.success(self.request, 'パスワードが一致しません。')
             obj = 0
-            messages.success(self.request, 'ログインしました。')
             return super().post(obj)
 class UserAddView(generic.FormView):
     model = MasterHospitalUser

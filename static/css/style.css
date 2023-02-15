@@ -528,6 +528,31 @@ nav {
 
 @media screen and (max-width:480px) {
 	/*　画面サイズが480px以下の場合ここの記述が適用される　*/
+
+    h1 {
+        width: 100%;
+        font-size: 20px; /*文字のサイズ*/
+        padding: 10px; /*上下左右の余白*/
+        color: #322a2a; /*文字色*/
+        border-bottom: 2px solid rgb(6, 0, 0);
+    }
+
+    .label-title2 {
+        font-size: 20px;
+        text-align: center;
+        color: #f00;
+        width: auto;
+    }
+
+    .phone-yorusika {
+        background-color: #FFFFFF;
+        width: auto;
+        height: 350px;
+        overflow: auto;
+        margin: 0 auto;
+        text-align: center;
+    }
+
     form {
         margin: auto;
         font-size: 1em; /*文字のサイズ*/
