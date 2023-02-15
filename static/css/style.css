@@ -544,6 +544,16 @@ nav {
         width: auto;
     }
 
+    .label-title {
+        font-size: 20px;
+        text-align: center;
+        border-radius: 6px;
+        background:  #340beb;
+        color: #fff;
+        width: auto;
+        margin: auto;
+    }
+
     .phone-yorusika {
         background-color: #FFFFFF;
         width: auto;
