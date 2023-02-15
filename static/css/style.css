@@ -360,7 +360,6 @@ footer {
 .drug_box {
     width: 100%;
     text-align: center;
-    margin: 20px;
 }
 
 .box2 {
@@ -525,9 +524,14 @@ nav {
     text-align: left;
 }
 
-
+/* */
 @media screen and (max-width:480px) {
 	/*　画面サイズが480px以下の場合ここの記述が適用される　*/
+
+    .container {
+        overflow: auto;
+        height: 350px;
+    }
 
     h1 {
         width: 100%;
@@ -542,6 +546,16 @@ nav {
         text-align: center;
         color: #f00;
         width: auto;
+    }
+
+    .label-title {
+        font-size: 20px;
+        text-align: center;
+        border-radius: 6px;
+        background:  #340beb;
+        color: #fff;
+        width: auto;
+        margin: auto;
     }
 
     .phone-yorusika {
@@ -580,7 +594,6 @@ nav {
         width: 100%;
         font-size:1.1em;
         text-align : center;
-        padding: 100px 0;
         bottom: 0;
     }
 }
