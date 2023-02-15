@@ -110,10 +110,10 @@ form {
     margin:auto;
     font-size: 1.3em; /*文字のサイズ*/
     background: #DAEDD9;
-    padding: 0.1em 1em;
+    padding: auto;
     border-radius: 30px;
     text-align:center;
-    width: 60%;
+    width: 50%;
 }
 
 input {

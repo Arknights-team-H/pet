@@ -25,12 +25,12 @@ class ApplyView(generic.FormView):
 
     def form_valid(self, form):
         dogcat = form.save(commit=True)
-        messages.success(self.request, '登録完了しました。')
+        messages.success(self.request, '利用申請しました。')
         return super().form_valid(form)
 
     def form_invalid(self, form):
         print(1)
-        messages.error(self.request, "登録に失敗しました。")
+        messages.error(self.request, "利用申請に失敗しました。")
         return super().form_invalid(form)
 
 
@@ -137,7 +137,7 @@ class LoginView(generic.FormView):
                 print(1)
                 return render(request, 'index.html')
             obj = 0
-            messages.success(self.request, 'ログインしました。')
+            messages.success(self.request, 'ログインに失敗しました。')
             return super().post(obj)
 class UserAddView(generic.FormView):
     model = MasterHospitalUser
