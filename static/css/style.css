@@ -360,7 +360,6 @@ footer {
 .drug_box {
     width: 100%;
     text-align: center;
-    margin: 20px;
 }
 
 .box2 {
@@ -528,6 +527,11 @@ nav {
 /* */
 @media screen and (max-width:480px) {
 	/*　画面サイズが480px以下の場合ここの記述が適用される　*/
+
+    .container {
+        overflow: auto;
+        height: 350px;
+    }
 
     h1 {
         width: 100%;
