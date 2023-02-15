@@ -1,4 +1,5 @@
 from .settings_common import *
+import smtplib
 
 # 本番運用環境用にセキュリティキーを生成し環境変数から読み込む
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
@@ -63,3 +64,12 @@ LOGGING = {
         },
     }
 }
+
+
+# メール送信
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_USE_TLS = True
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_HOST_USER = 'schoole2023123@gmail.com'
+# EMAIL_HOST_PASSWORD = 'fopxhtxbdyfznbmk'
+# EMAIL_PORT =587

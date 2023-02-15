@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
 from django.contrib.messages import constants as messages
-import accounts
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -66,7 +66,7 @@ WSGI_APPLICATION = 'pet.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'UTTA',
+        'NAME': 'dogcat1',
         'USER': os.environ.get('DB_USER'),
         'PASSWORD': os.environ.get('DB_PASSWORD'),
         'HOST': '',
@@ -145,7 +145,7 @@ ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_EMAIL_REQUIRED = True
 
-# # ログイン/ログアウト後の遷移先を設定
+# ログイン/ログアウト後の遷移先を設定
 LOGIN_REDIRECT_URL = 'owner:userindex'
 ACCOUNT_LOGOUT_REDIRECT_URL = 'account_login'
 
@@ -162,6 +162,10 @@ ACCOUNT_FORMS = {
     'signup' : 'accounts.forms.MySignupForm',
 }
 
-
-
-
+# メール送信
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'ykh2135246@gmail.com'
+EMAIL_HOST_PASSWORD = 'fkndhwvlmjxabmhb'
+EMAIL_PORT =587
