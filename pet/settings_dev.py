@@ -49,7 +49,7 @@ LOGGING = {
     }
 }
 
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # メール送信
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
