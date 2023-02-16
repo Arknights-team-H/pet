@@ -66,7 +66,7 @@ WSGI_APPLICATION = 'pet.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'UTTA',
+        'NAME': 'dogcat',
         'USER': os.environ.get('DB_USER'),
         'PASSWORD': os.environ.get('DB_PASSWORD'),
         'HOST': '',
@@ -162,7 +162,7 @@ ACCOUNT_FORMS = {
     'signup' : 'accounts.forms.MySignupForm',
 }
 
-# # メール送信
+# メール送信
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # EMAIL_USE_TLS = True
 # EMAIL_HOST = 'smtp.gmail.com'

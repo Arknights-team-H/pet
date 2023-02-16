@@ -129,7 +129,7 @@ class QRcodeView(LoginRequiredMixin,generic.TemplateView):
 
     def get(self, request, *args, **kwargs):
         qr = qrcode.QRCode()
-        qr.add_data('http://127.0.0.1:8000/owner/security/')
+        qr.add_data('http:34.231.65.248/owner/security/')
         img = qr.make_image(fill_color="black", back_color="white")
         img.show()
         img.save("sample1.png")
